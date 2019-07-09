@@ -814,10 +814,10 @@
                     <a href="#tocS_CustomFieldCompact" class="toc-h2 toc-link" data-title="CustomFieldCompact">CustomFieldCompact</a>
                   </li>
                   <li>
-                    <a href="#tocS_CustomFieldSettings" class="toc-h2 toc-link" data-title="CustomFieldSettings">CustomFieldSettings</a>
+                    <a href="#tocS_CustomFieldSetting" class="toc-h2 toc-link" data-title="CustomFieldSetting">CustomFieldSetting</a>
                   </li>
                   <li>
-                    <a href="#tocS_CustomFieldSettingsCompact" class="toc-h2 toc-link" data-title="CustomFieldSettingsCompact">CustomFieldSettingsCompact</a>
+                    <a href="#tocS_CustomFieldSettingCompact" class="toc-h2 toc-link" data-title="CustomFieldSettingCompact">CustomFieldSettingCompact</a>
                   </li>
                   <li>
                     <a href="#tocS_EnumOption" class="toc-h2 toc-link" data-title="EnumOption">EnumOption</a>
@@ -2298,7 +2298,7 @@ curl -X GET https://app.asana.com/api/1.0/attachments/<span class="o">{</span>at
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attachment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dropbox.com/s/123/Screenshot.png?dl=1"</span><span class="p">,</span><span class="w">
@@ -2429,7 +2429,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attachment"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -2613,7 +2613,7 @@ appending the content type to the file path: <code>—form
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attachment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dropbox.com/s/123/Screenshot.png?dl=1"</span><span class="p">,</span><span class="w">
@@ -3006,7 +3006,7 @@ Attempting to edit a locked custom field will return HTTP error code
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -3220,7 +3220,7 @@ HTTP/1.1 200
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -3398,7 +3398,7 @@ Returns the complete updated custom field record.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -3709,7 +3709,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -3897,7 +3897,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -4082,7 +4082,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -4216,7 +4216,7 @@ curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>wor
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -4353,7 +4353,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4365,7 +4365,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
 <h3 id="query-for-all-of-the-custom-fields-settings-on-a-project.-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a project.</td><td><a href="#schemacustomfieldsettings">CustomFieldSettings</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-project-39-s-custom-fields'>Get a project&#39;s custom fields</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a project.</td><td><a href="#schemacustomfieldsetting">CustomFieldSetting</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-project-39-s-custom-fields'>Get a project&#39;s custom fields</h2>
 <p><a id="opIdgetCustomFieldSettingsForProject"></a></p>
 
 <blockquote>
@@ -4483,7 +4483,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4495,7 +4495,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
 <h3 id="get-a-project's-custom-fields-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a project.</td><td><a href="#schemacustomfieldsettings">CustomFieldSettings</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-portfolio-39-s-custom-fields'>Get a portfolio&#39;s custom fields</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a project.</td><td><a href="#schemacustomfieldsetting">CustomFieldSetting</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-portfolio-39-s-custom-fields'>Get a portfolio&#39;s custom fields</h2>
 <p><a id="opIdgetCustomFieldSettingsForPortfolio"></a></p>
 
 <blockquote>
@@ -4613,7 +4613,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>por
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -4625,7 +4625,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>por
 <h3 id="get-a-portfolio's-custom-fields-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a portfolio.</td><td><a href="#schemacustomfieldsettings">CustomFieldSettings</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved custom field settings objects for a portfolio.</td><td><a href="#schemacustomfieldsetting">CustomFieldSetting</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
 <h1 id="asana-events">Events</h1>
 
 <p>An event is an object representing a change to a resource that was observed by an event subscription.</p>
@@ -6667,7 +6667,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_status"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status Update - Jun 15"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -6819,7 +6819,7 @@ Returns the full record of the newly created project status update.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_status"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status Update - Jun 15"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -8912,7 +8912,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_membership"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="s2">"write_access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full_write"</span><span class="w">
@@ -9040,11 +9040,11 @@ curl -X GET https://app.asana.com/api/1.0/project_memberships/<span class="o">{<
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_membership"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9181,7 +9181,7 @@ curl -X GET https://app.asana.com/api/1.0/project_statuses/<span class="o">{</sp
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_status"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status Update - Jun 15"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -9438,7 +9438,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
@@ -9583,7 +9583,7 @@ Returns the full record of the newly created section.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9712,7 +9712,7 @@ curl -X GET https://app.asana.com/api/1.0/sections/<span class="o">{</span>secti
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9874,7 +9874,7 @@ you last retrieved the task.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -10753,7 +10753,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -10939,7 +10939,7 @@ request.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -10978,7 +10978,7 @@ request.</p>
     </span><span class="s2">"story"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -10988,25 +10988,25 @@ request.</p>
     </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"old_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"new_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11024,13 +11024,13 @@ request.</p>
     </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"custom_field"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -11046,7 +11046,7 @@ request.</p>
     </span><span class="s2">"old_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -11054,7 +11054,7 @@ request.</p>
     </span><span class="s2">"new_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -11205,7 +11205,7 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -11244,7 +11244,7 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"story"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -11254,25 +11254,25 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"old_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"new_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11290,13 +11290,13 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"custom_field"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -11312,7 +11312,7 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"old_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -11320,7 +11320,7 @@ curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"new_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -11643,7 +11643,7 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -11682,7 +11682,7 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"story"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -11692,25 +11692,25 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"old_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"new_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -11728,13 +11728,13 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"custom_field"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -11750,7 +11750,7 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"old_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -11758,7 +11758,7 @@ curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_
     </span><span class="s2">"new_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -12036,7 +12036,7 @@ curl -X GET https://app.asana.com/api/1.0/tags <span class="se">\</span>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"light-green"</span><span class="p">,</span><span class="w">
@@ -12198,7 +12198,7 @@ organization.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{}</span><span class="w">
@@ -12207,7 +12207,7 @@ organization.</p>
     </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -12333,7 +12333,7 @@ curl -X GET https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<s
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{}</span><span class="w">
@@ -12342,7 +12342,7 @@ curl -X GET https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<s
     </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -12475,7 +12475,7 @@ you last retrieved the task.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{}</span><span class="w">
@@ -12484,7 +12484,7 @@ you last retrieved the task.</p>
     </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -12767,7 +12767,7 @@ curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>wor
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"light-green"</span><span class="p">,</span><span class="w">
@@ -12930,7 +12930,7 @@ organization.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"light-green"</span><span class="p">,</span><span class="w">
@@ -16456,7 +16456,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"light-green"</span><span class="p">,</span><span class="w">
@@ -17155,7 +17155,7 @@ curl -X GET https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All developers should be members of this team."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"html_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;&lt;em&gt;All&lt;/em&gt; developers should be members of this team.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
@@ -17284,7 +17284,7 @@ curl -X GET https://app.asana.com/api/1.0/organizations/<span class="o">{</span>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All developers should be members of this team."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"html_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;&lt;em&gt;All&lt;/em&gt; developers should be members of this team.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
@@ -17415,7 +17415,7 @@ curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All developers should be members of this team."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"html_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;&lt;em&gt;All&lt;/em&gt; developers should be members of this team.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
@@ -17545,7 +17545,7 @@ curl -X GET https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -17689,7 +17689,7 @@ curl -X POST https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -17833,7 +17833,7 @@ curl -X POST https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -17968,7 +17968,7 @@ Results are sorted by user ID.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -18098,7 +18098,7 @@ Results are sorted by user ID.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -18363,7 +18363,7 @@ Results are sorted alphabetically by user names.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -20068,7 +20068,7 @@ The user can be referenced by their globally unique user ID or their email addre
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20343,8 +20343,8 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships <span class="se"
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -20352,7 +20352,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships <span class="se"
 <h3 id="get-a-list-of-portfolio-memberships-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved portfolio memberships.</td><td><a href="#schemaportfoliomembership">PortfolioMembership</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-the-portfolio-memberships-for-a-portfolio'>Get the portfolio memberships for a portfolio</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved portfolio memberships.</td><td><a href="#schemaportfolio">Portfolio</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-the-portfolio-memberships-for-a-portfolio'>Get the portfolio memberships for a portfolio</h2>
 <p><a id="opIdgetPortfolioMembershipsForPortfolio"></a></p>
 
 <blockquote>
@@ -20470,7 +20470,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>por
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -20596,11 +20596,11 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20627,7 +20627,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attachment"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dropbox.com/s/123/Screenshot.png?dl=1"</span><span class="p">,</span><span class="w">
@@ -20652,7 +20652,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attachment"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Screenshot.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -20732,7 +20732,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -20740,7 +20740,7 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -20780,7 +20780,7 @@ Attempting to edit a locked custom field will return HTTP error code
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -20788,7 +20788,7 @@ Attempting to edit a locked custom field will return HTTP error code
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -20806,18 +20806,18 @@ Attempting to edit a locked custom field will return HTTP error code
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>name</td><td>string</td><td>false</td><td>none</td><td>The name of the object.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_subtype</td><td>string</td><td>false</td><td>none</td><td>The subtype of this resource. Different subtypes retain many of the same fields and behavior, but may render differently in Asana or represent resources with different semantic meaning.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>type</td><td>string</td><td>false</td><td>none</td><td><strong>Deprecated: new integrations should prefer the resource_subtype field.</strong> The type of the custom field. Must be one of the given values.</td></tr></tr><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>enum_options</td><td>[object]</td><td>false</td><td>none</td><td><strong>Conditional</strong>. Only relevant for custom fields of type <code>enum</code>. This array specifies the possible values which an <code>enum</code> custom field can adopt. To modify the enum options, refer to <a href="https://asana.com/developers/api-reference/custom_fields#enum-options">working with enum options</a>.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  name</td><td>string</td><td>false</td><td>none</td><td>The name of the enum option.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  enabled</td><td>boolean</td><td>false</td><td>none</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  color</td><td>string</td><td>false</td><td>none</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>enum_value</td><td>any</td><td>false</td><td>none</td><td>none</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>enabled</td><td>boolean</td><td>false</td><td>none</td><td><strong>Conditional</strong>. Determines if the custom field is enabled or not.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>text_value</td><td>string</td><td>false</td><td>none</td><td><strong>Conditional</strong>. This string is the value of a text custom field.</td></tr></tr></tbody></table><h4 id='enumerated-values-11'>Enumerated Values</h4><table class='asana-table'><thead><tr><td></td>
 <td>Property</td><td>Value</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>type</td><td>text</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>type</td><td>enum</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>type</td><td>number</td></tr></tr></tbody></table>
-<h2 id="tocS_CustomFieldSettings">CustomFieldSettings</h2>
+<h2 id="tocS_CustomFieldSetting">CustomFieldSetting</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemacustomfieldsettings"></a>
-<a id="schema_CustomFieldSettings"></a>
-<a id="tocScustomfieldsettings"></a>
-<a id="tocscustomfieldsettings"></a></p>
+<p><a id="schemacustomfieldsetting"></a>
+<a id="schema_CustomFieldSetting"></a>
+<a id="tocScustomfieldsetting"></a>
+<a id="tocscustomfieldsetting"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -20829,18 +20829,18 @@ Attempting to edit a locked custom field will return HTTP error code
 <h3 id='properties-7'>Properties</h3><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project</td><td>any</td><td>false</td><td>none</td><td>none</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>is_important</td><td>boolean</td><td>false</td><td>read-only</td><td><code>is_important</code> is used in the Asana web application to determine if this custom field is displayed in the task list (left pane) of a project. A project can have a maximum of 5 custom field settings marked as <code>is_important</code>.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>parent</td><td>any</td><td>false</td><td>none</td><td>none</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>custom_field</td><td>any</td><td>false</td><td>none</td><td>none</td></tr></tr></tbody></table>
-<h2 id="tocS_CustomFieldSettingsCompact">CustomFieldSettingsCompact</h2>
+<h2 id="tocS_CustomFieldSettingCompact">CustomFieldSettingCompact</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemacustomfieldsettingscompact"></a>
-<a id="schema_CustomFieldSettingsCompact"></a>
-<a id="tocScustomfieldsettingscompact"></a>
-<a id="tocscustomfieldsettingscompact"></a></p>
+<p><a id="schemacustomfieldsettingcompact"></a>
+<a id="schema_CustomFieldSettingCompact"></a>
+<a id="tocScustomfieldsettingcompact"></a>
+<a id="tocscustomfieldsettingcompact"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -20859,7 +20859,7 @@ Attempting to edit a locked custom field will return HTTP error code
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -20907,7 +20907,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -20989,7 +20989,7 @@ error.</p>
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21167,7 +21167,7 @@ Accounts</a> of an
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21221,11 +21221,11 @@ update.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21252,11 +21252,11 @@ update.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -21320,7 +21320,7 @@ update.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21331,7 +21331,7 @@ update.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field_setting"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"is_important"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21344,7 +21344,7 @@ update.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -21358,7 +21358,7 @@ update.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -21428,11 +21428,11 @@ followers from a project will not affect membership.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_membership"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21462,11 +21462,11 @@ followers from a project will not affect membership.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_membership"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -21487,7 +21487,7 @@ followers from a project will not affect membership.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_status"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status Update - Jun 15"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21515,7 +21515,7 @@ Project statuses can be created and deleted, but not modified.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project_status"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Status Update - Jun 15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -21535,7 +21535,7 @@ Project statuses can be created and deleted, but not modified.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -21574,7 +21574,7 @@ response.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -21594,7 +21594,7 @@ response.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21608,7 +21608,7 @@ response.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -21621,7 +21621,7 @@ response.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
@@ -21658,7 +21658,7 @@ response.</p>
   </span><span class="s2">"story"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21668,25 +21668,25 @@ response.</p>
   </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"follower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"old_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"new_section"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21704,13 +21704,13 @@ response.</p>
   </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"custom_field"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -21728,7 +21728,7 @@ response.</p>
   </span><span class="s2">"old_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -21736,7 +21736,7 @@ response.</p>
   </span><span class="s2">"new_enum_value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enum_option"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="w">
@@ -21789,7 +21789,7 @@ such as creating or assigning tasks, or moving tasks between projects.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"story"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -21813,13 +21813,13 @@ such as creating or assigning tasks, or moving tasks between projects.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -21827,7 +21827,7 @@ such as creating or assigning tasks, or moving tasks between projects.
   </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -21856,7 +21856,7 @@ tasks they are associated with.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tag"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stuff to buy"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -21888,7 +21888,7 @@ tasks they are associated with.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom_field"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milestone"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
@@ -21930,7 +21930,7 @@ tasks they are associated with.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -21940,7 +21940,7 @@ tasks they are associated with.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -21949,7 +21949,7 @@ tasks they are associated with.</p>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -22038,7 +22038,7 @@ to manipulate what data is included in a response.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All developers should be members of this team."</span><span class="p">,</span><span class="w">
   </span><span class="s2">"html_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;&lt;em&gt;All&lt;/em&gt; developers should be members of this team.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
@@ -22062,7 +22062,7 @@ organization. Each project in an organization is associated with a team.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -22082,7 +22082,7 @@ organization. Each project in an organization is associated with a team.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -22125,7 +22125,7 @@ user ID is accepted, to refer to the current authenticated user.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -22269,7 +22269,7 @@ parameter.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
