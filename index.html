@@ -2640,10 +2640,9 @@ when making a series of requests.</li>
 requests in parallel.</li>
 <li>Some cloud platforms handle parallelism poorly, or disallow it
 entirely.</li>
-<li>To make development easier in these use cases, Asana provides a <strong>batch
-API</strong> that enables developers to perform multiple “actions” by making
-only a single HTTP request.</li>
 </ul>
+
+<p>To make development easier in these use cases, Asana provides a <strong>batch API</strong> that enables developers to perform multiple “actions” by making only a single HTTP request.</p>
 <h3 id='making-a-batch-request'>Making a Batch Request</h3>
 <p>To make a batch request, send a <code>POST</code> request to <code>/batch</code>. Like other <code>POST</code> endpoints, the body should contain a <code>data</code> envelope. Inside this envelope should be a single <code>actions</code> field, containing a list of “action” objects.  Each action represents a standard request to an existing endpoint in the Asana API.
 <strong>The maximum number of actions allowed in a single batch request is 10</strong>. Making a batch request with no actions in it will result in a <code>400 Bad Request</code>.
