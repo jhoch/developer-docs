@@ -2629,18 +2629,21 @@ appending the content type to the file path: <code>—form
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully uploaded the attachment to the task.</td><td><a href="#schemaattachment">Attachment</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>default</td><td>Default</td><td>Sadly, sometimes requests to the API are not successful. Failures can occur for a wide range of reasons. In all cases, the API should return an HTTP Status Code that indicates the nature of the failure, with a response body in JSON format containing additional information. In the event of a server error the response body will contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
 <h1 id="asana-batch-api">Batch API</h1>
 
-<p>There are many cases where you want to accomplish a variety of work in the Asana API but want to minimize the number of HTTP requests you make. For example:
-* Modern browsers limit the number of requests that a single web page can
-  make at once.
-* Mobile apps will use more battery life to keep the cellular radio on
-  when making a series of requests.
-* There is an overhead cost to developing software that can make multiple
-  requests in parallel.
-* Some cloud platforms handle parallelism poorly, or disallow it
-  entirely.
-* To make development easier in these use cases, Asana provides a <strong>batch
-  API</strong> that enables developers to perform multiple “actions” by making
-  only a single HTTP request.</p>
+<p>There are many cases where you want to accomplish a variety of work in the Asana API but want to minimize the number of HTTP requests you make. For example:</p>
+
+<ul>
+<li>Modern browsers limit the number of requests that a single web page can
+make at once.</li>
+<li>Mobile apps will use more battery life to keep the cellular radio on
+when making a series of requests.</li>
+<li>There is an overhead cost to developing software that can make multiple
+requests in parallel.</li>
+<li>Some cloud platforms handle parallelism poorly, or disallow it
+entirely.</li>
+<li>To make development easier in these use cases, Asana provides a <strong>batch
+API</strong> that enables developers to perform multiple “actions” by making
+only a single HTTP request.</li>
+</ul>
 <h3 id='making-a-batch-request'>Making a Batch Request</h3>
 <p>To make a batch request, send a <code>POST</code> request to <code>/batch</code>. Like other <code>POST</code> endpoints, the body should contain a <code>data</code> envelope. Inside this envelope should be a single <code>actions</code> field, containing a list of “action” objects.  Each action represents a standard request to an existing endpoint in the Asana API.
 <strong>The maximum number of actions allowed in a single batch request is 10</strong>. Making a batch request with no actions in it will result in a <code>400 Bad Request</code>.
@@ -2651,8 +2654,14 @@ The batch API will always attempt to return a <code>200 Success</code> response 
 <p>The batch API fully respects all of our rate limiting. This means that a batch request counts against <em>both</em> the standard rate limiter and the concurrent request limiter as though you had made a separate HTTP request for every individual action. For example, a batch request with five actions counts as five separate requests in the standard rate limiter, and counts as five concurrent requests in the concurrent request limiter. The batch request itself incurs no cost.
 If any of the actions in a batch request would exceed any of the enforced limits, the <em>entire</em> request will fail with a <code>429 Too Many Requests</code> error. This is to prevent the unpredictability of which actions might succeed if not all of them could succeed.</p>
 <h3 id='restrictions'>Restrictions</h3>
-<p>Not every endpoint can be accessed through the batch API. Specifically, the following actions cannot be taken and will result in a <code>400 Bad Request</code> for that action:
-* Uploading attachments * Creating, getting, or deleting organization exports * Any SCIM operations * Nested calls to the batch API</p>
+<p>Not every endpoint can be accessed through the batch API. Specifically, the following actions cannot be taken and will result in a <code>400 Bad Request</code> for that action:</p>
+
+<ul>
+<li>Uploading attachments</li>
+<li>Creating, getting, or deleting organization exports</li>
+<li>Any SCIM operations</li>
+<li>Nested calls to the batch API</li>
+</ul>
 <h2 id='submit-parallel-requests'>Submit parallel requests</h2>
 <p><a id="opIdbatchRequest"></a></p>
 
@@ -2812,22 +2821,43 @@ curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td>[<a href="#schemabatchresponse">BatchResponse</a>]</td><td>false</td><td>none</td><td>[A response object returned from a batch request.]</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>status_code</td><td>integer</td><td>false</td><td>none</td><td>The HTTP status code that the invoked endpoint returned.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>headers</td><td>object</td><td>false</td><td>none</td><td>A map of HTTP headers specific to this result. This is primarily used for returning a <code>Location</code> header to accompany a <code>201 Created</code> result.  The parent HTTP response will contain all common headers.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>object</td><td>false</td><td>none</td><td>The JSON body that the invoked endpoint returned.</td></tr></tr></tbody></table>
 <h1 id="asana-custom-fields">Custom Fields</h1>
 
-<p>In the Asana application, Tasks can hold user-specified Custom Fields which provide extra information; for example, a priority value or a number representing the time required to complete a Task. This lets a user define the type of information that each Task within a Project can contain in addition to the built-in fields that Asana provides.
-<strong>Note:</strong> Custom Fields are a premium feature. Integrations which work with Custom Fields need to handle an assortment of use cases for free and premium users in context of free and premium organizations. For a detailed examination of to what data users will have access in different circumstances, read the section below on <a href="#access-control">access control</a>.
-The characteristics of Custom Fields are:
-* There is metadata that defines the Custom Field. This metadata is shared across an entire organization or workspace. * Projects can have Custom Fields associated with them individually. This is conceptually akin to adding columns in a database or a spreadsheet: every Task (row) in the Project (table) can contain information for that field, including &quot;blank&quot; values, i.e. <code>null</code> data. * Tasks have Custom Field <em>values</em> assigned to them.
-A brief example: let&#39;s imagine that an organization has defined a Custom Field for &quot;Priority&quot;. This field is of <code>enum</code> type and can have user-defined values of <code>Low</code>, <code>Medium</code>, or <code>High</code>. This is the field metadata, and it is visible within, and shared across, the entire organization.
-A Project is then created in the organization, called &quot;Bugs&quot;, and the &quot;Priority&quot; Custom Field is associated with that Project. This will allow all Tasks within the &quot;Bugs&quot; Project to have an associated &quot;Priority&quot;.
-A new Task is created within &quot;Bugs&quot;. This Task, then, has a field named &quot;Priority&quot; which can take on the Custom Field value of one of <code>[null]</code>, <code>Low</code>, <code>Medium</code>, and <code>High</code>.
-These Custom Fields are accessible via the API through a number of endpoints at the top level (e.g. <code>/custom_fields</code> and <code>/custom_field_settings</code>) and through calls on Workspaces, Projects, and Tasks resources. The API also provides a way to fetch both the metadata and data which define each particular Custom Field, so that a client application may render proper UI to display or edit the values.
-Custom Field aware integrations need to be aware of the basic types that Custom Fields can adopt. These types are:
-* <code>text</code> - an arbitrary, relatively short string of text * <code>number</code> - a number with a defined level of precision * <code>enum</code> - a selection from a defined list of options
-Text fields are currently limited to 1024 characters. On Tasks, their Custom Field value will have a <code>text_value</code> property to represent this field.
-Number fields can have an arbitrary <code>precision</code> associated with them; for example, a precision of <code>2</code> would round its value to the second (hundredths) place, i.e. 1.2345 would round to 1.23. On Tasks, the Custom Field value will have a <code>number_value</code> property to represent this field.
-Enum fields represent a selection from a list of options. On the metadata, they will contain all of the options in an array. Each option has 4 properties:
-* <code>id</code> - the id of this enum option. Note that this is the id of the <em>option</em> - the Custom Field itself has a separate <code>id</code>. * <code>name</code> - the name of the option, e.g. &quot;Choice #1&quot; * <code>enabled</code> - whether this field is enabled. Disabled fields are not available to choose from when disabled, and are visually hidden in the Asana application, but they remain in the metadata for Custom Field values which were set to the option before the option was disabled. * <code>color</code> - a color associated with this choice.
-On the Task&#39;s Custom Field value, the enum will have an <code>enum_value</code> property which will be the same as one of the choices from the list defined in the Custom Field metadata.
-The <a href="/developers/api-reference/custom_fields">Custom Field API Reference</a> contains information about the specifics of how to use Custom Fields in conjunction with Asana&#39;s API.</p>
+<p>In the Asana application, Tasks can hold user-specified Custom Fields which provide extra information; for example, a priority value or a number representing the time required to complete a Task. This lets a user define the type of information that each Task within a Project can contain in addition to the built-in fields that Asana provides.</p>
+
+<p><strong>Note:</strong> Custom Fields are a premium feature. Integrations which work with Custom Fields need to handle an assortment of use cases for free and premium users in context of free and premium organizations. For a detailed examination of to what data users will have access in different circumstances, read the section below on <a href="#access-control">access control</a>.</p>
+
+<p>The characteristics of Custom Fields are:</p>
+
+<ul>
+<li>There is metadata that defines the Custom Field. This metadata is shared across an entire organization or workspace. * Projects can have Custom Fields associated with them individually. This is conceptually akin to adding columns in a database or a spreadsheet: every Task (row) in the Project (table) can contain information for that field, including &quot;blank&quot; values, i.e. <code>null</code> data. * Tasks have Custom Field <em>values</em> assigned to them.</li>
+</ul>
+
+<p>A brief example: let&#39;s imagine that an organization has defined a Custom Field for &quot;Priority&quot;. This field is of <code>enum</code> type and can have user-defined values of <code>Low</code>, <code>Medium</code>, or <code>High</code>. This is the field metadata, and it is visible within, and shared across, the entire organization.</p>
+
+<p>A Project is then created in the organization, called &quot;Bugs&quot;, and the &quot;Priority&quot; Custom Field is associated with that Project. This will allow all Tasks within the &quot;Bugs&quot; Project to have an associated &quot;Priority&quot;.</p>
+
+<p>A new Task is created within &quot;Bugs&quot;. This Task, then, has a field named &quot;Priority&quot; which can take on the Custom Field value of one of <code>[null]</code>, <code>Low</code>, <code>Medium</code>, and <code>High</code>.</p>
+
+<p>These Custom Fields are accessible via the API through a number of endpoints at the top level (e.g. <code>/custom_fields</code> and <code>/custom_field_settings</code>) and through calls on Workspaces, Projects, and Tasks resources. The API also provides a way to fetch both the metadata and data which define each particular Custom Field, so that a client application may render proper UI to display or edit the values.</p>
+
+<p>Custom Field aware integrations need to be aware of the basic types that Custom Fields can adopt. These types are:</p>
+
+<ul>
+<li><code>text</code> - an arbitrary, relatively short string of text * <code>number</code> - a number with a defined level of precision * <code>enum</code> - a selection from a defined list of options</li>
+</ul>
+
+<p>Text fields are currently limited to 1024 characters. On Tasks, their Custom Field value will have a <code>text_value</code> property to represent this field.</p>
+
+<p>Number fields can have an arbitrary <code>precision</code> associated with them; for example, a precision of <code>2</code> would round its value to the second (hundredths) place, i.e. 1.2345 would round to 1.23. On Tasks, the Custom Field value will have a <code>number_value</code> property to represent this field.</p>
+
+<p>Enum fields represent a selection from a list of options. On the metadata, they will contain all of the options in an array. Each option has 4 properties:</p>
+
+<ul>
+<li><code>id</code> - the id of this enum option. Note that this is the id of the <em>option</em> - the Custom Field itself has a separate <code>id</code>. * <code>name</code> - the name of the option, e.g. &quot;Choice #1&quot; * <code>enabled</code> - whether this field is enabled. Disabled fields are not available to choose from when disabled, and are visually hidden in the Asana application, but they remain in the metadata for Custom Field values which were set to the option before the option was disabled. * <code>color</code> - a color associated with this choice.</li>
+</ul>
+
+<p>On the Task&#39;s Custom Field value, the enum will have an <code>enum_value</code> property which will be the same as one of the choices from the list defined in the Custom Field metadata.</p>
+
+<p>The <a href="/developers/api-reference/custom_fields">Custom Field API Reference</a> contains information about the specifics of how to use Custom Fields in conjunction with Asana&#39;s API.</p>
 <h2 id='create-a-custom-field'>Create a custom field</h2>
 <p><a id="opIdcreateCustomField"></a></p>
 
