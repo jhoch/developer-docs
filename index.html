@@ -1592,14 +1592,6 @@ the response.</p>
 
 <p><a name="paths"></a>
 <strong>SELECTING FIELDS</strong></p>
-
-<p>Some output options allow you to reference fields of objects to include or expand in the response.
-The way to specify a field is by <em>path</em>. A path is made up of a sequence of <em>terms</em> separated by the dot (<code>.</code>)
-operator. It takes the form <code>this.a.b</code>… where <em>this</em> refers to an object returned at the top level of the response,
-<em>a</em> the name of a field on a root object, <em>b</em> a field on a child object referred to by <em>a</em>, and so on.</p>
-
-<p>For example, when retrieving a task or tasks, the path <code>this.followers.email</code> refers to the email field of all users
-mentioned in the <code>followers</code> field of the task or tasks returned. See the annotated output below:</p>
 <pre class="highlight plaintext"><code>"data": {                       &lt; this
   "id": 1001,
   "name": "Feed the cat",       &lt; this.name
@@ -1616,6 +1608,14 @@ mentioned in the <code>followers</code> field of the task or tasks returned. See
   }]
 }
 </code></pre>
+<p>Some output options allow you to reference fields of objects to include or expand in the response.
+The way to specify a field is by <em>path</em>. A path is made up of a sequence of <em>terms</em> separated by the dot (<code>.</code>)
+operator. It takes the form <code>this.a.b</code>… where <em>this</em> refers to an object returned at the top level of the response,
+<em>a</em> the name of a field on a root object, <em>b</em> a field on a child object referred to by <em>a</em>, and so on.</p>
+
+<p>For example, when retrieving a task or tasks, the path <code>this.followers.email</code> refers to the email field of all users
+mentioned in the <code>followers</code> field of the task or tasks returned. See the annotated output below:</p>
+
 <p>There are also some advanced operators you can use for shorter syntax in selecting fields:</p>
 
 <p><strong><code>(</code> .. <code>|</code> .. <code>)</code></strong></p>
