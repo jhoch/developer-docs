@@ -1268,7 +1268,7 @@ quickly look up the incident that caused the server error.</p>
 least one error object, described below:</p>
 <table class='asana-table'><thead><tr><td></td>
 <td>Example</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Message:</td><td><code class="table-example">project: Missing input</code> Message providing more detail about the error that occurred, if available.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Phrase:</td><td><code class="table-example">6 sad squid snuggle softly</code> <strong>500 errors only</strong>. A unique error phrase which can be used when contacting developer support to help identify the exact occurrence of the problem in Asana&#39;s logs.</td></tr></tr></tbody></table><h2 id='rate-limits'>Rate Limits</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Message:</td><td><code>project: Missing input</code> Message providing more detail about the error that occurred, if available.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Phrase:</td><td><code>6 sad squid snuggle softly</code> <strong>500 errors only</strong>. A unique error phrase which can be used when contacting developer support to help identify the exact occurrence of the problem in Asana&#39;s logs.</td></tr></tr></tbody></table><h2 id='rate-limits'>Rate Limits</h2>
 <p>To protect the stability of the API and keep it available to all users, Asana enforces multiple kinds of rate limiting. Requests that hit any of our rate limits will receive a <code>429 Too Many Requests</code> response, which contains the standard <code>Retry-After</code> header indicating how many seconds the client should wait before retrying the request.</p>
 
 <p>Limits are allocated per authorization token. Different tokens will have independent limits.</p>
@@ -1481,7 +1481,7 @@ organizations with a large number of objects queries may time out before returni
 you paginate all requests to the API.</p>
 <table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Limit</td><td><code class="table-example">20</code> The number of objects to return per page. The value must be between 1 and 100.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Offset</td><td><code class="table-example">eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9</code> An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. <br><br><strong>Note:</strong> You can only pass in an offset that was returned to you via a previously paginated request.</td></tr></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Limit</td><td><code>20</code> The number of objects to return per page. The value must be between 1 and 100.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Offset</td><td><code>eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9</code> An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. <br><br><strong>Note:</strong> You can only pass in an offset that was returned to you via a previously paginated request.</td></tr></tr></tbody></table>
 <p><strong>This method returns paginated results for tasks from a project.</strong></p>
 
 <p># Request
@@ -1513,9 +1513,25 @@ content type, then options are specified inside the top-level <code>options</cod
 
 <p>These options can be used in combination in a single request, though some of them may conflict in their impact on
 the response.</p>
-<table class='asana-table'><thead><tr><td></td>
+
+<blockquote>
+<p>GET url params</p>
+</blockquote>
+<pre class="highlight plaintext"><code>?opt_pretty
+?opt_fields=followers,assignee
+?opt_expand=followers
+</code></pre>
+<blockquote>
+<p>PUT or POST body options</p>
+</blockquote>
+<pre class="highlight plaintext"><code>options: { 
+  pretty: true,
+  fields: ["followers", "assignee"],
+  expand: ["followers"]
+}
+</code></pre><table class='asana-table'><thead><tr><td></td>
 <td>Option</td><td>Description</td><td>Notes</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>pretty</strong></td><td><code class="table-example">?opt_pretty options: { pretty: true }</code> Provides the response in &quot;pretty&quot; output. In the case of JSON this means doing proper line breaking and indentation to make it readable. This will take extra time and increase the response size so it is advisable only to use this during debugging.</td><td></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>fields</strong></td><td><code class="table-example">?opt_fields=followers,assignee options: { fields: [&quot;followers&quot;, &quot;assignee&quot;] }</code> Some requests return <em>compact</em> representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as <a href="/developers/documentation/getting-started/input-output-options#paths">paths</a>, described below.</td><td>The id of included objects will always be returned, regardless of the field options.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>expand</strong></td><td><code class="table-example">?opt_expand=followers options: { expand: [&quot;followers&quot;] }</code> Query results and sub-objects are returned in <em>compact</em> form by default. This option can be used to expand query results or sub-objects to return more detailed information. Be sure you really need the information in the expanded form, as executing a query with many results in expanded form can be costly and return you a lot of data to consume.</td><td>If the <code>fields</code> option is also used, it will take precedence over the expand option and prevent expansion.</td></tr></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>pretty</strong></td><td>Provides the response in &quot;pretty&quot; output. In the case of JSON this means doing proper line breaking and indentation to make it readable. This will take extra time and increase the response size so it is advisable only to use this during debugging.</td><td></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>fields</strong></td><td>Some requests return <em>compact</em> representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as <a href="/developers/documentation/getting-started/input-output-options#paths">paths</a>, described below.</td><td>The id of included objects will always be returned, regardless of the field options.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>expand</strong></td><td>Query results and sub-objects are returned in <em>compact</em> form by default. This option can be used to expand query results or sub-objects to return more detailed information. Be sure you really need the information in the expanded form, as executing a query with many results in expanded form can be costly and return you a lot of data to consume.</td><td>If the <code>fields</code> option is also used, it will take precedence over the expand option and prevent expansion.</td></tr></tr></tbody></table>
 <p><strong>Default output</strong></p>
 
 <p># Request
@@ -1644,7 +1660,7 @@ However, the data is visible to all users of the same app that can view the reso
 so this should not be used for private user data.</p>
 <table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td><code class="table-example">contractor_name</code>   The external id. Max size is 1024 characters. Can be a URI.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><code class="table-example">{ &quot;time_estimate&quot;: 3600, &quot;time_spent&quot;: 1482 }</code> The external data blob. Max size is 32,786 characters.</td></tr></tr></tbody></table><h2 id='deprecations'>Deprecations</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td><code>contractor_name</code>    The external id. Max size is 1024 characters. Can be a URI.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><code>{ &quot;time_estimate&quot;: 3600, &quot;time_spent&quot;: 1482 }</code> The external data blob. Max size is 32,786 characters.</td></tr></tr></tbody></table><h2 id='deprecations'>Deprecations</h2>
 <p><a name="communication" class="jump-anchor"></a></p>
 <h3 id='communicating-about-breaking-changes'>Communicating about breaking changes</h3>
 <p>Whenever possible, the Asana API aims to preserve backwards compatibility for its users. Apps you write on top of the API now should, in ideal situations, continue to work indefinitely. However, there are a few rare cases where breaking changes are required. For example:</p>
