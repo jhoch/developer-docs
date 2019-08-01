@@ -11,11 +11,48 @@
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .cd {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
 .highlight .gh {
   color: #999999;
 }
-.highlight .sr {
-  color: #f6aa11;
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
 }
 .highlight .go {
   color: #888888;
@@ -24,177 +61,162 @@
   color: #555555;
 }
 .highlight .gs {
+  font-weight: bold;
 }
 .highlight .gu {
   color: #aaaaaa;
 }
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .cd {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
 .highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
+  color: #aa0000;
 }
 .highlight .kc {
-  color: #66d9ef;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kd {
-  color: #66d9ef;
-}
-.highlight .kr {
-  color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
-}
-.highlight .kt {
-  color: #66d9ef;
-}
-.highlight .mf {
-  color: #ae81ff;
-}
-.highlight .mh {
-  color: #ae81ff;
-}
-.highlight .il {
-  color: #ae81ff;
-}
-.highlight .mi {
-  color: #ae81ff;
-}
-.highlight .mo {
-  color: #ae81ff;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
-}
-.highlight .sc {
-  color: #ae81ff;
-}
-.highlight .se {
-  color: #ae81ff;
-}
-.highlight .ss {
-  color: #ae81ff;
-}
-.highlight .sd {
-  color: #e6db74;
-}
-.highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
-  color: #e6db74;
-}
-.highlight .sh {
-  color: #e6db74;
-}
-.highlight .si {
-  color: #e6db74;
-}
-.highlight .sx {
-  color: #e6db74;
-}
-.highlight .s1 {
-  color: #e6db74;
-}
-.highlight .s {
-  color: #e6db74;
-}
-.highlight .na {
-  color: #a6e22e;
-}
-.highlight .nc {
-  color: #a6e22e;
-}
-.highlight .nd {
-  color: #a6e22e;
-}
-.highlight .ne {
-  color: #a6e22e;
-}
-.highlight .nf {
-  color: #a6e22e;
-}
-.highlight .vc {
-  color: #ffffff;
-}
-.highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
-  color: #ffffff;
-}
-.highlight .ni {
-  color: #ffffff;
-}
-.highlight .bp {
-  color: #ffffff;
-}
-.highlight .vg {
-  color: #ffffff;
-}
-.highlight .vi {
-  color: #ffffff;
-}
-.highlight .nv {
-  color: #ffffff;
-}
-.highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff;
-}
-.highlight .ow {
-  color: #f92672;
-}
-.highlight .nt {
-  color: #f92672;
-}
-.highlight .k, .highlight .kv {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kn {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kp {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .o {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
 }
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
@@ -961,6 +983,7 @@ with queries for multiple objects. Requests with large result sets may timeout o
 pagination is strongly encouraged to ensure both you and your users have the best experience when using the Asana API.</p>
 
 <p>Happy coding!</p>
+<hr>
 <h2 id='authentication-basics'>Authentication Basics</h2>
 <p>Asana supports a few methods of authenticating with the API.</p>
 
@@ -1207,6 +1230,7 @@ Depending on the scopes tied to that token, you will receive different pieces of
 <a href="https://openid.net/specs/openid-connect-discovery-1_0.html">discovery protocol</a>. Making an unauthenticated <code>GET</code>
 request to <code>https://app.asana.com/api/1.0/.well-known/openid-configuration</code> will provide all the details of our
 implementation necessary for you to use OpenID Connect with Asana&#39;s API.</p>
+<hr>
 <h2 id='errors'>Errors</h2>
 <blockquote>
 <p>Missing authorization header</p>
@@ -1268,7 +1292,8 @@ quickly look up the incident that caused the server error.</p>
 least one error object, described below:</p>
 <table class='asana-table'><thead><tr><td></td>
 <td>Example</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Message:</td><td><code>project: Missing input</code> Message providing more detail about the error that occurred, if available.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Phrase:</td><td><code>6 sad squid snuggle softly</code> <strong>500 errors only</strong>. A unique error phrase which can be used when contacting developer support to help identify the exact occurrence of the problem in Asana&#39;s logs.</td></tr></tr></tbody></table><h2 id='rate-limits'>Rate Limits</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Message:</td><td><code>project: Missing input</code> Message providing more detail about the error that occurred, if available.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Phrase:</td><td><code>6 sad squid snuggle softly</code> <strong>500 errors only</strong>. A unique error phrase which can be used when contacting developer support to help identify the exact occurrence of the problem in Asana&#39;s logs.</td></tr></tr></tbody></table><hr>
+<h2 id='rate-limits'>Rate Limits</h2>
 <p>To protect the stability of the API and keep it available to all users, Asana enforces multiple kinds of rate limiting. Requests that hit any of our rate limits will receive a <code>429 Too Many Requests</code> response, which contains the standard <code>Retry-After</code> header indicating how many seconds the client should wait before retrying the request.</p>
 
 <p>Limits are allocated per authorization token. Different tokens will have independent limits.</p>
@@ -1339,6 +1364,7 @@ least one error object, described below:</p>
 <p>When a request is received, if the remaining quota is not positive, the new request is rejected with a <code>429 Too Many Requests</code>. As with the standard rate limits, this quota is defined per-minute but is updated on a more frequent interval. The <code>Retry-After</code> header will specify how long you must wait for the quota to become positive again.</p>
 
 <p>The <strong>vast</strong> majority of developers will be unaffected by the cost limit, and the quota is set sufficiently high that it only affects users making requests that would compromise the stability of the API. Rather than unconditionally blocking their token from the API, this cost limiter will permit them to continue operation at a slower but safe and stable rate.</p>
+<hr>
 <h2 id='rich-text'>Rich Text</h2>
 <blockquote>
 <p>Example Rich Text</p>
@@ -1447,6 +1473,7 @@ least one error object, described below:</p>
 <p><code>
 &lt;body&gt;All these new tasks are &lt;em&gt;really&lt;/em&gt; getting disorganized, so &lt;a data-asana-gid=&quot;4168112&quot;/&gt; just made the new &lt;a data-asana-gid=&quot;5732985&quot;/&gt; project to help keep them organized. &lt;strong&gt;Everyone&lt;/strong&gt; should start using the &lt;a data-asana-gid=&quot;6489418&quot; data-asana-project=&quot;5732985&quot;/&gt; when adding new tasks there.&lt;/body&gt;
 </code></p>
+<hr>
 <h2 id='pagination'>Pagination</h2>
 <p>Paginating requests for object sets that may be large is highly recommended. For requests that will return large result
 sets the API may truncate the result or timeout attempting to gather the data. Pagination ensures a more reliable
@@ -1503,6 +1530,7 @@ you paginate all requests to the API.</p>
         &quot;uri&quot;: &quot;https://app.asana.com/api/1.0/tasks?project=1337&amp;limit=5&amp;offset=yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9&quot;
       }
     }</p>
+<hr>
 <h2 id='input-output-options'>Input/Output Options</h2>
 <p>In addition to providing fields and their values in a request, you may also specify options to control how your request
 is interpreted and how the response is generated. For GET requests, options are specified as URL parameters prefixed
@@ -1639,6 +1667,7 @@ mentioned in the <code>followers</code> field of the task or tasks returned. See
 <p>The <strong>group</strong> operator can be used in place of any whole term in a path, and will match any of a group of terms.</p>
 
 <p><code>this.(followers|assignee).email</code> will match the <code>email</code> field of the <code>assignee</code> object or any of the <code>followers</code>.</p>
+<hr>
 <h2 id='custom-external-data'>Custom External Data</h2>
 <p>Custom external data allows a client application to add app-specific metadata to <a href="/developers/api-reference/tasks">Tasks</a>
 in the API. The custom data includes a string id that can be used to retrieve objects and a data blob that can store
@@ -1660,7 +1689,8 @@ However, the data is visible to all users of the same app that can view the reso
 so this should not be used for private user data.</p>
 <table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td><code>contractor_name</code>    The external id. Max size is 1024 characters. Can be a URI.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><code>{ &quot;time_estimate&quot;: 3600, &quot;time_spent&quot;: 1482 }</code> The external data blob. Max size is 32,786 characters.</td></tr></tr></tbody></table><h2 id='deprecations'>Deprecations</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td><code>contractor_name</code>    The external id. Max size is 1024 characters. Can be a URI.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><code>{ &quot;time_estimate&quot;: 3600, &quot;time_spent&quot;: 1482 }</code> The external data blob. Max size is 32,786 characters.</td></tr></tr></tbody></table><hr>
+<h2 id='deprecations'>Deprecations</h2>
 <p><a name="communication" class="jump-anchor"></a></p>
 <h3 id='communicating-about-breaking-changes'>Communicating about breaking changes</h3>
 <p>Whenever possible, the Asana API aims to preserve backwards compatibility for its users. Apps you write on top of the API now should, in ideal situations, continue to work indefinitely. However, there are a few rare cases where breaking changes are required. For example:</p>
@@ -1742,6 +1772,7 @@ Asana-Disable: a_third_change
 <p><strong>[1]</strong> The activation date for this change will be one month after the public launch of the new task subtype. The end date for this change will be two months after the public launch.</p>
 
 <p><strong>[2]</strong> This migration is happening simultaneously with the rollout of a change to the Asana web app, and so the timeline for it is subject to change with ongoing development of the web app. Refer to the <a href="https://asa.na/api-sections">deprecation details</a> for the most current information.</p>
+<p><hr class="full-line"></p>
 <h1 id='why-use-asana-39-s-api'>Why use Asana&#39;s API?</h1><h2 id='asana-s-api-and-you'>Asana’s API and you</h2>
 <p>Collaboration across teams and tools works best when everyone stays in sync and processes flow easily and without friction. This is why we have Asana&#39;s API: it&#39;s a platform to ensure all of your information is up to date and that your teams stay efficient and in the loop.</p>
 
@@ -1832,6 +1863,8 @@ Asana-Disable: a_third_change
 <p>Over time, we&#39;ve continuously tweaked how our integration behaves to evolve our process, empowering us to adjust and iterate our approach. This is one of the key opportunities that Asana&#39;s API provides: ownership and control over how work gets done. Incremental improvements provide the chance to try out new workflows and settle on one that works well for everyone, leading to a more consistent and customized experience of using Asana.</p>
 
 <p>To get started, check out our <a href="/developers/documentation/getting-started/quick-start" title="Quick Start">quick start</a> page for an overview of Asana&#39;s API. For support or to generate ideas of how your team can work more effectively with Asana, head to the <a href="https://community.asana.com/c/developersAPI" title="Asana Developers Community">Asana Community</a> to chat with Asana team members and users!</p>
+
+<hr>
 <h2 id='bot-examples'>Bot examples</h2><h3 id='reminder-bot'>Reminder bot</h3>
 <p>Even the most conscientious and best-intentioned teammate can get overloaded and occasionally forget a task. For project managers, team leads, or coordinators, it can be draining to check-in on everyone to make sure that everything is going according to schedule. How can you stay on track and minimize the work-about-work?</p>
 
@@ -1844,6 +1877,7 @@ Asana-Disable: a_third_change
 <p>Our engineering teams handle triaging bug reports by creating a task in a &quot;Bugs&quot; project. A bot then adds the project manager of the relevant team in Asana as a follower, moves the task into a &quot;needs triage&quot; section, and requests assistance. The project manager can then evaluate the bug and triage it.</p>
 
 <p>Since the evaluation of the severity of the bug is important for understanding how urgent the fix is, Bugs Bot will remain persistent, commenting every few days until the task has been moved out of the triage section and into a section of the relevant priority. This process ensures that we&#39;re aware of the impact of bugs and helps us avoid severe bugs slipping through the cracks.</p>
+<p><hr class="full-line"></p>
 <h1 id='how-to-use-the-api'>How to use the API</h1>
 <blockquote>
 <p>Request</p>
@@ -1867,28 +1901,28 @@ Asana-Disable: a_third_change
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="err">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">gid</span><span class="p">:</span><span class="w"> </span><span class="s2">"12e345a67b8910c11"</span><span class="p">,</span><span class="w">
-    </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="s2">"jonsnow@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Snow"</span><span class="p">,</span><span class="w">
-    </span><span class="err">photo</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">image_</span><span class="mi">21</span><span class="err">x</span><span class="mi">21</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_21x21.png"</span><span class="p">,</span><span class="w">
-      </span><span class="err">image_</span><span class="mi">27</span><span class="err">x</span><span class="mi">27</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_27x27.png"</span><span class="p">,</span><span class="w">
-      </span><span class="err">image_</span><span class="mi">36</span><span class="err">x</span><span class="mi">36</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_36x36.png"</span><span class="p">,</span><span class="w">
-      </span><span class="err">image_</span><span class="mi">60</span><span class="err">x</span><span class="mi">60</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_60x60.png"</span><span class="p">,</span><span class="w">
-      </span><span class="err">image_</span><span class="mi">128</span><span class="err">x</span><span class="mi">128</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_128x128.png"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12e345a67b8910c11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jonsnow@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon Snow"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"image_21x21"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_21x21.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_27x27"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_27x27.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_36x36"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_36x36.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_60x60"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_60x60.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image_128x128"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s3.amazonaws.com/profile_photos/121110987654321.hJGlskahcKA5hdslf4FS_128x128.png"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="err">resource_type</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-    </span><span class="err">workspaces</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"workspaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="err">gid</span><span class="p">:</span><span class="w"> </span><span class="s2">"15c43287b6a8"</span><span class="p">,</span><span class="w">
-        </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castle Black"</span><span class="p">,</span><span class="w">
-        </span><span class="err">resource_type</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="w">
+        </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15c43287b6a8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castle Black"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="err">gid</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1432e1987654d"</span><span class="p">,</span><span class="w">
-        </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon's Personal"</span><span class="p">,</span><span class="w">
-        </span><span class="err">resource_type</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="w">
+        </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1432e1987654d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jon's Personal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workspace"</span><span class="w">
       </span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1907,6 +1941,8 @@ Asana-Disable: a_third_change
 <p>Our API is documented for what resources are available and what sort of return data to expect.  For example, here are the <a href="/#get-a-user">docs for the <code>/users</code> endpoint</a> which we just called. This is where you can discover what&#39;s possible with our API.</p>
 
 <p>Now, let’s make the same call to <code>/users/me</code> more like software would. Before we do so, we’ll need to get access outside of your web browser to the API.</p>
+
+<hr>
 <h2 id='authentication-quick-start'>Authentication Quick Start</h2>
 <p>Similarly to entering your username/password into a website or logging into Asana with Google, when you access your Asana data via the API you need to authenticate.  In the above example, you were already logged into Asana in your browser so you were able to authenticate to the API with credentials stored by your browser.</p>
 
@@ -1939,6 +1975,8 @@ Asana-Disable: a_third_change
 </ol>
 
 <p><em><strong>Note</strong>: treat your PAT like you would a password. Do not share it or display it online</em>. </p>
+
+<hr>
 <h2 id='accessing-the-api-in-the-terminal'>Accessing the API in the Terminal</h2>
 <blockquote>
 <p>curl Request</p>
@@ -1974,7 +2012,9 @@ Asana-Disable: a_third_change
 <p>You’re ready to start coding!</p>
 
 <p>Asana has <a href="/#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
-<h1 id='quick-start'>Quick Start</h1><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
+
+<p><hr class="full-line"></p>
+<h1 id='quick-start'>Quick Start</h1><h2 id='python-hello-world'>Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
 
 <span class="c"># replace with your personal access token. </span>
 <span class="n">personal_access_token</span> <span class="o">=</span> <span class="s">'0/123456789....'</span>
@@ -1990,7 +2030,7 @@ Asana-Disable: a_third_change
 <span class="c"># Print out your information</span>
 <span class="k">print</span> <span class="s">"Hello world! "</span> <span class="o">+</span> <span class="s">"My name is "</span> <span class="o">+</span> <span class="n">me</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span> <span class="o">+</span> <span class="s">" and I my primary Asana workspace is "</span> <span class="o">+</span> <span class="n">me</span><span class="p">[</span><span class="s">'workspaces'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span> <span class="o">+</span> <span class="s">"."</span>
 
-</code></pre><h3 id='python-hello-world'>Python Hello World</h3>
+</code></pre>
 <p>To get started, run <code>pip install asana</code> or follow the detailed installation instructions on the <a href="https://github.com/Asana/python-asana/">GitHub page for the Python client library</a>.  </p>
 
 <p>Once it’s installed, open your favorite text editor and we’ll code a GET request to <code>/users/me</code> - the same request as above, but in Python.</p>
@@ -2005,10 +2045,8 @@ Asana-Disable: a_third_change
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/python" target="_blank">Github examples repository</a></p>
 
-<p><br></br>
-<br></br>
-<br></br></p>
-<pre class="highlight javascriptjavascript"><code><span class="kd">var</span> <span class="nx">asana</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'asana'</span><span class="p">);</span>
+<hr>
+<h2 id='node-hello-world'>Node Hello World</h2><pre class="highlight javascriptjavascript"><code><span class="kd">var</span> <span class="nx">asana</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'asana'</span><span class="p">);</span>
 
 <span class="c1">// replace with your personal access token. </span>
 <span class="kd">var</span> <span class="nx">personalAccessToken</span> <span class="o">=</span> <span class="s1">'0/123456789....'</span><span class="p">;</span>
@@ -2022,7 +2060,7 @@ Asana-Disable: a_third_change
     <span class="c1">// Print out your information</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello world! '</span> <span class="o">+</span> <span class="s1">'My name is '</span> <span class="o">+</span> <span class="nx">me</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' and my primary Asana workspace is '</span> <span class="o">+</span> <span class="nx">me</span><span class="p">.</span><span class="nx">workspaces</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'.'</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><h3 id='node-hello-world'>Node Hello World</h3>
+</code></pre>
 <p>To get started, <code>npm install asana</code> or follow the detailed installation instructions on the <a href="https://github.com/Asana/node-asana/">GitHub page for the Node client library</a>.  </p>
 
 <p>Once it’s installed, open your favorite text editor and we’ll code a GET request to <code>/users/me</code>. - the same request as above, but in JavaScript.</p>
@@ -2035,10 +2073,8 @@ Asana-Disable: a_third_change
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/javascript" target="_blank">Github examples repository</a></p>
 
-<p><br></br>
-<br></br>
-<br></br></p>
-<pre class="highlight rubyruby"><code><span class="nb">require</span> <span class="s1">'asana'</span>
+<hr>
+<h2 id='ruby-hello-world'>Ruby Hello World</h2><pre class="highlight rubyruby"><code><span class="nb">require</span> <span class="s1">'asana'</span>
 
 <span class="c1"># replace with your personal access token. </span>
 
@@ -2053,7 +2089,7 @@ Asana-Disable: a_third_change
 <span class="n">me</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">users</span><span class="p">.</span><span class="nf">me</span>
 
 <span class="nb">puts</span> <span class="s2">"Hello world! "</span> <span class="o">+</span> <span class="s2">"My name is "</span> <span class="o">+</span> <span class="n">me</span><span class="p">.</span><span class="nf">name</span> <span class="o">+</span> <span class="s2">" and I my primary Asana workspace is "</span> <span class="o">+</span> <span class="n">me</span><span class="p">.</span><span class="nf">workspaces</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">name</span> <span class="o">+</span> <span class="s2">"."</span>
-</code></pre><h3 id='ruby-hello-world'>Ruby Hello World</h3>
+</code></pre>
 <p>To get started, <code>gem install asana</code> or follow the detailed installation instructions on the <a href="https://github.com/Asana/ruby-asana/">GitHub page for the Ruby client library</a>.  </p>
 
 <p>Once it’s installed, open your favorite text editor and we’ll code a GET request to <code>/users/me</code>.</p>
@@ -2065,14 +2101,14 @@ Asana-Disable: a_third_change
 <p>All of the built-in methods can be found in the <a href="https://github.com/Asana/ruby-asana/tree/master/lib/asana/resources">/resources folder of the client library</a>. </p>
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/ruby" target="_blank">Github examples repository</a></p>
-
-<p><br></br>
-<br></br></p>
+<p><hr class="full-line"></p>
 <h1 id='official-client-libraries'>Official Client Libraries</h1>
 <p>Asana is committed to making the developer experience as smooth as possible. Part of this effort is providing high-quality libraries you can use to access the API. The available libraries are listed below, and more are in development. If you don&#39;t see what you need, check the open-source community for your platform, and let us know that you&#39;d like to find one here!</p>
 
+<hr>
+
 <p><a name="NodeJS"></a></p>
-<h2 id='javascript-node'>JavaScript (Node)</h2><pre class="highlight shell tab-shell"><code>npm install asana
+<h2 id='javascript-node'>JavaScript (Node)</h2><pre class="highlight shellshell"><code>npm install asana
 </code></pre>
 <p>For use in the Node server-side JavaScript runtime.</p>
 
@@ -2080,8 +2116,10 @@ Asana-Disable: a_third_change
 
 <p><strong>Installation:</strong> Install with npm</p>
 
+<hr>
+
 <p><a name="BrowserJS"></a></p>
-<h2 id='javascript-browser'>JavaScript (Browser)</h2><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"asana-min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<h2 id='javascript-browser'>JavaScript (Browser)</h2><pre class="highlight htmlhtml"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"asana-min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
 <p>This is built from the Node library above, so you get the exact same interface.</p>
 
@@ -2089,22 +2127,28 @@ Asana-Disable: a_third_change
 
 <p><strong>Installation:</strong> Visit the <a href="https://github.com/Asana/node-asana/releases">releases</a> page to download the latest full or minified JS bundle, then include the script in your web page.</p>
 
+<hr>
+
 <p><a name="Python"></a></p>
-<h2 id='python'>Python</h2><pre class="highlight shell tab-shell"><code>pip install asana
+<h2 id='python'>Python</h2><pre class="highlight shellshell"><code>pip install asana
 </code></pre>
 <p><strong>Links:</strong> <a href="https://github.com/Asana/python-asana/">GitHub</a></p>
 
 <p><strong>Installation:</strong> Install with pip</p>
 
+<hr>
+
 <p><a name="Ruby"></a></p>
-<h2 id='ruby'>Ruby</h2><pre class="highlight shell tab-shell"><code>gem install asana
+<h2 id='ruby'>Ruby</h2><pre class="highlight shellshell"><code>gem install asana
 </code></pre>
 <p><strong>Links:</strong> <a href="https://github.com/Asana/ruby-asana/">GitHub</a></p>
 
 <p><strong>Installation:</strong> Install with gem</p>
 
+<hr>
+
 <p><a name="Java"></a></p>
-<h2 id='java'>Java</h2><pre class="highlight xml tab-xml"><code><span class="nt">&lt;dependency&gt;</span>
+<h2 id='java'>Java</h2><pre class="highlight xmlxml"><code><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.asana<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>asana<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>0.6.0<span class="nt">&lt;/version&gt;</span>
@@ -2114,8 +2158,10 @@ Asana-Disable: a_third_change
 
 <p><strong>Installation:</strong> If you use <a href="https://maven.apache.org/">Maven</a> for dependency management simply include the following in your pom.xml.</p>
 
+<hr>
+
 <p><a name="PHP"></a></p>
-<h2 id='php'>PHP</h2><pre class="highlight json tab-json"><code><span class="s2">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<h2 id='php'>PHP</h2><pre class="highlight jsonjson"><code><span class="s2">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">"asana/asana"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.1.2"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
