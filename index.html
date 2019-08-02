@@ -483,6 +483,20 @@
               </ul>
           </li>
           <li>
+            <a href="#asana-portfolio-memberships" class="toc-h1 toc-link" data-title="Portfolio Memberships">Portfolio Memberships</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-list-of-portfolio-memberships" class="toc-h2 toc-link" data-title="Get a list of portfolio memberships">Get a list of portfolio memberships</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-portfolio-memberships-for-a-portfolio" class="toc-h2 toc-link" data-title="Get the portfolio memberships for a portfolio">Get the portfolio memberships for a portfolio</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-portfolio-membership" class="toc-h2 toc-link" data-title="Get a portfolio membership">Get a portfolio membership</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#asana-projects" class="toc-h1 toc-link" data-title="Projects">Projects</a>
               <ul class="toc-list-h2">
                   <li>
@@ -801,20 +815,6 @@
               </ul>
           </li>
           <li>
-            <a href="#asana-portfolio-memberships" class="toc-h1 toc-link" data-title="Portfolio Memberships">Portfolio Memberships</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-a-list-of-portfolio-memberships" class="toc-h2 toc-link" data-title="Get a list of portfolio memberships">Get a list of portfolio memberships</a>
-                  </li>
-                  <li>
-                    <a href="#get-the-portfolio-memberships-for-a-portfolio" class="toc-h2 toc-link" data-title="Get the portfolio memberships for a portfolio">Get the portfolio memberships for a portfolio</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-portfolio-membership" class="toc-h2 toc-link" data-title="Get a portfolio membership">Get a portfolio membership</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
               <ul class="toc-list-h2">
                   <li>
@@ -827,7 +827,7 @@
                     <a href="#tocS_BatchRequest" class="toc-h2 toc-link" data-title="BatchRequest">BatchRequest</a>
                   </li>
                   <li>
-                    <a href="#tocS_BatchResponse" class="toc-h2 toc-link" data-title="BatchResponse">BatchResponse</a>
+                    <a href="#tocS_BatchResult" class="toc-h2 toc-link" data-title="BatchResult">BatchResult</a>
                   </li>
                   <li>
                     <a href="#tocS_CustomField" class="toc-h2 toc-link" data-title="CustomField">CustomField</a>
@@ -2844,13 +2844,7 @@ curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
 <h3 id="submit-parallel-requests-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully completed the requested batch API operations.</td><td>Inline</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
-<h3 id="submit-parallel-requests-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td>[<a href="#schemabatchresponse">BatchResponse</a>]</td><td>false</td><td>none</td><td>[A response object returned from a batch request.]</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>status_code</td><td>integer</td><td>false</td><td>none</td><td>The HTTP status code that the invoked endpoint returned.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>headers</td><td>object</td><td>false</td><td>none</td><td>A map of HTTP headers specific to this result. This is primarily used for returning a <code>Location</code> header to accompany a <code>201 Created</code> result.  The parent HTTP response will contain all common headers.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>object</td><td>false</td><td>none</td><td>The JSON body that the invoked endpoint returned.</td></tr></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully completed the requested batch API operations.</td><td><a href="#schemabatchresult">BatchResult</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
 <h1 id="asana-custom-fields">Custom Fields</h1>
 
 <p>In the Asana application, Tasks can hold user-specified Custom Fields which provide extra information; for example, a priority value or a number representing the time required to complete a Task. This lets a user define the type of information that each Task within a Project can contain in addition to the built-in fields that Asana provides.</p>
@@ -3045,7 +3039,7 @@ A custom field’s type must be one of ‘text’, ‘enum’, or ‘number’.<
 <h3 id="create-a-custom-field-parameters">Parameters</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The custom field object to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td><a href="#schemacustomfield">CustomField</a></td><td>false</td><td>Custom Fields store the metadata that is used in order to</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    name</td><td>body</td><td>string</td><td>false</td><td>The name of the object.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_subtype</td><td>body</td><td>string</td><td>false</td><td>The subtype of this resource. Different subtypes retain many of the same fields and behavior, but may render differently in Asana or represent resources with different semantic meaning.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    type</td><td>body</td><td>string</td><td>false</td><td><strong>Deprecated: new integrations should prefer the resource_subtype field.</strong> The type of the custom field. Must be one of the given values.</td></tr></tr><tr class='c3 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>    enum_options</td><td>body</td><td>[object]</td><td>false</td><td><strong>Conditional</strong>. Only relevant for custom fields of type <code>enum</code>. This array specifies the possible values which an <code>enum</code> custom field can adopt. To modify the enum options, refer to <a href="https://asana.com/developers/api-reference/custom_fields#enum-options">working with enum options</a>.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     name</td><td>body</td><td>string</td><td>false</td><td>The name of the enum option.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     enabled</td><td>body</td><td>boolean</td><td>false</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     color</td><td>body</td><td>string</td><td>false</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enum_value</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enabled</td><td>body</td><td>boolean</td><td>false</td><td><strong>Conditional</strong>. Determines if the custom field is enabled or not.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    text_value</td><td>body</td><td>string</td><td>false</td><td><strong>Conditional</strong>. This string is the value of a text custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    description</td><td>body</td><td>string</td><td>false</td><td><a href="/developers/documentation/getting-started/input-output-options">Opt In</a>. The description of the custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    precision</td><td>body</td><td>integer</td><td>false</td><td>Only relevant for custom fields of type ‘Number’. This field dictates the number of places after the decimal to round to, i.e. 0 is integer values, 1 rounds to the nearest tenth, and so on. Must be between 0 and 6, inclusive.</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    workspace</td><td>body</td><td>integer</td><td>true</td><td>The workspace to create a custom field in.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The custom field object to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td><a href="#schemacustomfield">CustomField</a></td><td>false</td><td>Custom Fields store the metadata that is used in order to</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    name</td><td>body</td><td>string</td><td>false</td><td>The name of the object.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_subtype</td><td>body</td><td>string</td><td>false</td><td>The subtype of this resource. Different subtypes retain many of the same fields and behavior, but may render differently in Asana or represent resources with different semantic meaning.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    type</td><td>body</td><td>string</td><td>false</td><td><strong>Deprecated: new integrations should prefer the resource_subtype field.</strong> The type of the custom field. Must be one of the given values.</td></tr></tr><tr class='c3 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>    enum_options</td><td>body</td><td>[object]</td><td>false</td><td><strong>Conditional</strong>. Only relevant for custom fields of type <code>enum</code>. This array specifies the possible values which an <code>enum</code> custom field can adopt. To modify the enum options, refer to <a href="https://asana.com/developers/api-reference/custom_fields#enum-options">working with enum options</a>.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     name</td><td>body</td><td>string</td><td>false</td><td>The name of the enum option.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     enabled</td><td>body</td><td>boolean</td><td>false</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     color</td><td>body</td><td>string</td><td>false</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enum_value</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enabled</td><td>body</td><td>boolean</td><td>false</td><td><strong>Conditional</strong>. Determines if the custom field is enabled or not.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    text_value</td><td>body</td><td>string</td><td>false</td><td><strong>Conditional</strong>. This string is the value of a text custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    description</td><td>body</td><td>string</td><td>false</td><td><a href="/developers/documentation/getting-started/input-output-options">Opt In</a>. The description of the custom field.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    precision</td><td>body</td><td>integer</td><td>false</td><td>Only relevant for custom fields of type ‘Number’. This field dictates the number of places after the decimal to round to, i.e. 0 is integer values, 1 rounds to the nearest tenth, and so on. Must be between 0 and 6, inclusive.</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    workspace</td><td>body</td><td>integer</td><td>false</td><td>The workspace to create a custom field in.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-2'>Detailed descriptions</h4>
 <p>** <em>anonymous</em>**: Custom Fields store the metadata that is used in order to
 add user-specified information to tasks in Asana. Be sure
 to reference the <a href="https://asana.com/developers/documentation/getting-started/custom-fields">Custom Fields</a>
@@ -3707,13 +3701,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
 <h3 id="create-an-enum-option-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>201</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td><td>Custom field enum option successfully created.</td><td>Inline</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
-<h3 id="create-an-enum-option-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>201</strong></p>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><a href="#schemaenumoption">EnumOption</a></td><td>false</td><td>none</td><td>Enum options are the possible values which an enum custom field can<br>adopt. An enum custom field must contain at least 1 enum option but no<br>more than 50.<br><br>You can add enum options to a custom field by using the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options</code> endpoint.<br><br><strong>It is not possible to remove or delete an enum option</strong>. Instead, enum<br>options can be disabled by updating the <code>enabled</code> field to false with the<br><code>PUT /enum_options/enum_option_gid</code> endpoint. Other attributes can be<br>updated similarly.<br><br>On creation of an enum option, <code>enabled</code> is always set to <code>true</code>, meaning<br>the enum option is a selectable value for the custom field. Setting<br><code>enabled=false</code> is equivalent to “trashing” the enum option in the Asana<br>web app within the “Edit Fields” dialog. The enum option will no longer<br>be selectable but, if the enum option value was previously set within a<br>task, the task will retain the value.<br><br>Enum options are an ordered list and by default new enum options are<br>inserted at the end. Ordering in relation to existing enum options can be<br>specified on creation by using <code>insert_before</code> or <code>insert_after</code> to<br>reference an existing enum option. Only one of <code>insert_before</code> and<br><code>insert_after</code> can be provided when creating a new enum option.<br><br>An enum options list can be reordered with the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options/insert</code> endpoint.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>name</td><td>string</td><td>false</td><td>none</td><td>The name of the enum option.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>enabled</td><td>boolean</td><td>false</td><td>none</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>string</td><td>false</td><td>none</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr></tbody></table><h2 id='reorder-a-custom-field-39-s-enum'>Reorder a custom field&#39;s enum</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>201</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td><td>Custom field enum option successfully created.</td><td><a href="#schemaenumoption">EnumOption</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='reorder-a-custom-field-39-s-enum'>Reorder a custom field&#39;s enum</h2>
 <p><a id="opIdreorderEnumOption"></a></p>
 
 <blockquote>
@@ -3732,7 +3720,8 @@ curl -X POST https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span
     "enabled": true,
     "color": "blue",
     "enum_option": 97285,
-    "before_enum_option": 12345
+    "before_enum_option": 12345,
+    "after_enum_option": 12345
   }
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3842,14 +3831,15 @@ Locked custom fields can only be reordered by the user who locked the field.</p>
     </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"enum_option"</span><span class="p">:</span><span class="w"> </span><span class="mi">97285</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"before_enum_option"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w">
+    </span><span class="s2">"before_enum_option"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"after_enum_option"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="reorder-a-custom-field's-enum-parameters">Parameters</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The enum option object to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td><a href="#schemaenumoption">EnumOption</a></td><td>false</td><td>Enum options are the possible values which an enum custom field can</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    name</td><td>body</td><td>string</td><td>false</td><td>The name of the enum option.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enabled</td><td>body</td><td>boolean</td><td>false</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    color</td><td>body</td><td>string</td><td>false</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enum_option</td><td>body</td><td>integer</td><td>false</td><td>The ID of the enum option to relocate.</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>    <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     before_enum_option</td><td>body</td><td>integer</td><td>false</td><td>An existing enum option within this custom field before which the new enum option should be inserted. Cannot be provided together with after_enum_option.</td></tr></tr><tr class='c3 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>    <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c4 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>     after_enum_option</td><td>body</td><td>integer</td><td>false</td><td>An existing enum option within this custom field after which the new enum option should be inserted. Cannot be provided together with before_enum_option.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>custom_field_gid</td><td>path</td><td>integer</td><td>true</td><td>Globally unique identifier for the custom field.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The enum option object to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>any</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td><a href="#schemaenumoption">EnumOption</a></td><td>false</td><td>Enum options are the possible values which an enum custom field can</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    id</td><td>body</td><td>integer(int64)</td><td>false</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    gid</td><td>body</td><td>string</td><td>false</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    resource_type</td><td>body</td><td>string</td><td>false</td><td>The base type of this resource.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    name</td><td>body</td><td>string</td><td>false</td><td>The name of the enum option.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enabled</td><td>body</td><td>boolean</td><td>false</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    color</td><td>body</td><td>string</td><td>false</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr><tr class='c2 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>   <em>anonymous</em></td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    enum_option</td><td>body</td><td>integer</td><td>false</td><td>The ID of the enum option to relocate.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    before_enum_option</td><td>body</td><td>integer</td><td>false</td><td>An existing enum option within this custom field before which the new enum option should be inserted. Cannot be provided together with after_enum_option.</td></tr></tr><tr class='c3 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>    after_enum_option</td><td>body</td><td>integer</td><td>false</td><td>An existing enum option within this custom field after which the new enum option should be inserted. Cannot be provided together with before_enum_option.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>custom_field_gid</td><td>path</td><td>integer</td><td>true</td><td>Globally unique identifier for the custom field.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-4'>Detailed descriptions</h4>
 <p>** <em>anonymous</em>**: Enum options are the possible values which an enum custom field can
 adopt. An enum custom field must contain at least 1 enum option but no
 more than 50.</p>
@@ -3895,13 +3885,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
 <h3 id="reorder-a-custom-field's-enum-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Custom field enum option successfully reordered.</td><td>Inline</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
-<h3 id="reorder-a-custom-field's-enum-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><a href="#schemaenumoption">EnumOption</a></td><td>false</td><td>none</td><td>Enum options are the possible values which an enum custom field can<br>adopt. An enum custom field must contain at least 1 enum option but no<br>more than 50.<br><br>You can add enum options to a custom field by using the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options</code> endpoint.<br><br><strong>It is not possible to remove or delete an enum option</strong>. Instead, enum<br>options can be disabled by updating the <code>enabled</code> field to false with the<br><code>PUT /enum_options/enum_option_gid</code> endpoint. Other attributes can be<br>updated similarly.<br><br>On creation of an enum option, <code>enabled</code> is always set to <code>true</code>, meaning<br>the enum option is a selectable value for the custom field. Setting<br><code>enabled=false</code> is equivalent to “trashing” the enum option in the Asana<br>web app within the “Edit Fields” dialog. The enum option will no longer<br>be selectable but, if the enum option value was previously set within a<br>task, the task will retain the value.<br><br>Enum options are an ordered list and by default new enum options are<br>inserted at the end. Ordering in relation to existing enum options can be<br>specified on creation by using <code>insert_before</code> or <code>insert_after</code> to<br>reference an existing enum option. Only one of <code>insert_before</code> and<br><code>insert_after</code> can be provided when creating a new enum option.<br><br>An enum options list can be reordered with the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options/insert</code> endpoint.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>name</td><td>string</td><td>false</td><td>none</td><td>The name of the enum option.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>enabled</td><td>boolean</td><td>false</td><td>none</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>string</td><td>false</td><td>none</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr></tbody></table><h2 id='update-an-enum-option'>Update an enum option.</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Custom field enum option successfully reordered.</td><td><a href="#schemaenumoption">EnumOption</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='update-an-enum-option'>Update an enum option.</h2>
 <p><a id="opIdupdateEnumOption"></a></p>
 
 <blockquote>
@@ -4080,13 +4064,7 @@ reference an existing enum option. Only one of <code>insert_before</code> and
 <h3 id="update-an-enum-option.-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully updated the specified custom field enum.</td><td>Inline</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
-<h3 id="update-an-enum-option.-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td><a href="#schemaenumoption">EnumOption</a></td><td>false</td><td>none</td><td>Enum options are the possible values which an enum custom field can<br>adopt. An enum custom field must contain at least 1 enum option but no<br>more than 50.<br><br>You can add enum options to a custom field by using the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options</code> endpoint.<br><br><strong>It is not possible to remove or delete an enum option</strong>. Instead, enum<br>options can be disabled by updating the <code>enabled</code> field to false with the<br><code>PUT /enum_options/enum_option_gid</code> endpoint. Other attributes can be<br>updated similarly.<br><br>On creation of an enum option, <code>enabled</code> is always set to <code>true</code>, meaning<br>the enum option is a selectable value for the custom field. Setting<br><code>enabled=false</code> is equivalent to “trashing” the enum option in the Asana<br>web app within the “Edit Fields” dialog. The enum option will no longer<br>be selectable but, if the enum option value was previously set within a<br>task, the task will retain the value.<br><br>Enum options are an ordered list and by default new enum options are<br>inserted at the end. Ordering in relation to existing enum options can be<br>specified on creation by using <code>insert_before</code> or <code>insert_after</code> to<br>reference an existing enum option. Only one of <code>insert_before</code> and<br><code>insert_after</code> can be provided when creating a new enum option.<br><br>An enum options list can be reordered with the <code>POST&lt;br&gt;/custom_fields/custom_field_gid/enum_options/insert</code> endpoint.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <strong>Note: This field is under active migration to the gid field—please see our blog post for more information.</strong></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>name</td><td>string</td><td>false</td><td>none</td><td>The name of the enum option.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>enabled</td><td>boolean</td><td>false</td><td>none</td><td>The color of the enum option. Defaults to ‘none’.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>string</td><td>false</td><td>none</td><td>Whether or not the enum option is a selectable value for the custom field.</td></tr></tr></tbody></table><h2 id='get-a-workspace-39-s-custom-fields'>Get a workspace&#39;s custom fields</h2>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully updated the specified custom field enum.</td><td><a href="#schemaenumoption">EnumOption</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-workspace-39-s-custom-fields'>Get a workspace&#39;s custom fields</h2>
 <p><a id="opIdgetCustomFieldsInWorkspace"></a></p>
 
 <blockquote>
@@ -6534,6 +6512,400 @@ curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>po
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully removed the custom field from the portfolio.</td><td><a href="#schemaempty">Empty</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
+<h1 id="asana-portfolio-memberships">Portfolio Memberships</h1>
+
+<p>This object determines if a user is a member of a portfolio.</p>
+<h2 id='get-a-list-of-portfolio-memberships'>Get a list of portfolio memberships</h2>
+<p><a id="opIdgetPortfolioMemberships"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolio_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
+
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
+
+    <span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.
+</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.
+</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...
+</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolio_memberships"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre>
+<p><code>GET /portfolio_memberships</code></p>
+
+<p>Returns a list of portfolio memberships in compact representation. You must specify <code>portolio</code>, <code>portfolio</code> and <code>user</code>, or <code>workspace</code> and <code>user</code>.</p>
+
+<h3 id="get-a-list-of-portfolio-memberships-parameters">Parameters</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio</td><td>query</td><td>string</td><td>false</td><td>The portfolio to filter results on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>string</td><td>false</td><td>The workspace to filter results on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>string(email)</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-a-list-of-portfolio-memberships-responses">Responses</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved portfolio memberships.</td><td><a href="#schemaportfolio">Portfolio</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-the-portfolio-memberships-for-a-portfolio'>Get the portfolio memberships for a portfolio</h2>
+<p><a id="opIdgetPortfolioMembershipsForPortfolio"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/portfolio_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
+
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
+
+    <span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.
+</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.
+</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...
+</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre>
+<p><code>GET /portfolios/{portfolio_gid}/portfolio_memberships</code></p>
+
+<p>Returns the compact portfolio membership records for the portfolio.</p>
+
+<h3 id="get-the-portfolio-memberships-for-a-portfolio-parameters">Parameters</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the portfolio.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>string(email)</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-the-portfolio-memberships-for-a-portfolio-responses">Responses</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved the requested portfolio&#39;s memberships.</td><td><a href="#schemaportfoliomembership">PortfolioMembership</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-portfolio-membership'>Get a portfolio membership</h2>
+<p><a id="opIdgetPortfolioMembership"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">{</span>portfolio_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
+
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
+
+    <span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.
+</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.
+</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...
+</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}"</span><span class="o">);</span>
+<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre>
+<p><code>GET /portfolio_memberships/{portfolio_gid}</code></p>
+
+<p>Returns the complete portfolio record for a single portfolio membership.</p>
+
+<h3 id="get-a-portfolio-membership-parameters">Parameters</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the portfolio.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="get-a-portfolio-membership-responses">Responses</h3>
+<table class='asana-table'><thead><tr><td></td>
+<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved the requested portfolio membership.</td><td><a href="#schemaportfoliomembership">PortfolioMembership</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
 <h1 id="asana-projects">Projects</h1>
 
 <p>A <code>project</code> represents a prioritized list of tasks in Asana or a board with columns of tasks represented as cards. It exists in a single workspace or organization and is accessible to a subset of users in that workspace or organization, depending on its permissions.</p>
@@ -8891,7 +9263,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
 <h3 id="get-the-project-memberships-for-a-project-parameters">Parameters</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>any</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>string(email)</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -13157,7 +13529,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks <span class="se">\</span>
 <h3 id="get-a-set-of-tasks-parameters">Parameters</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>assignee</td><td>query</td><td>any</td><td>false</td><td>The assignee to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project</td><td>query</td><td>integer</td><td>false</td><td>The project to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section</td><td>query</td><td>integer</td><td>false</td><td>The section to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>integer</td><td>false</td><td>The workspace to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>completed_since</td><td>query</td><td>any</td><td>false</td><td>Only return tasks that are either incomplete or that have been completed since this time.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>modified_since</td><td>query</td><td>any</td><td>false</td><td>Only return tasks that have been modified since the given time.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>assignee</td><td>query</td><td>string(email)</td><td>false</td><td>The assignee to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project</td><td>query</td><td>integer</td><td>false</td><td>The project to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section</td><td>query</td><td>integer</td><td>false</td><td>The section to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>integer</td><td>false</td><td>The workspace to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>completed_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that are either incomplete or that have been completed since this time.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>modified_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that have been modified since the given time.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table><h4 id='detailed-descriptions-7'>Detailed descriptions</h4>
 <p><strong>assignee</strong>: The assignee to filter tasks on.
 <strong>Note</strong>: If you specify <code>assignee</code>, you must also specify the <code>workspace</code> to filter on.</p>
 
@@ -17346,7 +17718,7 @@ curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid
 <h3 id="get-a-user's-teams-parameters">Parameters</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user_gid</td><td>path</td><td>any</td><td>true</td><td>An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword <code>me</code> to indicate the current user making the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>organization_gid</td><td>query</td><td>integer</td><td>true</td><td>The workspace or organization to filter teams on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user_gid</td><td>path</td><td>string(email)</td><td>true</td><td>An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword <code>me</code> to indicate the current user making the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>organization_gid</td><td>query</td><td>integer</td><td>true</td><td>The workspace or organization to filter teams on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -20156,406 +20528,14 @@ Returns an empty data record.</p>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="remove-a-user-from-a-workspace-or-organization-responses">Responses</h3>
 <table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>The user was removed successfully to the workspace or organization.</td><td>Inline</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table>
-<h3 id="remove-a-user-from-a-workspace-or-organization-responseschema">Response Schema</h3>
-
-<h1 id="asana-portfolio-memberships">Portfolio Memberships</h1>
-<h2 id='get-a-list-of-portfolio-memberships'>Get a list of portfolio memberships</h2>
-<p><a id="opIdgetPortfolioMemberships"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://app.asana.com/api/1.0/portfolio_memberships <span class="se">\</span>
-  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
-
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
-
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
-
-<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
-
-    <span class="p">);</span>
-
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
-
-<span class="c1">// Define array of request body.
-</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
-        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
-       <span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
- <span class="p">}</span>
- <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// handle exception or api errors.
-</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
- <span class="p">}</span>
-
- <span class="c1">// ...
-</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-
-<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolio_memberships"</span><span class="o">);</span>
-<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
-<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
-<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships'</span><span class="p">,</span>
-  <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
-
-<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre>
-<p><code>GET /portfolio_memberships</code></p>
-
-<p>Returns a list of portfolio memberships in compact representation. You must specify <code>portolio</code>, <code>portfolio</code> and <code>user</code>, or <code>workspace</code> and <code>user</code>.</p>
-
-<h3 id="get-a-list-of-portfolio-memberships-parameters">Parameters</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio</td><td>query</td><td>string</td><td>false</td><td>The portfolio to filter results on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>string</td><td>false</td><td>The workspace to filter results on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>any</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
-<blockquote>
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-a-list-of-portfolio-memberships-responses">Responses</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved portfolio memberships.</td><td><a href="#schemaportfolio">Portfolio</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-the-portfolio-memberships-for-a-portfolio'>Get the portfolio memberships for a portfolio</h2>
-<p><a id="opIdgetPortfolioMembershipsForPortfolio"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/portfolio_memberships <span class="se">\</span>
-  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
-
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
-
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
-
-<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
-
-    <span class="p">);</span>
-
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
-
-<span class="c1">// Define array of request body.
-</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
-        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
-       <span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
- <span class="p">}</span>
- <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// handle exception or api errors.
-</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
- <span class="p">}</span>
-
- <span class="c1">// ...
-</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-
-<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships"</span><span class="o">);</span>
-<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
-<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
-<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolios/{portfolio_gid}/portfolio_memberships'</span><span class="p">,</span>
-  <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
-
-<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre>
-<p><code>GET /portfolios/{portfolio_gid}/portfolio_memberships</code></p>
-
-<p>Returns the compact portfolio membership records for the portfolio.</p>
-
-<h3 id="get-the-portfolio-memberships-for-a-portfolio-parameters">Parameters</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the portfolio.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user</td><td>query</td><td>any</td><td>false</td><td>The user to filter results on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
-<blockquote>
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-the-portfolio-memberships-for-a-portfolio-responses">Responses</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved the requested portfolio&#39;s memberships.</td><td><a href="#schemaportfoliomembership">PortfolioMembership</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h2 id='get-a-portfolio-membership'>Get a portfolio membership</h2>
-<p><a id="opIdgetPortfolioMembership"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">{</span>portfolio_gid<span class="o">}</span> <span class="se">\</span>
-  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
-
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'Bearer {access-token}'</span>
-
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
-
-<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
-
-    <span class="p">);</span>
-
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
-
-<span class="c1">// Define array of request body.
-</span><span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
-        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
-       <span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContents</span><span class="p">());</span>
- <span class="p">}</span>
- <span class="k">catch</span> <span class="p">(</span><span class="nx">\GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// handle exception or api errors.
-</span>    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
- <span class="p">}</span>
-
- <span class="c1">// ...
-</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-
-<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-</code></pre><pre class="highlight java tab-java"><code><span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}"</span><span class="o">);</span>
-<span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
-<span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-<span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
-<span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
-<span class="p">}</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://app.asana.com/api/1.0/portfolio_memberships/{portfolio_gid}'</span><span class="p">,</span>
-  <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
-
-<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre>
-<p><code>GET /portfolio_memberships/{portfolio_gid}</code></p>
-
-<p>Returns the complete portfolio record for a single portfolio membership.</p>
-
-<h3 id="get-a-portfolio-membership-parameters">Parameters</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the portfolio.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_expand</td><td>query</td><td>array[string]</td><td>false</td><td>Expand fields returned.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table>
-<blockquote>
-<p>200 Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio_membership"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"portfolio"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portfolio"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="get-a-portfolio-membership-responses">Responses</h3>
-<table class='asana-table'><thead><tr><td></td>
-<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved the requested portfolio membership.</td><td><a href="#schemaportfoliomembership">PortfolioMembership</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h1 id='schemas'>Schemas</h1>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>The user was removed successfully to the workspace or organization.</td><td><a href="#schemaempty">Empty</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>5XX</td><td>Unknown</td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases are automatically generated using the <a href="https://github.com/Asana/node-asana-phrase">node-asana-phrase library</a> and can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table><h1 id='schemas'>Schemas</h1>
 <h2 id="tocS_Attachment">Attachment</h2>
 
 <!-- backwards compatibility -->
@@ -20633,14 +20613,14 @@ curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>relative_path</td><td>string</td><td>true</td><td>none</td><td>The path of the desired endpoint relative to the API’s base URL. Query parameters are not accepted here; put them in <code>data</code> instead.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>string</td><td>true</td><td>none</td><td>The HTTP method you wish to emulate for the action.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>data</td><td>object</td><td>false</td><td>none</td><td>For <code>GET</code> requests, this should be a map of query parameters you would have normally passed in the URL. Options and pagination are not accepted here; put them in <code>options</code> instead. For <code>POST</code>, <code>PATCH</code>, and <code>PUT</code> methods, this should be the content you would have normally put in the data field of the body.</td></tr></tr><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>options</td><td>object</td><td>false</td><td>none</td><td>Pagination (<code>limit</code> and <code>offset</code>) and output options (<code>fields</code> or <code>expand</code>) for the action. “Pretty” JSON output is not an available option on individual actions; if you want pretty output, specify that option on the parent request.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  limit</td><td>integer</td><td>false</td><td>none</td><td>Pagination limit for the request.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  offset</td><td>integer</td><td>false</td><td>none</td><td>Pagination offset for the request.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  fields</td><td>[string]</td><td>false</td><td>none</td><td>The fields to retrieve in the request.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  expand</td><td>string</td><td>false</td><td>none</td><td>The expansion path for the request.</td></tr></tr></tbody></table><h4 id='enumerated-values-9'>Enumerated Values</h4><table class='asana-table'><thead><tr><td></td>
 <td>Property</td><td>Value</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>get</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>post</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>put</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>delete</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>patch</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>method</td><td>head</td></tr></tr></tbody></table>
-<h2 id="tocS_BatchResponse">BatchResponse</h2>
+<h2 id="tocS_BatchResult">BatchResult</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemabatchresponse"></a>
-<a id="schema_BatchResponse"></a>
-<a id="tocSbatchresponse"></a>
-<a id="tocsbatchresponse"></a></p>
+<p><a id="schemabatchresult"></a>
+<a id="schema_BatchResult"></a>
+<a id="tocSbatchresult"></a>
+<a id="tocsbatchresult"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
