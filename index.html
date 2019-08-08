@@ -986,7 +986,8 @@ pagination is strongly encouraged to ensure both you and your users have the bes
 <hr>
 <h2 id='authentication-basics'>Authentication Basics</h2>
 <p>Asana supports a few methods of authenticating with the API.</p>
-
+<pre class="highlight shellshell"><code><span class="s2">"Authorization: Bearer ACCESS_TOKEN"</span>
+</code></pre>
 <ul>
 <li><strong><a href="#oauth">OAuth 2.0</a></strong> We require that applications designed to access the Asana API on behalf of multiple users implement OAuth 2.0.</li>
 <li><strong><a href="#personal-access-token">Personal Access Token</a></strong> Personal Access Tokens are designed for accessing the API from the command line or from personal applications.</li>
@@ -1024,9 +1025,6 @@ Bearer Tokens when the current one expires).</p></li>
 Token for a new Bearer Token. (This can be repeated for as long as the user has authorized the application.)</p></li>
 </ol>
 
-<p>This is just one example using the Authorization Code Grant - applications that run entirely in the browser would
-generally use the <a href="#implicit-grant">Implicit Grant</a> flow instead.</p>
-
 <p>We definitely recommend using a library to take care of the nitty-gritty of OAuth, but hopefully this helps demystify
 the process somewhat.</p>
 
@@ -1063,18 +1061,31 @@ the Asana API, as well as a Client Secret.</p>
 <li>Applications can be created from the <a href="https://app.asana.com/-/account_api">&quot;Apps&quot; tab of your account settings</a>, where you will find your Client ID and Client Secret.</li>
 <li>The endpoint for user authorization is <code>https://app.asana.com/-/oauth_authorize</code></li>
 <li>The endpoint for token exchange is <code>https://app.asana.com/-/oauth_token</code></li>
-<li>Asana supports both the Authorization Code Grant flow, and the Implicit Grant flows.</li>
-<li><p>Once an access token has been obtained your application can make calls on behalf of the user in the following form:</p>
-
-<p>curl -H &quot;Authorization: Bearer ACCESS_TOKEN&quot; https://app.asana.com/api/1.0/users/me</p></li>
+<li>Asana supports the Authorization Code Grant flow.</li>
+<li>Once an access token has been obtained your application can make calls on behalf of the user</li>
 </ul>
 
 <p><a name="user-authorization" class="jump-anchor"></a></p>
 <h3 id='user-authorization-endpoint'>User Authorization Endpoint</h3><h4 id='request'>Request</h4>
+<blockquote>
+<p>Send a user to oauth_authorize</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://app.asana.com/-/oauth_authorize
+?client_id=753482910
+&amp;redirect_uri=https://my.app.com
+&amp;response_type=code
+&amp;state=thisIsARandomString
+&amp;scope=default"</span><span class="nt">&gt;</span>Authenticate with Asana<span class="nt">&lt;/a&gt;</span>
+</code></pre>
 <p>Your app redirects the user to <code>https://app.asana.com/-/oauth_authorize</code>, passing parameters along as a standard query string:</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>client_id</strong></td><td><em>required</em> The Client ID uniquely identifies the application making the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>redirect_uri</strong></td><td><em>required</em> The URI to redirect to on success or error. This <em>must</em> match the Redirect URL specified in the application settings.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>response_type</strong></td><td><em>required</em> Must be one of <code>code</code>, <code>token</code>, <code>id_token</code>, or the space-delimited combination <code>token id_token</code>.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>state</strong></td><td><em>required</em> Encodes state of the app, which will be returned verbatim in the response and can be used to match the response up to a given request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>scope</strong></td><td><em>optional</em> A space-delimited set of one or more <a href="#scopes">scopes</a> to get the user&#39;s permission to access. Defauts to the <code>default</code> OAuth scope if no scopes are specified.</td></tr></tr></tbody></table></div><h4 id='response'>Response</h4>
+<blockquote>
+<p>User is redirected to the redirect_uri</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://my.app.com?code=325797325&amp;state=thisIsARandomString
+</code></pre>
 <p>If either the <code>client_id</code> or <code>redirect_uri</code> do not match, the user will simply see a plain-text error. Otherwise,
 all errors will be sent back to the <code>redirect_uri</code> specified.</p>
 
@@ -1086,6 +1097,9 @@ If using the <code>response_type=token</code>, these parameters will appear in t
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>code</strong></td><td>If response_type=code in the request, this is the code your app can exchange for a token</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>token</strong></td><td>If response_type=token in the request, this is the token your app can use to make requests of the API</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>state</strong></td><td>The state parameter that was sent with the authorizing request</td></tr></tr></tbody></table></div>
+<p>You should check that the state is the same in this response as it was in the request. You can read more about the <code>state</code>
+parameter <a href="https://auth0.com/docs/protocols/oauth2/oauth-state">here</a>.</p>
+
 <p><a name="scopes" class="jump-anchor"></a></p>
 <h3 id='oauth-scopes'>OAuth Scopes</h3>
 <p>The Asana API supports a small set of OAuth scopes you can request using the
@@ -1101,7 +1115,14 @@ scopes. An exhaustive list of the supported scopes is provided here:</p>
 exchanged for a proper token, optionally including a <em>refresh_token</em>, which can
 be used to request new tokens when the current one expires without needing to
 redirect or reauthorize the user.</p>
-
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"grant_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"753482910"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6572195638271537892521"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"redirect_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my.app.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"325797325"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Your app should make a <code>POST</code> request to <code>https://app.asana.com/-/oauth_token</code>,
 passing the parameters as part of a standard form-encoded post body.</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
@@ -1110,7 +1131,18 @@ passing the parameters as part of a standard form-encoded post body.</p>
 <p>The token exchange endpoint is used to exchange a code or refresh token for an access token.</p>
 <h4 id='response-2'>Response</h4>
 <p>In the response, you will receive a JSON payload with the following parameters:</p>
-<div class='table-holder'><table class='asana-table'><thead><tr><td></td>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6ds7fdsa69ags7ag9sd5a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hjkl325hjkl4325hj4kl32fjds"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4673218951"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greg Sanchez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gsanchez@example.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>access_token</strong></td><td>The token to use in future requests against the API</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>expires_in</strong></td><td>The number of seconds the token is valid, typically 3600 (one hour)</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>token_type</strong></td><td>The type of token, in our case, <code>bearer</code></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>refresh_token</strong></td><td>If exchanging a code, a long-lived token that can be used to get new access tokens when old ones expire.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>data</strong></td><td>A JSON object encoding a few key fields about the logged-in user, currently <code>id</code>, <code>name</code>, and <code>email</code>.</td></tr></tr></tbody></table></div>
 <p><a name="authorization-code-grant" class="jump-anchor"></a></p>
@@ -1118,54 +1150,12 @@ passing the parameters as part of a standard form-encoded post body.</p>
 <p>To implement the Authorization Code Grant flow (the most typical flow for most applications), there are three steps:</p>
 
 <ol>
-<li><p>Send the user to the authorization endpoint so that they can approve access of your app to their Asana account</p>
-
-<p># Send the user to the authorization endpoint. Newlines inserted for readability
-    https://app.asana.com/-/oauth_authorize?
-    client_id=123&amp;
-    redirect_uri=https://myapp.com/oauth
-    &amp;response_type=code
-    &amp;state=somerandomstate</p></li>
-<li><p>Receive a redirect back from the authorization endpoint with a <strong>code</strong> embedded in the parameters</p>
-
-<p># After the user authenticates they will redirected back to your app with a code for your app to exchange.
-    # Newlines inserted for readability
-    https://myapp.com/oauth?
-    code=0%2F817a776a358a5d8d89988562d2b3dc8f&amp;
-    state=somerandomstate</p></li>
+<li><p>Send the user to the authorization endpoint so that they can approve access of your app to their Asana account</p></li>
+<li><p>Receive a redirect back from the authorization endpoint with a <strong>code</strong> embedded in the parameters</p></li>
 <li><p>Exchange the code for a <strong>token</strong> via the token exchange endpoint</p></li>
 </ol>
 
 <p>The token that you have at the end can be used to make calls to the Asana API on the user&#39;s behalf.</p>
-
-<p><a name="implicit-grant" class="jump-anchor"></a></p>
-<h3 id='implicit-grant'>Implicit Grant</h3>
-<p>The Implicit Grant flow is suitable for in-browser web apps written in
-JavaScript or other applications that cannot securely make the <code>POST</code> request
-containing the client secret to the authorization server without exposing that
-secret to the user or others. To implement this flow, there are only two steps:</p>
-
-<ol>
-<li><p>Redirect a user to the authorization endpoint so that they can approve access of your app to their Asana account</p>
-
-<p># Send the user to the authorization endpoint. Newlines inserted for readability
-    https://app.asana.com/-/oauth_authorize?
-    client_id=123&amp;
-    redirect_uri=https://myapp.com/oauth&amp;
-    response_type=token&amp;
-    state=somerandomstate</p></li>
-<li><p>Receive a redirect back from the authorization endpoint with a <strong>token</strong> embedded in the <em>fragment</em> portion (the bit following the <code>#</code>) of the URL.</p>
-
-<p># After the user authenticates they will redirected back to your app with a short-lived access token.
-    https://myapp.com/auth#
-    access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpemF0aW9uIjo0NDMxMDYwMjQwODA0Niwic2NvcGUiOiIiLCJpYXQiOjE0Mzg4OTExODEsImV4cCI6MTQzODg5NDc4MX0.kVm8MWD8ahU4hMxT7B7ZrsgAEAw5ebb1yknXlskGfeM&amp;
-    token_type=bearer&amp;
-    expires_in=3600&amp;
-    data=&amp;
-    state=somerandomstate</p></li>
-</ol>
-
-<p>This token can then be used to access the API, in this case typically using CORS.</p>
 
 <p><a name="secure-redirect" class="jump-anchor"></a></p>
 <h3 id='secure-redirect-endpoint'>Secure Redirect Endpoint</h3>
@@ -1193,10 +1183,9 @@ unlimited, personal access tokens. When creating a token you must give it a desc
 created the token for.</p>
 
 <p>Personal Access Tokens should be used similarly to OAuth access tokens when accessing the API, passing them in the
-Authorization header:</p>
-
-<p>curl -H &quot;Authorization: Bearer ACCESS_TOKEN&quot; https://app.asana.com/api/1.0/users/me</p>
-
+Authorization header.</p>
+<pre class="highlight shellshell"><code>curl -H <span class="s2">"Authorization: Bearer ACCESS_TOKEN"</span> https://app.asana.com/api/1.0/users/me
+</code></pre>
 <p>You should regularly review the list of personal access tokens you have created and <strong>deauthorize</strong> those that you no
 longer need.</p>
 
@@ -1214,9 +1203,8 @@ rather given a signed <a href="https://jwt.io/">Json Web Token</a> containing th
 to allow users to log into your services using their Asana account, the OpenID Connect protocol is an ideal way to
 authenticate an Asana user. To obtain an ID token, you must request the <code>openid</code> scope during the authentication flow.</p>
 
-<p>It is also possible to obtain an ID token alongside the normal access token in the implicit flow by using the
-(space-delimited) <code>token id_token</code> response type, or alongside an authorization code in the authorization code grant
-flow by using the (again space-delimited) <code>code id_token</code> response type. If you do, the redirect parameters will include
+<p>It is also possible to obtain an ID token alongside an authorization code in the authorization code grant
+flow by using the (space-delimited) <code>code id_token</code> response type. If you do, the redirect parameters will include
 the ID token in addition to everything you would normally receive.</p>
 
 <p>To access additional information about the user in a standardized format, we also expose a
@@ -1467,12 +1455,6 @@ least one error object, described below:</p>
 <p>For <code>&lt;a&gt;</code> tags specifically, to make it easier to create @-mentions through the API, we only require that you provide the GID of the object you wish to reference. If you have access to that object, the API will automatically generate the appropriate <code>href</code> and other attributes for you. For example, to create a link to a task with GID <code>&quot;123&quot;</code>, you can send the tag <code>&lt;a data-asana-gid=&quot;123&quot;/&gt;</code> which will then be expanded to <code>&lt;a href=&quot;https://app.asana.com/0/0/123/f&quot; data-asana-accessible=&quot;true&quot; data-asana-type=&quot;task&quot; data-asana-gid=&quot;123&quot;&gt;Task Name&lt;/a&gt;</code>. You can also generate a link to a task in a specific project or tag by including a <code>data-asana-project</code> or <code>data-asana-tag</code> attribute in the <code>&lt;a&gt;</code> tag. All other attributes, as well as the contents of the tag, are ignored.</p>
 
 <p>If you do not have access to the referenced object when you try to create a link, the API will not generate an <code>href</code> for you, but will instead look for an <code>href</code> you provide. This allows you to write back <code>&lt;a&gt;</code> tags unmodified even if you do not have access to the resource. If you do not have access to the referenced object and no <code>href</code> is provided, your request will be rejected with a <code>400 Bad Request</code> error. Similarly, if you provide neither a GID nor a valid <code>href</code>, the request will be rejected with the same error.</p>
-
-<p>Here&#39;s an example of what you&#39;d send to the API when creating a comment to generate the rich text shown at the end of the previous section:</p>
-
-<p><code>
-&lt;body&gt;All these new tasks are &lt;em&gt;really&lt;/em&gt; getting disorganized, so &lt;a data-asana-gid=&quot;4168112&quot;/&gt; just made the new &lt;a data-asana-gid=&quot;5732985&quot;/&gt; project to help keep them organized. &lt;strong&gt;Everyone&lt;/strong&gt; should start using the &lt;a data-asana-gid=&quot;6489418&quot; data-asana-project=&quot;5732985&quot;/&gt; when adding new tasks there.&lt;/body&gt;
-</code></p>
 <hr>
 <h2 id='pagination'>Pagination</h2>
 <p>Paginating requests for object sets that may be large is highly recommended. For requests that will return large result
