@@ -306,6 +306,9 @@
             <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#triage-bot" class="toc-h2 toc-link" data-title="Triage Bot">Triage Bot</a>
+                  </li>
+                  <li>
                     <a href="#python-hello-world" class="toc-h2 toc-link" data-title="Python Hello World">Python Hello World</a>
                   </li>
                   <li>
@@ -1996,7 +1999,190 @@ Asana-Disable: a_third_change
 <p>Asana has <a href="/#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
 
 <p><hr class="full-line"></p>
-<h1 id='quick-start'>Quick Start</h1><h2 id='python-hello-world'>Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
+<h1 id='quick-start'>Quick Start</h1><h2 id='triage-bot'>Triage Bot</h2>
+<blockquote>
+<p>We will use a very basic file structure for the purposes of this guide. Start by making a project directory, moving into it, and running <code>npm init</code>.</p>
+</blockquote>
+<pre class="highlight shellshell"><code><span class="gp">$ </span>mkdir triage-bot
+<span class="gp">$ </span><span class="nb">cd </span>triage-bot
+<span class="gp">$ </span>npm init
+</code></pre>
+<blockquote>
+<p>Install the Node Asana client library and create config and app files:  </p>
+</blockquote>
+<pre class="highlight shellshell"><code><span class="gp">$ </span>npm install asana
+<span class="gp">$ </span>touch config.js app.js
+
+</code></pre>
+<blockquote>
+<p>Add gids (global ids) for the workspace, design request project, and designers that will be assigned requests 
+(note that all ids in Asana should be strings).  You can get a project’s gid from its URL in the Asana web product 
+(e.g. the structure of links for a task is www.asana.com/0/<project_gid>/<task_gid>). Similarly, you can get user’s 
+gid from the URL of their task list (i.e. click on their name in Asana). To get your workspace gid(s), go to 
+https://app.asana.com/api/1.0/users/me/workspaces.</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="kd">let</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">workspaceId</span><span class="p">:</span> <span class="s2">"15793206719"</span><span class="p">,</span>
+  <span class="na">designRequestProjectId</span><span class="p">:</span> <span class="s2">"180350018127066"</span><span class="p">,</span>
+  <span class="c1">//gids of designers who are fulfilling design requests</span>
+  <span class="na">designers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"180015866142449"</span><span class="p">,</span> <span class="s2">"180015866142454"</span><span class="p">,</span> <span class="s2">"180015886142844"</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">config</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>Next, let’s get started on our app.js file. Include the Asana node client library and the config file:</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="kd">let</span> <span class="nx">asana</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'asana'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config'</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Get your access token and use it to create an Asana client. At the time of writing this guide, the Asana API is going 
+through two deprecations (moving to string gids and changing how sections function). You can learn about our 
+<a href="https://asana.com/developers/documentation/getting-started/deprecations">deprecations framework in our docs</a>. 
+To prevent my app from breaking when the deprecations are finalized, I&#39;m passing headers to enable the new API 
+behavior for string gids and sections. We will also set a delay to determine how quickly our parallel requests are sent.</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="c1">// Get personal access token (PAT) from environment variables.</span>
+<span class="kr">const</span> <span class="nx">accessToken</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">triage_bot_pat</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">deprecationHeaders</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"defaultHeaders"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"asana-enable"</span><span class="p">:</span> <span class="s2">"new_sections,string_ids"</span><span class="p">}};</span>
+
+<span class="c1">// Create Asana client using PAT and deprecation headers.</span>
+<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">asana</span><span class="p">.</span><span class="nx">Client</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">deprecationHeaders</span><span class="p">).</span><span class="nx">useAccessToken</span><span class="p">(</span><span class="nx">accessToken</span><span class="p">);</span>
+
+<span class="c1">// Request delay in ms</span>
+<span class="kr">const</span> <span class="nx">delay</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+
+</code></pre>
+<blockquote>
+<p>Use the search API to fetch unassigned tasks from the design requests project. 
+Note that the search API doesn’t return paginated results so you need to pass the max 
+limit which is 100. If there are often more than 100 unassigned tasks, you can add a 
+function to keep running the script until there are no more unassigned tasks.</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="kd">function</span> <span class="nx">getUnassignedTasks</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">workspaceId</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">workspaceId</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"projects.any"</span> <span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">designRequestProjectId</span><span class="p">,</span>
+    <span class="s2">"assignee.any"</span> <span class="p">:</span> <span class="s2">"null"</span><span class="p">,</span>
+    <span class="s2">"resource_subtype"</span><span class="p">:</span> <span class="s2">"default_task"</span><span class="p">,</span>
+    <span class="s2">"fields"</span><span class="p">:</span> <span class="s2">"gid"</span><span class="p">,</span>
+    <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">100</span>
+  <span class="p">};</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">searchInWorkspace</span><span class="p">(</span><span class="nx">workspaceId</span><span class="p">,</span> <span class="nx">params</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">tasks</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">randomAssigner</span><span class="p">(</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>We’ll need a few helper functions. One to shuffle an array and another to assign tasks.</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="kd">function</span> <span class="nx">shuffleArray</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+      <span class="kd">let</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+      <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">array</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">assignTask</span><span class="p">(</span><span class="nx">taskStringId</span><span class="p">,</span> <span class="nx">assigneeStringId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">taskStringId</span><span class="p">,</span> <span class="p">{</span><span class="na">assignee</span><span class="p">:</span> <span class="nx">assigneeStringId</span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Our final function will take the array of unassigned tasks and round-robin assign them to the group of shuffled 
+designers from the config file. We will use an interval to loop so we can control the speed of the requests. 
+You can change the delay with the const you declared earlier. This is a balance between speed and staying within our 
+<a href="https://asana.com/developers/documentation/getting-started/rate-limits#concurrent">concurrent request limit</a>. 
+In node, a normal loop would send all requests at once, which doesn’t work in larger projects.</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="kd">function</span> <span class="nx">randomAssigner</span><span class="p">(</span><span class="nx">unassignedTasks</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">shuffledDesigners</span> <span class="o">=</span> <span class="nx">shuffleArray</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">designers</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">numDesigners</span> <span class="o">=</span> <span class="nx">shuffledDesigners</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+  <span class="c1">// Let's use an interval to loop, so we control how quickly requests are sent</span>
+  <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">assignTask</span><span class="p">(</span><span class="nx">unassignedTasks</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">gid</span><span class="p">,</span> <span class="nx">shuffledDesigners</span><span class="p">[</span><span class="nx">index</span> <span class="o">%</span> <span class="nx">numDesigners</span><span class="p">]);</span>
+    <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="c1">// When our index reaches the end, we're done</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;=</span> <span class="nx">unassignedTasks</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"You've assigned "</span> <span class="o">+</span> <span class="nx">unassignedTasks</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="s2">" new design requests"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre>
+<blockquote>
+<p>Then we just need to call our getUnassignedTasks function to kick-off the script:</p>
+</blockquote>
+<pre class="highlight javascriptjavascript"><code><span class="nx">getUnassignedTask</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>Now run your script, sit back, and watch the bot do your work.</p>
+</blockquote>
+<pre class="highlight shellshell"><code><span class="gp">$ </span>node app.js
+</code></pre><h3 id='why-build-a-bot'>Why build a bot?</h3>
+<p>When processes get complex in Asana there can begin to be work about work. This could be happening to you (or someone you love) if you find yourself spending time doing repetitive work such as triaging tasks, reminding people to do something, or adding/removing followers as you move a task through a workflow. </p>
+<h3 id='what-we-re-going-to-build'>What we’re going to build</h3>
+<p>In this guide, we will build a simple triage bot that will assign tasks. This is a common Asana use case with support inboxes or request projects. </p>
+
+<p>If you want to skip ahead and see the code for the triage bot, it’s on Github in the Javascript folder of our devrel-examples repo: https://github.com/Asana/devrel-examples.</p>
+
+<p>For this guide, let’s suppose a design team has a requests project where people from the marketing team fill out an <a href="https://asana.com/guide/help/premium/forms">Asana form</a> to request graphics from the design team. The form creates a task in the design requests project that needs to be assigned to a designer. </p>
+
+<p>Our triage bot will gather all unassigned tasks in the design request project and then randomly distribute the requests across a group of designers. </p>
+
+<p>For the purposes of this guide, we will keep it this simple, however, you could add more complex logic to your bot. For instance, you could check custom field values on the request task to see what type of request it is (e.g. video, graphic, logo, etc.) and then assign it to the designer that has those skills.  You could go even further and check the designers workload to see who currently has the least amount of work already assigned to them (this could be determined by a point value for tasks assigned to them in the project). You could then have the bot ping the design request task as it approaches the due date to ensure that the designer will have it completed on deadline.</p>
+<h3 id='helpful-links'>Helpful links</h3>
+<p>Before we get started, here are some helpful links for building on the Asana API:</p>
+
+<ul>
+<li><a href="https://asana.com/developers/api-reference">Asana API reference docs</a></li>
+<li><a href="https://asana.com/developers/documentation/examples-tutorials/overview">Asana longform documentation</a></li>
+<li><a href="https://forum.asana.com/c/developersAPI">Asana developer community</a> -- if you get blocked or have a question about the API, there are devs in our community that are eager to help. We also post API updates and news to the community forum.</li>
+<li>The <a href="https://github.com/Asana/devrel-examples/tree/master/javascript/triage_bot">code for this bot on Github</a></li>
+</ul>
+<h3 id='create-your-bot-user-in-asana'>Create your bot user in Asana</h3>
+<p>Create a new Asana account for your bot (<a href="https://asana.com/guide/help/organizations/members#gl-invite">instructions for inviting users</a>). You want to create a distinct Asana account for your bot because any action it takes in Asana will be attributed to this user. Give your bot a name and photo that will be recognizable to users in Asana that encounter it. Note that if your bot is a guest member in Asana that it will need to be added to every project you need it to work in. Bots based on guest Asana accounts will also not have access to some API features such as defining new custom fields or modifying their settings.</p>
+<h3 id='authenticating-your-bot'>Authenticating your bot</h3>
+<p>We will authenticate our bot using a <a href="https://asana.com/developers/documentation/getting-started/auth#personal-access-token">Personal Access Token (PAT)</a>. Log in to the Asana account that will be used for the bot and navigate to the developer console. You can get to your dev console by either using this URL https://app.asana.com/-/developer_console or from within Asana by clicking your photo icon in the upper right of Asana -&gt; My Profile Settings -&gt; Apps -&gt; Manage Developer Apps.</p>
+
+<p>Next, click “+ New access token” and follow the instructions to get your token. Treat this token like a username and password. Don’t share it with anyone and never publish it to a public repository. I like to save my PAT as an environment variable (here are instructions on <a href="https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255">how to do this on Mac</a>). For this guide, I’ve saved a PAT as an env variable called <code>triage_bot_pat</code>.</p>
+<h3 id='create-an-asana-sandbox'>Create an Asana sandbox</h3>
+<p>Before we start coding, <a href="https://asana.com/guide/help/projects/basics#gl-create">create a project in Asana</a> to use as a sandbox. While not required, I like to <a href="https://asana.com/guide/help/permissions/project-permissions#gl-private-project">set the project to private</a> while developing. To get some users in the project, add your main Asana user as well as your bot account. You could also invite a personal email as a guest user.</p>
+<h3 id='choose-an-asana-client-library'>Choose an Asana client library</h3>
+<p>The Asana API has <a href="https://asana.com/developers/documentation/getting-started/client-libraries">SDKs in several popular languages</a>. For most developers, we recommend using one of our client libraries because they help with some of the complexities of using an API such as authentication, pagination, and deprecations. </p>
+
+<p>For this guide, we will use the <a href="https://github.com/Asana/node-asana">Asana Node client library</a>, however, you can follow along in any language of your choice. </p>
+
+<p>Each library has an examples folder in addition to the readme, which can be helpful for getting started. The methods for each resource can be found in the “gen” folder of each client library (e.g. node-asana/lib/resources/gen/).</p>
+<h3 id='let-s-start-coding'>Let’s start coding!</h3>
+<p>If you haven&#39;t already, follow the code and headers in this section. This will walk you through the terminal commands 
+and code with explainations along the way.</p>
+<h3 id='congratulations-now-go-above-and-beyond'>Congratulations! Now go above and beyond</h3>
+<p>You’ve created an Asana triage bot. Let’s explore a few ideas on how to make it even better.</p>
+<h3 id='deploy-your-app'>Deploy your app</h3>
+<p>While you can run your bot from the command line, that seems like a lot of work to run a bot that’s supposed to eliminate work about work.</p>
+
+<p>One option is to use launchd to automatically execute your script (launchd is like cron but better). Here’s a <a href="https://medium.com/@chetcorcos/a-simple-launchd-tutorial-9fecfcf2dbb3">tutorial to get you started with launchd</a>.</p>
+
+<p>The next step would be to deploy to a hosted server. <a href="https://api.slack.com/docs/hosting">Here’s a guide</a> exploring some of the popular hosting providers. Hosting your app makes it more resilient and allows you to create more sophisticated apps (e.g. use webhooks).   </p>
+<h3 id='use-asana-as-your-config-file'>Use Asana as your config file</h3>
+<p>To take your bot’s accessibility to the next level, put your configuration in an Asana task(s) and then have your script read that task(s) for instructions. This allows you (or anyone else) to make config changes without touching any code. For example, if a designer is on vacation, you can easily remove them from the group that gets assigned requests. Similarly, if a designer joins or leaves the team, this change could be easily configured in a task instead of having to change the bot’s code.</p>
+
+<p>To see this approach in the wild, checkout <a href="https://github.com/Asana/ohmega">Ohmega</a>, an automation framework we created. Here’s the <a href="https://github.com/Asana/ohmega/blob/master/ohmega/services/configuration_service.py">configuration service</a> that reads a tree of tasks for its configuration. </p>
+<h3 id='use-webhooks-for-real-time-triaging'>Use webhooks for real-time triaging</h3>
+<p>If you need your bot to react to changes in real time, then you’ll need to use <a href="https://asana.com/developers/api-reference/webhooks">webhooks</a>. We built a <a href="https://github.com/Asana/devrel-examples/tree/master/python/webhooks">python webhook inspector</a> to help developers get started using Asana webhooks. </p>
+
+<hr>
+<h2 id='python-hello-world'>Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
 
 <span class="c"># replace with your personal access token. </span>
 <span class="n">personal_access_token</span> <span class="o">=</span> <span class="s">'0/123456789....'</span>
