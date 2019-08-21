@@ -19750,9 +19750,9 @@ curl -X GET https://app.asana.com/api/1.0/user_task_lists/<span class="o">{</spa
 <code><a href="#get-a-set-of-webhooks"><span class="get-verb">GET</span> <span class=""nn>/webhooks</span></a><br><a href="#establish-a-webhook-on-a-resource"><span class="post-verb">POST</span> <span class=""nn>/webhooks</span></a><br><a href="#get-a-webhook"><span class="get-verb">GET</span> <span class=""nn>/webhooks/{webhook_gid}</span></a><br><a href="#remove-a-webhook"><span class="delete-verb">DELETE</span> <span class=""nn>/webhooks/{webhook_gid}</span></a></code>
 </pre>
 
-<p>Webhooks allow an application to be notified of changes. This is in addition to the ability to fetch those changes directly as <a href="/developers/api-reference/events">Events</a> - in fact, Webhooks are just a way to receive Events via HTTP POST at the time they occur instead of polling for them. For services accessible via HTTP this is often vastly more convenient, and if events are not too frequent can be significantly more efficient.</p>
+<p>Webhooks allow an application to be notified of changes. This is in addition to the ability to fetch those changes directly as <a href="#asana-events">Events</a> - in fact, Webhooks are just a way to receive Events via HTTP POST at the time they occur instead of polling for them. For services accessible via HTTP this is often vastly more convenient, and if events are not too frequent can be significantly more efficient.</p>
 
-<p>In both cases, however, changes are represented as Event objects - refer to the <a href="/developers/api-reference/events">Events documentation</a> for more information on what data these events contain.</p>
+<p>In both cases, however, changes are represented as Event objects - refer to the <a href="#asana-events">Events documentation</a> for more information on what data these events contain.</p>
 
 <p><strong>NOTE:</strong> While Webhooks send arrays of Event objects to their target, the Event objects themselves contain <em>only IDs</em>, rather than the actual resource they are referencing. So while a normal event you receive via GET /events would look like an <a href="/#tocS_Event">Event</a>. In a Webhook payload you will instead receive a <a href="#tocS_WebhookEvent">WebhookEvent</a> (a simplified version of the event object).</p>
 
@@ -22891,20 +22891,13 @@ A user’s “My Tasks” represent all of the tasks assigned to that user. It i
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Webhooks allow an application to be notified of changes. This is in
-addition to the ability to fetch those changes directly as Events - in
-fact, Webhooks are just a way to receive
-<a href="https://asana.com/developers/api-reference/events">Events</a> via HTTP POST
-at the time they occur instead of polling for them. For services
-accessible via HTTP this is often vastly more convenient, and if events
-are not too frequent can be significantly more efficient.</p>
+<p>Webhooks allow an application to be notified of changes. This is in addition to the ability to fetch those changes directly as <a href="#asana-events">Events</a> - in fact, Webhooks are just a way to receive Events via HTTP POST at the time they occur instead of polling for them. For services accessible via HTTP this is often vastly more convenient, and if events are not too frequent can be significantly more efficient.</p>
 
-<p>In both cases, however, changes are represented as Event objects - refer
-to the <a href="https://asana.com/developers/api-reference/events">Events
-documentation</a> for
-more information on what data these events contain.</p>
+<p>In both cases, however, changes are represented as Event objects - refer to the <a href="#asana-events">Events documentation</a> for more information on what data these events contain.</p>
 
-<p><em>Note: While Webhooks send arrays of Event objects to their target, the Event objects themselves contain *only IDs</em>, rather than the actual resource they are referencing. Webhooks themselves contain only the information necessary to deliver the events to the desired target as they are generated.*</p>
+<p><strong>NOTE:</strong> While Webhooks send arrays of Event objects to their target, the Event objects themselves contain <em>only IDs</em>, rather than the actual resource they are referencing. So while a normal event you receive via GET /events would look like an <a href="/#tocS_Event">Event</a>. In a Webhook payload you will instead receive a <a href="#tocS_WebhookEvent">WebhookEvent</a> (a simplified version of the event object).</p>
+
+<p><a href="#tocS_Webhook">Webhooks</a> themselves contain only the information necessary to deliver the events to the desired target as they are generated.</p>
 <h3 id='properties-40'>Properties</h3><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>Type</td><td>Required</td><td>Restrictions</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>id</td><td>integer(int64)</td><td>false</td><td>read-only</td><td>Globally unique ID of the attachment, as an integer. <em>Note: This field is under active migration to the gid field—please see our blog post for more information.</em></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>gid</td><td>string</td><td>false</td><td>read-only</td><td>Globally unique ID of the object, as a string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource_type</td><td>string</td><td>false</td><td>read-only</td><td>The base type of this resource.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>created_at</td><td>string(date-time)</td><td>false</td><td>read-only</td><td>The time at which this resource was created.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>active</td><td>boolean</td><td>false</td><td>none</td><td>If true, the webhook will send events - if false it is considered inactive and will not generate events.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>last_failure_at</td><td>string(date-time)</td><td>false</td><td>read-only</td><td>The timestamp when the webhook last received an error when sending an event to the target.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>last_failure_content</td><td>string</td><td>false</td><td>read-only</td><td>The contents of the last error response sent to the webhook when attempting to deliver events to the target.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>last_success_at</td><td>string(date-time)</td><td>false</td><td>read-only</td><td>The timestamp when the webhook last successfully sent an event to the target.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>resource</td><td>any</td><td>false</td><td>none</td><td>none</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>target</td><td>string(uri)</td><td>false</td><td>read-only</td><td>The URL to receive the HTTP POST.</td></tr></tr></tbody></table></div>
