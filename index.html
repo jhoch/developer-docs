@@ -284,6 +284,9 @@
                     <a href="#asana-s-api-and-you" class="toc-h2 toc-link" data-title="Asana’s API and you">Asana’s API and you</a>
                   </li>
                   <li>
+                    <a href="#q-amp-a-response" class="toc-h2 toc-link" data-title="Q&amp;A Response">Q&amp;A Response</a>
+                  </li>
+                  <li>
                     <a href="#bot-examples" class="toc-h2 toc-link" data-title="Bot examples">Bot examples</a>
                   </li>
               </ul>
@@ -1270,7 +1273,7 @@ quickly look up the incident that caused the server error.</p>
 <p><br></br></p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Code</td><td>Meaning</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><strong>Success</strong></td><td>If data was requested, it will be available in the <code>data</code> field at the top level of the response body.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>201</td><td><strong>Created</strong> <br> <small>(for object creation)</small></td><td>Its information is available in the data field at the top level of the response body. The API URL where the object can be retrieved is also returned in the <code>Location</code> header of the response.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><strong>Bad Request</strong></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><strong>Unauthorized</strong></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>402</td><td><strong>Payment Required</strong></td><td>The request was valid, but the queried object or object mutation specified in the request is only available to premium organizations and workspaces.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><strong>Forbidden</strong></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><strong>Not Found</strong></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>429</td><td><strong>Too Many Requests</strong></td><td>You have exceeded one of the enforced rate limits in the API. See the <a href="/developers/documentation/getting-started/rate-limits">documentation on rate limiting</a> for more information.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>500</td><td><strong>Internal Server Error</strong></td><td>There was a problem on Asana&#39;s end.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>200</td><td><strong>Success</strong></td><td>If data was requested, it will be available in the <code>data</code> field at the top level of the response body.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>201</td><td><strong>Created</strong> <br> <small>(for object creation)</small></td><td>Its information is available in the data field at the top level of the response body. The API URL where the object can be retrieved is also returned in the <code>Location</code> header of the response.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>400</td><td><strong>Bad Request</strong></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>401</td><td><strong>Unauthorized</strong></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>402</td><td><strong>Payment Required</strong></td><td>The request was valid, but the queried object or object mutation specified in the request is only available to premium organizations and workspaces.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>403</td><td><strong>Forbidden</strong></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>404</td><td><strong>Not Found</strong></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>429</td><td><strong>Too Many Requests</strong></td><td>You have exceeded one of the enforced rate limits in the API. See the <a href="#rate-limits">documentation on rate limiting</a> for more information.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>500</td><td><strong>Internal Server Error</strong></td><td>There was a problem on Asana&#39;s end.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table></div>
 <p><br></br></p>
 
 <p>In the event of an error, the response body will contain an errors field at the top level. This contains an array of at
@@ -1283,7 +1286,7 @@ least one error object, described below:</p>
 
 <p>Limits are allocated per authorization token. Different tokens will have independent limits.</p>
 
-<p>The <a href="/developers/documentation/getting-started/client-libraries">client libraries</a> respect the rate-limited responses and will wait the appropriate amount of time before automatically retrying the request, up to a configurable maximum number of retries.</p>
+<p>The <a href="#official-client-libraries">client libraries</a> respect the rate-limited responses and will wait the appropriate amount of time before automatically retrying the request, up to a configurable maximum number of retries.</p>
 
 <p><a name="standard"></a></p>
 <h3 id='standard-rate-limits'  >Standard Rate Limits</h3>
@@ -1312,7 +1315,7 @@ least one error object, described below:</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Domain type</td><td>Maximum requests per minute</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Free</td><td>150</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Premium</td><td>1500</td></tr></tr></tbody></table></div>
-<p>In addition, calls to the <a href="/developers/documentation/getting-started/search-api">search API</a> are limited to 60 requests per minute.</p>
+<p>In addition, calls to the <a href="#search-api">search API</a> are limited to 60 requests per minute.</p>
 
 <p>Although the quota is defined per minute, it is evaluated more frequently than once per minute, so you may not need to wait for a full minute before retrying your request. For requests rejected by this limiter, the <code>Retry-After</code> header has the result of this calculation.</p>
 
@@ -1472,7 +1475,7 @@ integrations from breaking, pagination is not enabled by default on
 providing the optional <strong>limit</strong> parameter in your query. We will be working to
 deprecate requests to these endpoints in the future.</p>
 
-<p>Note that all of Asana&#39;s official <a href="/developers/documentation/getting-started/client-libraries">client
+<p>Note that all of Asana&#39;s official <a href="#official-client-libraries">client
 libraries</a> support
 pagination by default.</p>
 
@@ -1648,7 +1651,7 @@ mentioned in the <code>followers</code> field of the task or tasks returned. See
 <p><code>this.(followers|assignee).email</code> will match the <code>email</code> field of the <code>assignee</code> object or any of the <code>followers</code>.</p>
 <hr>
 <h2 id='custom-external-data'  >Custom External Data</h2>
-<p>Custom external data allows a client application to add app-specific metadata to <a href="/developers/api-reference/tasks">Tasks</a>
+<p>Custom external data allows a client application to add app-specific metadata to <a href="#asana-tasks">Tasks</a>
 in the API. The custom data includes a string id that can be used to retrieve objects and a data blob that can store
 character strings.</p>
 
@@ -1683,7 +1686,7 @@ so this should not be used for private user data.</p>
 <p>If a breaking change is required, the API team will provide a number of resources to help our developers get through the change:</p>
 
 <ul>
-<li>We will communicate early, and through a variety of channels. We recommend that you subscribe to our developer newsletter and join the <a href="https://community.asana.com/c/developersAPI">developers community forum</a>, and periodically check <a href="/developers/news">our blog</a>.</li>
+<li>We will communicate early, and through a variety of channels. We recommend that you subscribe to our developer newsletter and join the <a href="https://community.asana.com/c/developersAPI">developers community forum</a>.</li>
 <li>We will provide a clear description of the change, how it affects your requests, and a migration plan to follow to transition through the deprecation.</li>
 <li>We will designate a deprecation period during which you will be able to choose between both old and new behavior from the API, allowing you to test out the change without having to put your entire app at risk.</li>
 </ul>
@@ -1740,7 +1743,7 @@ Asana-Disable: a_third_change
 
 <p><a name="client-libraries" class="jump-anchor"></a></p>
 <h3 id='client-library-support'  >Client library support</h3>
-<p>The latest version of our <a href="/developers/documentation/getting-started/client-libraries">official client libraries</a> for Python, Java, PHP, and Javascript all support sending custom headers and are able to use our deprecations framework. Consult the individual libraries for how to send headers with each request.</p>
+<p>The latest version of our <a href="#official-client-libraries">official client libraries</a> for Python, Java, PHP, and Javascript all support sending custom headers and are able to use our deprecations framework. Consult the individual libraries for how to send headers with each request.</p>
 
 <p><a name="active-deprecations" class="jump-anchor"></a></p>
 <h3 id='active-deprecations'  >Active deprecations</h3>
@@ -1792,12 +1795,13 @@ Asana-Disable: a_third_change
 <p>Check out some examples of integrations we&#39;ve built on Asana below:</p>
 
 <ul>
-<li><a href="/developers/documentation/examples-tutorials/reminder-bot" title="Reminder bot">Reminder Bot</a> - don&#39;t let a task slip away!</li>
-<li><a href="/developers/documentation/examples-tutorials/q-a-response" title="Workflow automation">Q&amp;A Response Times</a> - measure goals and maintain a consistent process.</li>
+<li><a href="#triage-bot" title="Triage bot">Triage Bot</a></li>
+<li><a href="#bot-examples" title="Reminder bot">Reminder Bot</a> - don&#39;t let a task slip away!</li>
+<li><a href="#q-a-response" title="Workflow automation">Q&amp;A Response Times</a> - measure goals and maintain a consistent process.</li>
 </ul>
 <h3 id='learn-more-or-submit-an-app-you-39-ve-built'  >Learn more or submit an app you&#39;ve built</h3>
-<p>Read more on how to <a href="/developers/documentation/getting-started/quick-start" title="Quick start">get started</a> building on Asana or <a href="/apps/submit">submit an app</a> to add to our <a href="/apps">apps page</a>.</p>
-<h3 id='q-amp-a-response'  >Q&amp;A Response</h3>
+<p>Read more on how to <a href="#quick-start" title="Quick start">get started</a> building on Asana or <a href="https://asana.com/apps/submit">submit an app</a> to add to our <a href="https://asana.com/apps">apps page</a>.</p>
+<h2 id='q-amp-a-response'  >Q&amp;A Response</h2>
 <p>Asana&#39;s API enables customization and automation of your organization’s workflow through scripts built to specialize your use of Asana. Using Asana to track your work and leveraging Asana’s API to automate your processes is a powerful combination which can make your team much more efficient. Here&#39;s one example of how we do it at Asana.</p>
 <h3 id='tracking-timely-responses-to-support-questions'  >Tracking timely responses to support questions</h3>
 <p>Asana’s developer relations team manages technical support for our API through a number of channels: support tickets, questions about our API and integrations forwarded on from our colleagues, the <a href="https://community.asana.com/c/developersAPI" title="Asana Developer Community">Asana Community&#39;s Developer category</a>, Stack Overflow, pull requests and bug reports from open-source GitHub projects like our <a href="/developers/documentation/getting-started/client-libraries" title="Official Asana client libraries">client libraries</a>, and more. Staying on top of all of these channels can be daunting, but we want our users to reach us however works best for them. At the same time, we want to isolate the noisiness of incoming requests for our colleagues at Asana who are involved with only one channel.</p>
@@ -1811,7 +1815,7 @@ Asana-Disable: a_third_change
 <ul>
 <li>Maintain clarity amongst our teams by tracking work in Asana.</li>
 <li>Have only one place we have to look to stay in the loop.</li>
-<li>Ensure that no questions get missed, i.e. a <a href="/developers/documentation/examples-tutorials/reminder-bot" title="Reminder Bot">reminder bot</a>.</li>
+<li>Ensure that no questions get missed, i.e. a <a href="#bot-examples" title="Reminder Bot">reminder bot</a>.</li>
 <li>Let our API users know that they&#39;ve been heard in a timely fashion.</li>
 <li>Track our performance in remaining responsive.</li>
 <li>Automate some of the bookkeeping required to maintain a consistent workflow.</li>
@@ -1822,12 +1826,12 @@ Asana-Disable: a_third_change
 
 <ol>
 <li>Integrate with external sources to put incoming questions into Asana, one project per channel.</li>
-<li>Add question tasks from each incoming project into a <a href="/guide/help/tasks/fields#gl-multi-home" title="Multi-Home">single combined project.</a></li>
+<li>Add question tasks from each incoming project into a <a href="https://asana.com/guide/help/tasks/fields#gl-multi-home" title="Multi-Home">single combined project.</a></li>
 <li>Acknowledge a question has been received and begin tracking response times.</li>
 <li>Upon first response, complete a task to signal relevant followers that we&#39;ve reached out.</li>
 </ol>
 <h3 id='maintain-focus'  >Maintain focus</h3>
-<p>We use <a href="/developers/api-reference/webhooks" title="Webhooks documentation">webhooks</a> to get notified in near-real time when new tasks are created in any of several Asana projects, one per incoming channel. Some of these projects are automatically synced with outside sources, others are available for our coworkers to create tasks in. Keeping tasks in their source channel helps keep us organized for where to go to respond. These projects are what our colleagues follow in order to remain focused on their own channels. </p>
+<p>We use <a href="#asana-webhooks" title="Webhooks documentation">webhooks</a> to get notified in near-real time when new tasks are created in any of several Asana projects, one per incoming channel. Some of these projects are automatically synced with outside sources, others are available for our coworkers to create tasks in. Keeping tasks in their source channel helps keep us organized for where to go to respond. These projects are what our colleagues follow in order to remain focused on their own channels. </p>
 
 <p>Our script responds to these webhook notifications from each project by adding these tasks into a single &quot;Developer Questions&quot; project. Our developer relations team can then see all outstanding questions about our API in a single place. This is a key part of hitting our service level agreement (SLA) goals: not having to cycle through many projects and channels to see how we&#39;re progressing.</p>
 <h3 id='ensure-timely-responses'  >Ensure timely responses</h3>
@@ -1841,7 +1845,7 @@ Asana-Disable: a_third_change
 
 <p>Over time, we&#39;ve continuously tweaked how our integration behaves to evolve our process, empowering us to adjust and iterate our approach. This is one of the key opportunities that Asana&#39;s API provides: ownership and control over how work gets done. Incremental improvements provide the chance to try out new workflows and settle on one that works well for everyone, leading to a more consistent and customized experience of using Asana.</p>
 
-<p>To get started, check out our <a href="/developers/documentation/getting-started/quick-start" title="Quick Start">quick start</a> page for an overview of Asana&#39;s API. For support or to generate ideas of how your team can work more effectively with Asana, head to the <a href="https://community.asana.com/c/developersAPI" title="Asana Developers Community">Asana Community</a> to chat with Asana team members and users!</p>
+<p>To get started, check out our <a href="#quick-start" title="Quick Start">quick start</a> page for an overview of Asana&#39;s API. For support or to generate ideas of how your team can work more effectively with Asana, head to the <a href="https://community.asana.com/c/developersAPI" title="Asana Developers Community">Asana Community</a> to chat with Asana team members and users!</p>
 
 <hr>
 <h2 id='bot-examples'  >Bot examples</h2><h3 id='reminder-bot'  >Reminder bot</h3>
@@ -1917,7 +1921,7 @@ Asana-Disable: a_third_change
 
 <p>After requesting information from the API, you will receive a resposne in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format, which can be read and understood by both humans and computers. It&#39;s structured in a particular way so programs can rely on a consistent format for the data.</p>
 
-<p>Our API is documented for what resources are available and what sort of return data to expect.  For example, here are the <a href="/#get-a-user">docs for the <code>/users</code> endpoint</a> which we just called. This is where you can discover what&#39;s possible with our API.</p>
+<p>Our API is documented for what resources are available and what sort of return data to expect.  For example, here are the <a href="#get-a-user">docs for the <code>/users</code> endpoint</a> which we just called. This is where you can discover what&#39;s possible with our API.</p>
 
 <p>Now, let’s make the same call to <code>/users/me</code> more like software would. Before we do so, we’ll need to get access outside of your web browser to the API.</p>
 
@@ -1927,7 +1931,7 @@ Asana-Disable: a_third_change
 
 <p>If you want to write a script that interacts with the Asana API, the easiest method is to get a Personal Access Token (PAT), which you can think of as your unique password for accessing the API.</p>
 <h3 id='app-or-pat'  >App or PAT?</h3>
-<p>If your app needs to perform actions on behalf of users, you should use <a href="https://asana.com/developers/documentation/getting-started/auth">OAuth</a>.</p>
+<p>If your app needs to perform actions on behalf of users, you should use <a href="#oauth">OAuth</a>.</p>
 
 <p><strong>Getting a Personal Access Token (PAT)</strong></p>
 
@@ -1990,7 +1994,7 @@ Asana-Disable: a_third_change
 
 <p>You’re ready to start coding!</p>
 
-<p>Asana has <a href="/#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
+<p>Asana has <a href="#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
 
 <p><hr class="full-line"></p>
 <h1 id='quick-start'  >Quick Start</h1><h2 id='triage-bot'  >Triage Bot</h2>
@@ -2033,7 +2037,7 @@ https://app.asana.com/api/1.0/users/me/workspaces.</p>
 <blockquote>
 <p>Get your access token and use it to create an Asana client. At the time of writing this guide, the Asana API is going 
 through two deprecations (moving to string gids and changing how sections function). You can learn about our 
-<a href="https://asana.com/developers/documentation/getting-started/deprecations">deprecations framework in our docs</a>. 
+<a href="#deprecations">deprecations framework in our docs</a>. 
 To prevent my app from breaking when the deprecations are finalized, I&#39;m passing headers to enable the new API 
 behavior for string gids and sections. We will also set a delay to determine how quickly our parallel requests are sent.</p>
 </blockquote>
@@ -2090,7 +2094,7 @@ function to keep running the script until there are no more unassigned tasks.</p
 <p>Our final function will take the array of unassigned tasks and round-robin assign them to the group of shuffled 
 designers from the config file. We will use an interval to loop so we can control the speed of the requests. 
 You can change the delay with the const you declared earlier. This is a balance between speed and staying within our 
-<a href="https://asana.com/developers/documentation/getting-started/rate-limits#concurrent">concurrent request limit</a>. 
+<a href="#concurrent-request-limits">concurrent request limit</a>. 
 In node, a normal loop would send all requests at once, which doesn’t work in larger projects.</p>
 </blockquote>
 <pre class="highlight javascriptjavascript"><code><span class="kd">function</span> <span class="nx">randomAssigner</span><span class="p">(</span><span class="nx">unassignedTasks</span><span class="p">)</span> <span class="p">{</span>
@@ -2138,21 +2142,21 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 <p>Before we get started, here are some helpful links for building on the Asana API:</p>
 
 <ul>
-<li><a href="https://asana.com/developers/api-reference">Asana API reference docs</a></li>
-<li><a href="https://asana.com/developers/documentation/examples-tutorials/overview">Asana longform documentation</a></li>
+<li><a href="#asana">Asana API reference docs</a></li>
+<li><a href="#why-use-asana-39-s-api">Asana longform documentation</a></li>
 <li><a href="https://forum.asana.com/c/developersAPI">Asana developer community</a> -- if you get blocked or have a question about the API, there are devs in our community that are eager to help. We also post API updates and news to the community forum.</li>
 <li>The <a href="https://github.com/Asana/devrel-examples/tree/master/javascript/triage_bot">code for this bot on Github</a></li>
 </ul>
 <h3 id='create-your-bot-user-in-asana'  >Create your bot user in Asana</h3>
 <p>Create a new Asana account for your bot (<a href="https://asana.com/guide/help/organizations/members#gl-invite">instructions for inviting users</a>). You want to create a distinct Asana account for your bot because any action it takes in Asana will be attributed to this user. Give your bot a name and photo that will be recognizable to users in Asana that encounter it. Note that if your bot is a guest member in Asana that it will need to be added to every project you need it to work in. Bots based on guest Asana accounts will also not have access to some API features such as defining new custom fields or modifying their settings.</p>
 <h3 id='authenticating-your-bot'  >Authenticating your bot</h3>
-<p>We will authenticate our bot using a <a href="https://asana.com/developers/documentation/getting-started/auth#personal-access-token">Personal Access Token (PAT)</a>. Log in to the Asana account that will be used for the bot and navigate to the developer console. You can get to your dev console by either using this URL https://app.asana.com/-/developer_console or from within Asana by clicking your photo icon in the upper right of Asana -&gt; My Profile Settings -&gt; Apps -&gt; Manage Developer Apps.</p>
+<p>We will authenticate our bot using a <a href="#personal-access-token">Personal Access Token (PAT)</a>. Log in to the Asana account that will be used for the bot and navigate to the developer console. You can get to your dev console by either using this URL https://app.asana.com/-/developer_console or from within Asana by clicking your photo icon in the upper right of Asana -&gt; My Profile Settings -&gt; Apps -&gt; Manage Developer Apps.</p>
 
 <p>Next, click “+ New access token” and follow the instructions to get your token. Treat this token like a username and password. Don’t share it with anyone and never publish it to a public repository. I like to save my PAT as an environment variable (here are instructions on <a href="https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255">how to do this on Mac</a>). For this guide, I’ve saved a PAT as an env variable called <code>triage_bot_pat</code>.</p>
 <h3 id='create-an-asana-sandbox'  >Create an Asana sandbox</h3>
 <p>Before we start coding, <a href="https://asana.com/guide/help/projects/basics#gl-create">create a project in Asana</a> to use as a sandbox. While not required, I like to <a href="https://asana.com/guide/help/permissions/project-permissions#gl-private-project">set the project to private</a> while developing. To get some users in the project, add your main Asana user as well as your bot account. You could also invite a personal email as a guest user.</p>
 <h3 id='choose-an-asana-client-library'  >Choose an Asana client library</h3>
-<p>The Asana API has <a href="https://asana.com/developers/documentation/getting-started/client-libraries">SDKs in several popular languages</a>. For most developers, we recommend using one of our client libraries because they help with some of the complexities of using an API such as authentication, pagination, and deprecations. </p>
+<p>The Asana API has <a href="#official-client-libraries">SDKs in several popular languages</a>. For most developers, we recommend using one of our client libraries because they help with some of the complexities of using an API such as authentication, pagination, and deprecations. </p>
 
 <p>For this guide, we will use the <a href="https://github.com/Asana/node-asana">Asana Node client library</a>, however, you can follow along in any language of your choice. </p>
 
@@ -2173,7 +2177,7 @@ and code with explainations along the way.</p>
 
 <p>To see this approach in the wild, checkout <a href="https://github.com/Asana/ohmega">Ohmega</a>, an automation framework we created. Here’s the <a href="https://github.com/Asana/ohmega/blob/master/ohmega/services/configuration_service.py">configuration service</a> that reads a tree of tasks for its configuration. </p>
 <h3 id='use-webhooks-for-real-time-triaging'  >Use webhooks for real-time triaging</h3>
-<p>If you need your bot to react to changes in real time, then you’ll need to use <a href="https://asana.com/developers/api-reference/webhooks">webhooks</a>. We built a <a href="https://github.com/Asana/devrel-examples/tree/master/python/webhooks">python webhook inspector</a> to help developers get started using Asana webhooks. </p>
+<p>If you need your bot to react to changes in real time, then you’ll need to use <a href="#asana-webhooks">webhooks</a>. We built a <a href="https://github.com/Asana/devrel-examples/tree/master/python/webhooks">python webhook inspector</a> to help developers get started using Asana webhooks. </p>
 
 <hr>
 <h2 id='python-hello-world'  >Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
