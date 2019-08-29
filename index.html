@@ -1558,19 +1558,17 @@ the response.</p>
 </blockquote>
 <pre class="highlight plaintext"><code>?opt_pretty
 ?opt_fields=followers,assignee
-?opt_expand=followers
 </code></pre>
 <blockquote>
 <p>PUT or POST body options</p>
 </blockquote>
 <pre class="highlight plaintext"><code>options: { 
   pretty: true,
-  fields: ["followers", "assignee"],
-  expand: ["followers"]
+  fields: ["followers", "assignee"]
 }
 </code></pre><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Option</td><td>Description</td><td>Notes</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>pretty</strong></td><td>Provides the response in &quot;pretty&quot; output. In the case of JSON this means doing proper line breaking and indentation to make it readable. This will take extra time and increase the response size so it is advisable only to use this during debugging.</td><td></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>fields</strong></td><td>Some requests return <em>compact</em> representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as <a href="/developers/documentation/getting-started/input-output-options#paths">paths</a>, described below.</td><td>The id of included objects will always be returned, regardless of the field options.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>expand</strong></td><td>Query results and sub-objects are returned in <em>compact</em> form by default. This option can be used to expand query results or sub-objects to return more detailed information. Be sure you really need the information in the expanded form, as executing a query with many results in expanded form can be costly and return you a lot of data to consume.</td><td>If the <code>fields</code> option is also used, it will take precedence over the expand option and prevent expansion.</td></tr></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>pretty</strong></td><td>Provides the response in &quot;pretty&quot; output. In the case of JSON this means doing proper line breaking and indentation to make it readable. This will take extra time and increase the response size so it is advisable only to use this during debugging.</td><td></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>fields</strong></td><td>Some requests return <em>compact</em> representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as <a href="/developers/documentation/getting-started/input-output-options#paths">paths</a>, described below.</td><td>The id of included objects will always be returned, regardless of the field options.</td></tr></tr></tbody></table></div>
 <p><strong>Default output</strong></p>
 
 <p># Request
@@ -1610,19 +1608,19 @@ the response.</p>
       }
     }</p>
 
-<p><strong>Reassign task, expanding projects in output</strong></p>
+<p><strong>Reassign task, opting for projects in output</strong></p>
 
 <p># Request
     curl --request PUT -H &quot;Authorization: Bearer <personal_access_token>&quot; https://app.asana.com/api/1.0/tasks/1001 \
     -d &quot;assignee=1234&quot; \
-    -d &quot;opt_expand=%2Aprojects%2A&quot;</p>
+    -d &quot;opt_fields=%2Aprojects%2A&quot;</p>
 
 <p># Alternative request using JSON
     curl --request PUT -H &quot;Authorization: Bearer <personal_access_token>&quot; -H &quot;Content-Type: application/json&quot; \
     https://app.asana.com/api/1.0/tasks/1001 -d \
     &#39;{
         &quot;data&quot;: { &quot;assignee&quot;: 1234 },
-        &quot;options&quot;: { &quot;expand&quot;: &quot;projects&quot; }
+        &quot;options&quot;: { &quot;fields&quot;: &quot;projects&quot; }
     }&#39;</p>
 
 <p># Response
@@ -1663,7 +1661,7 @@ the response.</p>
   }]
 }
 </code></pre>
-<p>Some output options allow you to reference fields of objects to include or expand in the response.
+<p>Some output options allow you to reference fields of objects to include in the response.
 The way to specify a field is by <em>path</em>. A path is made up of a sequence of <em>terms</em> separated by the dot (<code>.</code>)
 operator. It takes the form <code>this.a.b</code>… where <em>this</em> refers to an object returned at the top level of the response,
 <em>a</em> the name of a field on a root object, <em>b</em> a field on a child object referred to by <em>a</em>, and so on.</p>
