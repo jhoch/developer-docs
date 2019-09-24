@@ -302,6 +302,9 @@
                   <li>
                     <a href="#accessing-the-api-in-the-terminal" class="toc-h2 toc-link" data-title="Accessing the API in the Terminal">Accessing the API in the Terminal</a>
                   </li>
+                  <li>
+                    <a href="#accessing-the-api-with-postman" class="toc-h2 toc-link" data-title="Accessing the API with Postman">Accessing the API with Postman</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2018,12 +2021,43 @@ Asana-Disable: a_third_change
 <p>Asana has <a href="#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
 
 <p><hr class="full-line"></p>
-<h3 id='accessing-the-api-with-postman'  >Accessing the API with Postman</h3>
+<h2 id='accessing-the-api-with-postman'  >Accessing the API with Postman</h2>
 <blockquote>
-<p>Download Postman</p>
+  <div class="postman-run-button"
+  data-postman-action="collection/import"
+  data-postman-var-1="574927885441306fec13"></div>
+  <script type="text/javascript">
+    (function (p,o,s,t,m,a,n) {
+      !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+      !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+        (n = o.createElement("script")),
+        (n.id = s+t), (n.async = 1), (n.src = m), n
+      ));
+    }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+  </script>
 </blockquote>
 
-<p>You can quickly get started on Asana&#39;s API with the Postman App. We have a collection that you can pull from </p>
+<p>You can quickly get started on Asana&#39;s API with the <a href="/explorer">API Explorer</a>. However, if you want a more robust experience hitting the API, we recommend using Postman. You can get started with the &#39;Run in Postman&#39; button!</p>
+
+<p>Once you have the collection, you should <a href="https://learning.getpostman.com/docs/postman/environments_and_globals/manage_environments/">create an environment</a>.</p>
+
+<p>You&#39;ll want to set:</p>
+
+<ol>
+<li><code>authentication_token</code> to a PAT. If you don&#39;t have one yet, visit our <a href="#authentication-quick-start">Authentication Quick Start</a></li>
+<li><code>workspace</code> to your workspace&#39;s gid, you can find via a logged-in browser by going to https://app.asana.com/api/1.0/users/me/workspaces, or you can hit that endpoint using your PAT</li>
+<li>any other gids you want to easily access.
+
+<ol>
+<li>For example, in my Postman. I set <code>task</code> to the gid of a task I regularly test with, <code>project</code> to a the gid of a private sandbox project, and <code>user</code> to the string &#39;me&#39;.</li>
+</ol></li>
+</ol>
+
+<p>No need to edit your environment for requests on different objects, simply navigate to the endpoint you want to use, and change the <code>{{object}}</code> to any gid you want.</p>
+
+<p>Importing this collection gives you a snapshot of the API at this time. To stay up to date with API changes, you&#39;ll have to re-import the collection by hitting the &#39;Run in Postman&#39; button, and choosing to override your existing collection. This means if you want to save custom requests, you should do so in a different collection.</p>
+
+<p><hr class="full-line"></p>
 <h1 id='quick-start'  >Quick Start</h1><h2 id='triage-bot'  >Triage Bot</h2>
 <blockquote>
 <p>We will use a very basic file structure for the purposes of this guide. Start by making a project directory, moving into it, and running <code>npm init</code>.</p>
@@ -2400,7 +2434,7 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/attachments/12357 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/attachments/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -2442,7 +2476,7 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/124816/attachments <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/tasks/321654/attachments <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -2455,7 +2489,7 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <h3 id="get-attachments-for-a-task-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -2481,7 +2515,7 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/124816/attachments <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/tasks/321654/attachments <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: multipart/form-data; boundary=---011000010111000001101001'</span> <span class="se">\</span>
@@ -2518,7 +2552,7 @@ in order for the server to reliably and properly handle the request.</p>
 <h3 id="upload-an-attachment-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The file you want to upload.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div><h4 id='detailed-descriptions'  >Detailed descriptions</h4>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The file you want to upload.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div><h4 id='detailed-descriptions'  >Detailed descriptions</h4>
 <p><strong>body</strong>: The file you want to upload.</p>
 
 <p><em>Note when using curl:</em></p>
@@ -2797,7 +2831,7 @@ A custom field’s type must be one of ‘text’, ‘enum’, or ‘number’.<
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/124578 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -2853,7 +2887,7 @@ type-specific custom field definitions.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/124578 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -2929,7 +2963,7 @@ Returns the complete updated custom field record.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/124578 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -2964,7 +2998,7 @@ Returns an empty data record.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/1331/custom_fields <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/workspaces/12345/custom_fields <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -2977,7 +3011,7 @@ Returns an empty data record.</p>
 <h3 id="get-a-workspace's-custom-fields-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>The workspace or organization to find custom field definitions in.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -3011,7 +3045,7 @@ Returns an empty data record.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/124578/enum_options <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/custom_fields/12345/enum_options <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -3067,7 +3101,7 @@ Returns the full record of the newly created enum option.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/124578/enum_options/insert <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/custom_fields/12345/enum_options/insert <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -3186,7 +3220,7 @@ Returns the full record of the updated enum option.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/13579/custom_field_settings <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/projects/1331/custom_field_settings <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -3199,7 +3233,7 @@ Returns the full record of the updated enum option.</p>
 <h3 id="get-a-project's-custom-fields-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>The ID of the project for which to list custom field settings.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -3228,7 +3262,7 @@ Returns the full record of the updated enum option.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/13579/custom_field_settings <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/portfolios/12345/custom_field_settings <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -3241,7 +3275,7 @@ Returns the full record of the updated enum option.</p>
 <h3 id="get-a-portfolio's-custom-fields-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>The ID of the portfolio for which to list custom field settings.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>portfolio_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the portfolio.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -3481,7 +3515,7 @@ for large Organizations.</li>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/organization_exports/133549 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/organization_exports/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -5841,7 +5875,7 @@ only board views.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/1234 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -5854,7 +5888,7 @@ only board views.</p>
 <h3 id="get-a-story-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>The globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -6019,7 +6053,7 @@ only board views.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/1234 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -6099,7 +6133,7 @@ only board views.</p>
 <h3 id="update-a-story-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemastoryobject">StoryObject</a></td><td>true</td><td>The comment story to update.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>The globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemastoryobject">StoryObject</a></td><td>true</td><td>The comment story to update.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -6264,7 +6298,7 @@ only board views.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/1234 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -6279,7 +6313,7 @@ only board views.</p>
 <h3 id="delete-a-story-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>The globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>story_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the story.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -6312,7 +6346,7 @@ only board views.</p>
 <h3 id="get-stories-from-a-task-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to get stories from.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -6447,7 +6481,7 @@ request.</p>
 <h3 id="create-a-comment-on-a-task-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The comment story to create.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  task</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  text</td><td>body</td><td>string</td><td>true</td><td>The plain text of the comment to add.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to get stories from.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The comment story to create.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  task</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  text</td><td>body</td><td>string</td><td>true</td><td>The plain text of the comment to add.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>201 Response</p>
 </blockquote>
@@ -6888,7 +6922,7 @@ you last retrieved the task.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/1331/tags <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/workspaces/12345/tags <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -6901,7 +6935,7 @@ you last retrieved the task.</p>
 <h3 id="get-tags-in-a-workspace-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>The workspace to filter tags on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -6934,7 +6968,7 @@ you last retrieved the task.</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/1331/tags <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/workspaces/12345/tags <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -6969,7 +7003,7 @@ organization.</p>
 <h3 id="create-a-tag-in-a-workspace-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schematagobject">TagObject</a></td><td>true</td><td>The tag to create.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>The workspace to filter tags on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schematagobject">TagObject</a></td><td>true</td><td>The tag to create.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -7030,7 +7064,7 @@ organization.</p>
 <h3 id="get-multiple-tasks-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>assignee</td><td>query</td><td>string(email)</td><td>false</td><td>The assignee to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project</td><td>query</td><td>string</td><td>false</td><td>The project to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section</td><td>query</td><td>string</td><td>false</td><td>The section to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>string</td><td>false</td><td>The workspace to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>completed_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that are either incomplete or that have been completed since this time.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>modified_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that have been modified since the given time.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div><h4 id='detailed-descriptions-3'  >Detailed descriptions</h4>
+</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>assignee</td><td>query</td><td>string</td><td>false</td><td>The assignee to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project</td><td>query</td><td>string</td><td>false</td><td>The project to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section</td><td>query</td><td>string</td><td>false</td><td>The section to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace</td><td>query</td><td>string</td><td>false</td><td>The workspace to filter tasks on.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>completed_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that are either incomplete or that have been completed since this time.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>modified_since</td><td>query</td><td>string(date-time)</td><td>false</td><td>Only return tasks that have been modified since the given time.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div><h4 id='detailed-descriptions-3'  >Detailed descriptions</h4>
 <p><strong>assignee</strong>: The assignee to filter tasks on.
 <em>Note: If you specify <code>assignee</code>, you must also specify the <code>workspace</code> to filter on.</em></p>
 
@@ -7128,7 +7162,7 @@ include assigning, renaming, completing, and adding stories.</em></p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["74362"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","parent":"12345","projects":["74362"],"start_on":"2012-03-26","tags":[{"...":"..."}],"workspace":"12345"}}'</span>
+  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["12345"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","parent":"12345","projects":["12345"],"start_on":"2012-03-26","tags":["12345"],"workspace":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks</code>
@@ -7158,19 +7192,17 @@ explicitly if you specify <code>projects</code> or a <code>parent</code> task in
       </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A blob of information"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"74362"</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"74362"</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -8032,7 +8064,7 @@ period of 30 days; afterward they are completely removed from the system.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["74362"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","projects":["74362"],"start_on":"2012-03-26","tags":[{"...":"..."}],"workspace":"12345"}}'</span>
+  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["12345"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","projects":["12345"],"start_on":"2012-03-26","tags":["12345"],"workspace":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/subtasks</code>
@@ -8056,18 +8088,16 @@ period of 30 days; afterward they are completely removed from the system.</p>
       </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A blob of information"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"74362"</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"74362"</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"12345"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -9305,7 +9335,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <h1 id="asana-teams">Teams</h1></p>
 
 <pre class="highlight http tab-http">
-<code><a href="#get-a-team"><span class="get-verb">GET</span> <span class=""nn>/teams/{team_gid}</span></a><br><a href="#get-teams-in-an-organization"><span class="get-verb">GET</span> <span class=""nn>/organizations/{organization_gid}/teams</span></a><br><a href="#get-teams-for-a-user"><span class="get-verb">GET</span> <span class=""nn>/users/{user_gid}/teams</span></a><br><a href="#add-a-user-to-a-team"><span class="post-verb">POST</span> <span class=""nn>/teams/{team_gid}/addUser</span></a><br><a href="#remove-a-user-from-a-team"><span class="post-verb">POST</span> <span class=""nn>/teams/{team_gid}/removeUser</span></a></code>
+<code><a href="#get-a-team"><span class="get-verb">GET</span> <span class=""nn>/teams/{team_gid}</span></a><br><a href="#get-teams-in-an-organization"><span class="get-verb">GET</span> <span class=""nn>/organizations/{workspace_gid}/teams</span></a><br><a href="#get-teams-for-a-user"><span class="get-verb">GET</span> <span class=""nn>/users/{user_gid}/teams</span></a><br><a href="#add-a-user-to-a-team"><span class="post-verb">POST</span> <span class=""nn>/teams/{team_gid}/addUser</span></a><br><a href="#remove-a-user-from-a-team"><span class="post-verb">POST</span> <span class=""nn>/teams/{team_gid}/removeUser</span></a></code>
 </pre>
 
 <p>A <em>team</em> is used to group related projects and people together within an organization. Each project in an organization is associated with a team.</p>
@@ -9318,7 +9348,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/14916 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/teams/159874 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -9358,12 +9388,12 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/organizations/1331/teams <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/organizations/12345/teams <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
 <p>
-<code> <span class="get-verb">GET</span> /organizations/{organization_gid}/teams</code>
+<code> <span class="get-verb">GET</span> /organizations/{workspace_gid}/teams</code>
 </p>
 
 <p>Returns the compact records for all teams in the organization visible to the authorized user.</p>
@@ -9371,7 +9401,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <h3 id="get-teams-in-an-organization-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>organization_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>workspace_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -9400,7 +9430,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/users/user%40example.com/teams?organization_gid=1331'</span> <span class="se">\</span>
+  --url <span class="s1">'https://app.asana.com/api/1.0/users/string/teams?organization_gid=1331'</span> <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -9413,7 +9443,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <h3 id="get-teams-for-a-user-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user_gid</td><td>path</td><td>string(email)</td><td>true</td><td>An identifier for the user. Can be one of an email address, the globally unique identifier for the user, or the keyword <code>me</code> to indicate the current user making the request.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>organization_gid</td><td>query</td><td>string</td><td>true</td><td>The workspace or organization to filter teams on.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>user_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the user.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>organization_gid</td><td>query</td><td>string</td><td>true</td><td>The workspace or organization to filter teams on.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -9442,7 +9472,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/string/addUser <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/teams/159874/addUser <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -9464,7 +9494,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <h3 id="add-a-user-to-a-team-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemauseridobject">UserIdObject</a></td><td>true</td><td>The user to add to the team.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>A globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemauseridobject">UserIdObject</a></td><td>true</td><td>The user to add to the team.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -9497,7 +9527,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/string/removeUser <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/teams/159874/removeUser <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -9519,7 +9549,7 @@ Requests to add/remove followers, if successful, will return the complete update
 <h3 id="remove-a-user-from-a-team-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemauseridobject">UserIdObject</a></td><td>true</td><td>The user to remove from the team.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>A globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td><a href="#schemauseridobject">UserIdObject</a></td><td>true</td><td>The user to remove from the team.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -9764,7 +9794,7 @@ Results are given in order (The same order as Asana&#39;s sidebar).</p>
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/string/users <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/teams/159874/users <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -9777,7 +9807,7 @@ Results are given in order (The same order as Asana&#39;s sidebar).</p>
 <h3 id="get-users-in-a-team-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>A globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>team_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the team.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -10215,7 +10245,7 @@ HTTP/1.1 201
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/webhooks/95784 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/webhooks/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -10228,7 +10258,7 @@ HTTP/1.1 201
 <h3 id="get-a-webhook-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>webhook_gid</td><td>path</td><td>string</td><td>true</td><td>The webhook to affect with the current operation.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>webhook_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the webhook.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -10258,7 +10288,7 @@ HTTP/1.1 201
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/webhooks/95784 <span class="se">\</span>
+  --url https://app.asana.com/api/1.0/webhooks/12345 <span class="se">\</span>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span>
 </code></pre>
@@ -10271,7 +10301,7 @@ HTTP/1.1 201
 <h3 id="delete-a-webhook-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>webhook_gid</td><td>path</td><td>string</td><td>true</td><td>The webhook to affect with the current operation.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>webhook_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the webhook.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
