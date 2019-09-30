@@ -3475,7 +3475,7 @@ for large Organizations.</li>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"organization":"1331"}'</span>
+  --data <span class="s1">'{"data":{"organization":"1331"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /organization_exports</code>
@@ -3487,13 +3487,15 @@ for large Organizations.</li>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1331"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1331"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="create-an-organization-export-request-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The organization to export.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  organization</td><td>body</td><td>string</td><td>false</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The organization to export.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   organization</td><td>body</td><td>string</td><td>false</td><td>Globally unique identifier for the workspace or organization.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>limit</td><td>query</td><td>integer</td><td>false</td><td>Results per page.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>offset</td><td>query</td><td>string</td><td>false</td><td>Offset token.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>201 Response</p>
 </blockquote>
@@ -5454,7 +5456,7 @@ supply a team to share the project with.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"project":"123456","text":"The project is on track to ship next month!","color":"green"}'</span>
+  --data <span class="s1">'{"data":{"project":"123456","text":"The project is on track to ship next month!","color":"green"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/project_statuses</code>
@@ -5467,15 +5469,17 @@ Returns the full record of the newly created project status update.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The project is on track to ship next month!"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The project is on track to ship next month!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"green"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="create-a-project-status-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The project status to create.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  project</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  text</td><td>body</td><td>string</td><td>true</td><td>The text of the project status update.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  color</td><td>body</td><td>any</td><td>true</td><td>The color to associate with the status update.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr></tbody></table></div><h4 id='enumerated-values-4' class="enumerated-values" onclick="$(this).next().toggle(); $(this).toggleClass('expanded');">Enumerated Values<div class='chevron'>&rarr;</div></h4><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The project status to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   project</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   text</td><td>body</td><td>string</td><td>true</td><td>The text of the project status update.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   color</td><td>body</td><td>any</td><td>true</td><td>The color to associate with the status update.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr></tbody></table></div><h4 id='enumerated-values-4' class="enumerated-values" onclick="$(this).next().toggle(); $(this).toggleClass('expanded');">Enumerated Values<div class='chevron'>&rarr;</div></h4><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Value</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>green</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>yellow</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>color</td><td>red</td></tr></tr></tbody></table></div>
 <blockquote>
@@ -5721,7 +5725,7 @@ the URL for that section.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"project":"13579","name":"Next Actions"}'</span>
+  --data <span class="s1">'{"data":{"project":"13579","name":"Next Actions"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/sections</code>
@@ -5734,14 +5738,16 @@ Returns the full record of the newly created section.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13579"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13579"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Next Actions"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="create-a-section-in-a-project-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The section to create.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  project</td><td>body</td><td>string</td><td>true</td><td>The project to create the section in</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  name</td><td>body</td><td>string</td><td>true</td><td>The text to be displayed as the section name. This cannot be an empty string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The section to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   project</td><td>body</td><td>string</td><td>true</td><td>The project to create the section in</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   name</td><td>body</td><td>string</td><td>true</td><td>The text to be displayed as the section name. This cannot be an empty string.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>201 Response</p>
 </blockquote>
@@ -6470,7 +6476,7 @@ only board views.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"task":"123456","text":"This is a comment."}'</span>
+  --data <span class="s1">'{"data":{"task":"123456","text":"This is a comment."}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/stories</code>
@@ -6486,14 +6492,16 @@ request.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment."</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a comment."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="create-a-comment-on-a-task-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The comment story to create.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  task</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  text</td><td>body</td><td>string</td><td>true</td><td>The plain text of the comment to add.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The comment story to create.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   task</td><td>body</td><td>string</td><td>true</td><td>Globally unique identifier for the task.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   text</td><td>body</td><td>string</td><td>true</td><td>The plain text of the comment to add.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>task_gid</td><td>path</td><td>string</td><td>true</td><td>The task to operate on.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>201 Response</p>
 </blockquote>
@@ -9488,7 +9496,7 @@ Requests to add/remove followers, if successful, will return the complete update
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"user":"14641"}'</span>
+  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /teams/{team_gid}/addUser</code>
@@ -9500,7 +9508,9 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14641"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="add-a-user-to-a-team-parameters">Parameters</h3>
@@ -9543,7 +9553,7 @@ Requests to add/remove followers, if successful, will return the complete update
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"user":"14641"}'</span>
+  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /teams/{team_gid}/removeUser</code>
@@ -9555,7 +9565,9 @@ Requests to add/remove followers, if successful, will return the complete update
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14641"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="remove-a-user-from-a-team-parameters">Parameters</h3>
@@ -10167,7 +10179,7 @@ verify that the endpoint is available.</li>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"resource":"12345","target":"https://example.com/receive-webhook/7654"}'</span>
+  --data <span class="s1">'{"data":{"resource":"12345","target":"https://example.com/receive-webhook/7654"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /webhooks</code>
@@ -10220,14 +10232,16 @@ HTTP/1.1 201
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/receive-webhook/7654"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/receive-webhook/7654"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="establish-a-webhook-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The webhook workspace and target.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  resource</td><td>body</td><td>string</td><td>true</td><td>A resource ID to subscribe to. The resource can be a task or project.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  target</td><td>body</td><td>string(uri)</td><td>true</td><td>The URL to receive the HTTP POST.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The webhook workspace and target.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   resource</td><td>body</td><td>string</td><td>true</td><td>A resource ID to subscribe to. The resource can be a task or project.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   target</td><td>body</td><td>string(uri)</td><td>true</td><td>The URL to receive the HTTP POST.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>201 Response</p>
 </blockquote>
@@ -10492,7 +10506,7 @@ Returns the complete, updated workspace record.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"user":"14641"}'</span>
+  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/addUser</code>
@@ -10505,7 +10519,9 @@ The user can be referenced by their globally unique user ID or their email addre
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14641"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="add-a-user-to-a-workspace-or-organization-parameters">Parameters</h3>
@@ -10552,7 +10568,7 @@ The user can be referenced by their globally unique user ID or their email addre
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"user":"14641"}'</span>
+  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/removeUser</code>
@@ -10566,7 +10582,9 @@ Returns an empty data record.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14641"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="remove-a-user-from-a-workspace-or-organization-parameters">Parameters</h3>
