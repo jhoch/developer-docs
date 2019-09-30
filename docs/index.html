@@ -5775,7 +5775,7 @@ Returns the full record of the newly created section.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"task":"123456","insert_before":"86420","insert_after":"987654"}'</span>
+  --data <span class="s1">'{"data":{"task":"123456","insert_before":"86420","insert_after":"987654"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /sections/{section_gid}/addTask</code>
@@ -5791,15 +5791,17 @@ Returns the full record of the newly created section.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"insert_before"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86420"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"insert_after"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"task"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insert_before"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86420"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"insert_after"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="add-task-to-section-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The task and optionally the insert location.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  task</td><td>body</td><td>string</td><td>true</td><td>The task to add to this section.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  insert_before</td><td>body</td><td>string</td><td>true</td><td>An existing task within this section before which the added task should be inserted. Cannot be provided together with insert_after.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  insert_after</td><td>body</td><td>string</td><td>true</td><td>An existing task within this section after which the added task should be inserted. Cannot be provided together with insert_before.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section_gid</td><td>path</td><td>string</td><td>true</td><td>The globally unique identified for the section.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The task and optionally the insert location.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   task</td><td>body</td><td>string</td><td>true</td><td>The task to add to this section.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   insert_before</td><td>body</td><td>string</td><td>false</td><td>An existing task within this section before which the added task should be inserted. Cannot be provided together with insert_after.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   insert_after</td><td>body</td><td>string</td><td>false</td><td>An existing task within this section after which the added task should be inserted. Cannot be provided together with insert_before.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>section_gid</td><td>path</td><td>string</td><td>true</td><td>The globally unique identified for the section.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
@@ -5823,7 +5825,7 @@ Returns the full record of the newly created section.</p>
   --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"project":"123456","section":"321654","before_section":"86420","after_section":"987654"}'</span>
+  --data <span class="s1">'{"data":{"project":"123456","section":"321654","before_section":"86420","after_section":"987654"}}'</span>
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/sections/insert</code>
@@ -5843,16 +5845,18 @@ only board views.</p>
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321654"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"before_section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86420"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"after_section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654"</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321654"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"before_section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86420"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"after_section"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="move-sections-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The section&#39;s move action.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  project</td><td>body</td><td>string</td><td>true</td><td>The project in which to reorder the given section.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  section</td><td>body</td><td>string</td><td>true</td><td>The section to reorder.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  before_section</td><td>body</td><td>string</td><td>true</td><td>Insert the given section immediately before the section specified by this parameter.</td></tr></tr><tr class='c1 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>  after_section</td><td>body</td><td>string</td><td>true</td><td>Insert the given section immediately after the section specified by this parameter.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0 has-children'><td><div class='chevron'>&rarr;</div></td><td>body</td><td>body</td><td>object</td><td>true</td><td>The section&#39;s move action.</td></tr></tr><tr class='c1 hidden-row has-children'><td><div class='chevron'>&rarr;</div></td><td>  data</td><td>body</td><td>object</td><td>false</td><td>none</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   project</td><td>body</td><td>string</td><td>true</td><td>The project in which to reorder the given section.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   section</td><td>body</td><td>string</td><td>true</td><td>The section to reorder.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   before_section</td><td>body</td><td>string</td><td>false</td><td>Insert the given section immediately before the section specified by this parameter.</td></tr></tr><tr class='c2 hidden-row'><td><div class='chevron'>&rarr;</div></td><td>   after_section</td><td>body</td><td>string</td><td>false</td><td>Insert the given section immediately after the section specified by this parameter.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>project_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the project.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><div class='chevron'>&rarr;</div></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <blockquote>
 <p>200 Response</p>
 </blockquote>
