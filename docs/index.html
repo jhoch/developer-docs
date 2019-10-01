@@ -1514,6 +1514,31 @@ integrations from breaking, pagination is not enabled by default on
 providing the optional <strong>limit</strong> parameter in your query. We will be working to
 deprecate requests to these endpoints in the future.</p>
 
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.asana.com/api/1.0/tasks?project=1337&amp;limit=5&amp;offset=eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer &lt;personal_access_token&gt;"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task 1"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"next_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/tasks?project=1337&amp;limit=5&amp;offset=yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.asana.com/api/1.0/tasks?project=1337&amp;limit=5&amp;offset=yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Note that all of Asana&#39;s official <a href="#official-client-libraries">client
 libraries</a> support
 pagination by default.</p>
@@ -1531,39 +1556,8 @@ you paginate all requests to the API.</p>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Limit</td><td><code>20</code> The number of objects to return per page. The value must be between 1 and 100.</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Offset</td><td><code>eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9</code> An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. <br><br><strong>Note:</strong> You can only pass in an offset that was returned to you via a previously paginated request.</td></tr></tr></tbody></table></div>
 <p><strong>This method returns paginated results for tasks from a project.</strong></p>
-
-<p># Request
-    curl &quot;https://app.asana.com/api/1.0/tasks?project=1337&amp;limit=5&amp;offset=eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9&quot; \
-      -H &quot;Authorization: Bearer <personal_access_token>&quot;</p>
-
-<p># Response
-    {
-      &quot;data&quot;: [
-        {
-          &quot;id&quot;: 1000,
-          &quot;name&quot;: &quot;Task 1&quot;,
-          ...
-        },
-        ...
-      ],
-      &quot;next_page&quot;: {
-        &quot;offset&quot;: &quot;yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9&quot;,
-        &quot;path&quot;: &quot;/tasks?project=1337&amp;limit=5&amp;offset=yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9&quot;,
-        &quot;uri&quot;: &quot;https://app.asana.com/api/1.0/tasks?project=1337&amp;limit=5&amp;offset=yJ0eXAiOiJKV1QiLCJhbGciOiJIRzI1NiJ9&quot;
-      }
-    }</p>
 <hr>
 <h2 id='input-output-options'  >Input/Output Options</h2>
-<p>In addition to providing fields and their values in a request, you may also specify options to control how your request
-is interpreted and how the response is generated. For GET requests, options are specified as URL parameters prefixed
-with <code>opt_</code>. For POST or PUT requests, options are specified in the body. If the body uses the <code>application/x-www-form-urlencoded</code>
-content type, then options are prefixed with <code>opt_</code> just like for GET requests. If the body uses the <code>application/json</code>
-content type, then options are specified inside the top-level <code>options</code> object
-(a sibling of the <code>data</code> object).</p>
-
-<p>These options can be used in combination in a single request, though some of them may conflict in their impact on
-the response.</p>
-
 <blockquote>
 <p>GET url params</p>
 </blockquote>
@@ -1577,103 +1571,49 @@ the response.</p>
   pretty: true,
   fields: ["followers", "assignee"]
 }
-</code></pre><div class='table-holder'><table class='asana-table'><thead><tr><td></td>
+</code></pre>
+<p>In addition to providing fields and their values in a request, you may also specify options to control how your request
+is interpreted and how the response is generated. For GET requests, options are specified as URL parameters prefixed
+with <code>opt_</code>. For POST or PUT requests, options are specified in the body. If the body uses the <code>application/x-www-form-urlencoded</code>
+content type, then options are prefixed with <code>opt_</code> just like for GET requests. If the body uses the <code>application/json</code>
+content type, then options are specified inside the top-level <code>options</code> object
+(a sibling of the <code>data</code> object).</p>
+
+<blockquote>
+<p>?opt_fields=name,notes&amp;opt_pretty response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 200
+{
+  "data": {
+    "name": "Make a list",
+    "notes": "Check it twice!",
+    "gid": 1224
+  }
+}
+</code></pre>
+<p>These options can be used in combination in a single request, though some of them may conflict in their impact on
+the response.</p>
+<div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Option</td><td>Description</td><td>Notes</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>pretty</strong></td><td>Provides the response in &quot;pretty&quot; output. In the case of JSON this means doing proper line breaking and indentation to make it readable. This will take extra time and increase the response size so it is advisable only to use this during debugging.</td><td></td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td><strong>fields</strong></td><td>Some requests return <em>compact</em> representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as <a href="#paths">paths</a>, described below.</td><td>The id of included objects will always be returned, regardless of the field options.</td></tr></tr></tbody></table></div>
-<p><strong>Default output</strong></p>
-
-<p># Request
-    curl https://app.asana.com/api/1.0/users/me \
-       -H &quot;Authorization: Bearer <personal_access_token>&quot;</p>
-
-<p># Response
-    HTTP/1.1 200
-    {&quot;data&quot;:{&quot;email&quot;:&quot;sanchez@...&quot;,&quot;id&quot;:999,&quot;name&quot;:&quot;Greg Sanchez&quot;}}</p>
-
-<p><strong>Pretty output (how all API requests in this doc are presented)</strong></p>
-
-<p># Request
-    curl &quot;https://app.asana.com/api/1.0/users/me?opt_pretty&quot; \
-      -H &quot;Authorization: Bearer <personal_access_token>&quot;</p>
-
-<p># Response
-    HTTP/1.1 200
-    {
-      &quot;data&quot;: {
-        &quot;email&quot;: &quot;sanchez@...&quot;,
-        &quot;id&quot;: 999,
-        &quot;name&quot;: &quot;Greg Sanchez&quot;
-      }
-    }</p>
-
-<p><strong>Get only name and description of task</strong></p>
-
-<p># Request
-    curl &quot;https://app.asana.com/api/1.0/tasks/1224?opt_fields=name,notes&quot; \
-      -H &quot;Authorization: Bearer <personal_access_token>&quot;</p>
-
-<p># Response
-    HTTP/1.1 200
-    {
-      &quot;data&quot;: {
-        &quot;name&quot;: &quot;Make a list&quot;,
-        &quot;notes&quot;: &quot;Check it twice!&quot;,
-        &quot;id&quot;: 1224
-      }
-    }</p>
-
-<p><strong>Reassign task, opting for projects in output</strong></p>
-
-<p># Request
-    curl --request PUT https://app.asana.com/api/1.0/tasks/1001 \
-      -H &quot;Authorization: Bearer <personal_access_token>&quot; \
-      -d &quot;assignee=1234&quot; \
-      -d &quot;opt_fields=%2Aprojects%2A&quot;</p>
-
-<p># Alternative request using JSON
-    curl --request PUT https://app.asana.com/api/1.0/tasks/1001 \
-      -H &quot;Authorization: Bearer <personal_access_token>&quot; \
-      -H &quot;Content-Type: application/json&quot; \
-      -d \
-      &#39;{
-          &quot;data&quot;: { &quot;assignee&quot;: 1234 },
-          &quot;options&quot;: { &quot;fields&quot;: &quot;projects&quot; }
-      }&#39;</p>
-
-<p># Response
-    HTTP/1.1 200
-    {
-      &quot;data&quot;: {
-        &quot;id&quot;: 1001,
-        &quot;projects&quot;: [
-        {
-          &quot;archived&quot;: false,
-          &quot;created_at&quot;: &quot;&quot;,
-          &quot;followers&quot;: [],
-          &quot;modified_at&quot;: &quot;&quot;,
-          &quot;notes&quot;: &quot;&quot;,
-          &quot;id&quot;: 1331,
-          &quot;name&quot;: &quot;Things to buy&quot;
-        }
-        ],
-        ...
-      }
-    }</p>
-
 <p><a name="paths"></a>
 <strong>SELECTING FIELDS</strong></p>
+
+<blockquote>
+<p>opt_fields nesting</p>
+</blockquote>
 <pre class="highlight plaintext"><code>"data": {                       &lt; this
-  "id": 1001,
+  "gid": 1001,
   "name": "Feed the cat",       &lt; this.name
   "workspace": {                &lt; this.workspace
-    "id": 14916,
+    "gid": 14916,
     "name": "Shared Projects",  &lt; this.workspace.name
   },
   "followers": [{               &lt; this.followers
-    "id": 1234,
+    "gid": 1234,
     "email": "tbizarro@…",      &lt; this.followers.email
   }, {
-    "id": 5678,
+    "gid": 5678,
     "email": "gsanchez@…",      &lt; this.followers.email
   }]
 }
@@ -2442,10 +2382,11 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/attachments/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/attachments/<span class="o">{</span>attachment_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /attachments/{attachment_gid}</code>
@@ -2484,10 +2425,11 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/attachments <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/attachments <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/attachments</code>
@@ -2523,12 +2465,12 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/attachments <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: multipart/form-data; boundary=---011000010111000001101001'</span> <span class="se">\</span>
-  --form <span class="nv">file</span><span class="o">=</span>string
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/attachments <span class="se">\</span>
+  -H <span class="s1">'Content-Type: multipart/form-data'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/attachments</code>
@@ -2645,12 +2587,12 @@ entirely.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/batch <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"actions":[{"relative_path":"/tasks/123","method":"get","data":{"...":"..."},"options":{"...":"..."}}]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /batch</code>
@@ -2757,12 +2699,12 @@ entirely.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Task","type":"text","enum_options":[{"...":"..."}],"enum_value":null,"enabled":true,"text_value":"Some Value","description":"Development team priority","precision":2,"has_notifications_enabled":true,"workspace":"1331"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/custom_fields <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /custom_fields</code>
@@ -2842,10 +2784,11 @@ A custom field’s type must be one of ‘text’, ‘enum’, or ‘number’.<
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span>custom_field_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /custom_fields/{custom_field_gid}</code>
@@ -2900,12 +2843,12 @@ type-specific custom field definitions.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Task","type":"text","enum_options":[{"...":"..."}],"enum_value":null,"enabled":true,"text_value":"Some Value","description":"Development team priority","precision":2,"has_notifications_enabled":true}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span>custom_field_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /custom_fields/{custom_field_gid}</code>
@@ -2979,10 +2922,11 @@ Returns the complete updated custom field record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span>custom_field_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /custom_fields/{custom_field_gid}</code>
@@ -3014,10 +2958,11 @@ Returns an empty data record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/custom_fields <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/custom_fields <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/custom_fields</code>
@@ -3061,12 +3006,12 @@ Returns an empty data record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/12345/enum_options <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Low","enabled":true,"color":"blue","insert_before":"12345","insert_after":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span>custom_field_gid<span class="o">}</span>/enum_options <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /custom_fields/{custom_field_gid}/enum_options</code>
@@ -3117,12 +3062,12 @@ Returns the full record of the newly created enum option.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/custom_fields/12345/enum_options/insert <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Low","enabled":true,"color":"blue","enum_option":"97285","before_enum_option":"12345","after_enum_option":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/custom_fields/<span class="o">{</span>custom_field_gid<span class="o">}</span>/enum_options/insert <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /custom_fields/{custom_field_gid}/enum_options/insert</code>
@@ -3173,12 +3118,12 @@ Locked custom fields can only be reordered by the user who locked the field.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/enum_options/124578 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Low","enabled":true,"color":"blue"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/enum_options/<span class="o">{</span>enum_option_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /enum_options/{enum_option_gid}</code>
@@ -3236,10 +3181,11 @@ Returns the full record of the updated enum option.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/custom_field_settings <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/custom_field_settings <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}/custom_field_settings</code>
@@ -3278,10 +3224,11 @@ Returns the full record of the updated enum option.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345/custom_field_settings <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/custom_field_settings <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolios/{portfolio_gid}/custom_field_settings</code>
@@ -3341,10 +3288,11 @@ Returns the full record of the updated enum option.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/events?resource=12345'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/events?resource<span class="o">=</span>12345 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /events</code>
@@ -3408,10 +3356,11 @@ Only the creator of the duplication process can access the duplication status of
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/jobs/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/jobs/<span class="o">{</span>job_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /jobs/{job_gid}</code>
@@ -3479,12 +3428,12 @@ for large Organizations.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/organization_exports <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"organization":"1331"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/organization_exports <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /organization_exports</code>
@@ -3533,10 +3482,11 @@ for large Organizations.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/organization_exports/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/organization_exports/<span class="o">{</span>organization_export_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /organization_exports/{organization_export_gid}</code>
@@ -3586,10 +3536,11 @@ Portfolios have some restrictions on size. Each portfolio has a max of 250 items
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolios</code>
@@ -3625,12 +3576,12 @@ Portfolios have some restrictions on size. Each portfolio has a max of 250 items
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Task","color":"light-green","owner":null,"workspace":null,"members":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios</code>
@@ -3685,10 +3636,11 @@ integrations to create their own starting state on a portfolio.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolios/{portfolio_gid}</code>
@@ -3737,12 +3689,12 @@ integrations to create their own starting state on a portfolio.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Task","color":"light-green","owner":null,"workspace":null,"members":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /portfolios/{portfolio_gid}</code>
@@ -3808,10 +3760,11 @@ any unspecified fields will remain unchanged.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /portfolios/{portfolio_gid}</code>
@@ -3844,10 +3797,11 @@ the URL for that portfolio.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345/items <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/items <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolios/{portfolio_gid}/items</code>
@@ -3914,10 +3868,11 @@ the URL for that portfolio.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/addItem?insert_after=1331&amp;insert_before=1331&amp;item=1331'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/addItem?item<span class="o">=</span>1331&amp;insert_before<span class="o">=</span>1331&amp;insert_after<span class="o">=</span>1331 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/addItem</code>
@@ -3948,10 +3903,11 @@ Returns an empty data block.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/removeItem?item=1331'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/removeItem?item<span class="o">=</span>1331 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/removeItem</code>
@@ -3982,10 +3938,11 @@ Returns an empty data block.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/addMembers?members=521621%2C621373'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/addMembers?members<span class="o">=</span>521621%2C621373 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/addMembers</code>
@@ -4016,10 +3973,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/removeMembers?members=521621%2C621373'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/removeMembers?members<span class="o">=</span>521621%2C621373 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/removeMembers</code>
@@ -4050,10 +4008,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/addCustomFieldSetting?custom_field=14916'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/addCustomFieldSetting?custom_field<span class="o">=</span>14916 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/addCustomFieldSetting</code>
@@ -4083,10 +4042,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/portfolios/12345/removeCustomFieldSetting?custom_field=14916'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/removeCustomFieldSetting?custom_field<span class="o">=</span>14916 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /portfolios/{portfolio_gid}/removeCustomFieldSetting</code>
@@ -4125,10 +4085,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolio_memberships <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolio_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolio_memberships</code>
@@ -4164,10 +4125,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolio_memberships/ <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolio_memberships/<span class="o">{</span>portfolio_membership_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolio_memberships/{portfolio_membership_gid}</code>
@@ -4210,10 +4172,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/portfolios/12345/portfolio_memberships <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/portfolios/<span class="o">{</span>portfolio_gid<span class="o">}</span>/portfolio_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /portfolios/{portfolio_gid}/portfolio_memberships</code>
@@ -4264,10 +4227,11 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects</code>
@@ -4334,12 +4298,12 @@ Returns the updated portfolio record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Project","notes":"For tracking pesky bugs.","workspace":"1331","team":"14916"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects</code>
@@ -4438,10 +4402,11 @@ supply a <code>team</code> to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}</code>
@@ -4518,12 +4483,12 @@ supply a <code>team</code> to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Stuff to buy","archived":false,"color":"light-green","due_date":"2012-03-26","due_on":"2012-03-26","html_notes":"These are things we need to purchase.","is_template":false,"notes":"These are things we need to purchase.","owner":null,"public":false,"start_on":"2012-03-26","team":null,"workspace":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /projects/{project_gid}</code>
@@ -4629,10 +4594,11 @@ you last retrieved the task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /projects/{project_gid}</code>
@@ -4665,12 +4631,12 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/duplicate <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"New Project Name","team":"12345","include":["members","task_notes"],"schedule_dates":{"should_skip_weekends":true,"due_on":"2019-05-21","start_on":"2019-05-21"}}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/duplicate <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/duplicate</code>
@@ -4736,10 +4702,11 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/projects <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/projects</code>
@@ -4806,10 +4773,11 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span>/projects <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /teams/{team_gid}/projects</code>
@@ -4876,12 +4844,12 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Stuff to buy","archived":false,"color":"light-green","due_date":"2012-03-26","due_on":"2012-03-26","html_notes":"These are things we need to purchase.","is_template":false,"notes":"These are things we need to purchase.","owner":null,"public":false,"start_on":"2012-03-26","team":null,"workspace":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span>/projects <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /teams/{team_gid}/projects</code>
@@ -4981,10 +4949,11 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/projects <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/projects</code>
@@ -5051,12 +5020,12 @@ the URL for that project.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/projects <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Stuff to buy","archived":false,"color":"light-green","due_date":"2012-03-26","due_on":"2012-03-26","html_notes":"These are things we need to purchase.","is_template":false,"notes":"These are things we need to purchase.","owner":null,"public":false,"start_on":"2012-03-26","team":null,"workspace":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/projects <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/projects</code>
@@ -5159,10 +5128,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/projects/1331/addCustomFieldSetting?custom_field=14916'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/addCustomFieldSetting?custom_field<span class="o">=</span>14916 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/addCustomFieldSetting</code>
@@ -5192,10 +5162,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/projects/1331/removeCustomFieldSetting?custom_field=14916'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/removeCustomFieldSetting?custom_field<span class="o">=</span>14916 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/removeCustomFieldSetting</code>
@@ -5234,10 +5205,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/project_memberships/ <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/project_memberships/<span class="o">{</span>project_membership_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /project_memberships/{project_membership_gid}</code>
@@ -5281,10 +5253,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/project_memberships <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/project_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}/project_memberships</code>
@@ -5333,10 +5306,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/project_statuses/ <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/project_statuses/<span class="o">{</span>project_status_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /project_statuses/{project_status_gid}</code>
@@ -5379,10 +5353,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/project_statuses/ <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/project_statuses/<span class="o">{</span>project_status_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /project_statuses/{project_status_gid}</code>
@@ -5414,10 +5389,11 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/project_statuses <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/project_statuses <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}/project_statuses</code>
@@ -5460,12 +5436,12 @@ supply a team to share the project with.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/project_statuses <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"project":"123456","text":"The project is on track to ship next month!","color":"green"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/project_statuses <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/project_statuses</code>
@@ -5535,10 +5511,11 @@ Returns the full record of the newly created project status update.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/sections/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/sections/<span class="o">{</span>section_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /sections/{section_gid}</code>
@@ -5578,12 +5555,12 @@ Returns the full record of the newly created project status update.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/sections/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Next Actions","projects":[{"...":"..."}]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/sections/<span class="o">{</span>section_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /sections/{section_gid}</code>
@@ -5646,10 +5623,11 @@ you last retrieved the task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/sections/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/sections/<span class="o">{</span>section_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /sections/{section_gid}</code>
@@ -5686,10 +5664,11 @@ the URL for that section.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/sections <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/sections <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}/sections</code>
@@ -5729,12 +5708,12 @@ the URL for that section.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/sections <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"project":"13579","name":"Next Actions"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/sections <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/sections</code>
@@ -5785,12 +5764,12 @@ Returns the full record of the newly created section.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/sections/321654/addTask <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"task":"123456","insert_before":"86420","insert_after":"987654"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/sections/<span class="o">{</span>section_gid<span class="o">}</span>/addTask <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /sections/{section_gid}/addTask</code>
@@ -5835,12 +5814,12 @@ Returns the full record of the newly created section.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/sections/insert <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"project":"123456","section":"321654","before_section":"86420","after_section":"987654"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/sections/insert <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /projects/{project_gid}/sections/insert</code>
@@ -5901,10 +5880,11 @@ only board views.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /stories/{story_gid}</code>
@@ -6079,12 +6059,12 @@ only board views.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"text":"marked today","html_text":"Get whatever Sashimi has.","is_pinned":false,"old_name":"This was the Old Name","story":{"text":"marked today"},"assignee":{"name":"Greg Sanchez"},"follower":{"name":"Greg Sanchez"},"old_section":{"name":"Next Actions"},"new_section":{"name":"Next Actions"},"task":{"name":"Bug Task"},"project":{"name":"Stuff to buy"},"tag":{"name":"Stuff to buy"},"custom_field":{"name":"Bug Task","type":"text","enum_options":["..."],"enum_value":null,"enabled":true,"text_value":"Some Value"},"old_enum_value":{"name":"Low","enabled":true,"color":"blue"},"new_enum_value":{"name":"Low","enabled":true,"color":"blue"},"duplicate_of":{"name":"Bug Task"},"duplicated_from":{"name":"Bug Task"},"dependency":{"name":"Bug Task"}}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /stories/{story_gid}</code>
@@ -6324,10 +6304,11 @@ only board views.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/stories/35678 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/stories/<span class="o">{</span>story_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /stories/{story_gid}</code>
@@ -6359,10 +6340,11 @@ only board views.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/stories <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/stories <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/stories</code>
@@ -6480,12 +6462,12 @@ only board views.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/stories <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"task":"123456","text":"This is a comment."}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/stories <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/stories</code>
@@ -6685,10 +6667,11 @@ request.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tags <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tags <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tags</code>
@@ -6731,12 +6714,12 @@ request.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tags <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Stuff to buy","color":"light-green","workspace":{"name":"Bug Task"}}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tags <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tags</code>
@@ -6801,10 +6784,11 @@ organization.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tags/11235 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tags/{tag_gid}</code>
@@ -6849,10 +6833,11 @@ organization.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tags/11235 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /tags/{tag_gid}</code>
@@ -6904,10 +6889,11 @@ you last retrieved the task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/tags <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/tags <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/tags</code>
@@ -6950,10 +6936,11 @@ you last retrieved the task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/tags <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/tags <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/tags</code>
@@ -6996,12 +6983,12 @@ you last retrieved the task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/tags <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Stuff to buy","color":"light-green","workspace":{"name":"Bug Task"}}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/tags <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/tags</code>
@@ -7077,10 +7064,11 @@ organization.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks</code>
@@ -7186,12 +7174,12 @@ include assigning, renaming, completing, and adding stories.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["12345"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","parent":"12345","projects":["12345"],"start_on":"2012-03-26","tags":["12345"],"workspace":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks</code>
@@ -7359,10 +7347,11 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}</code>
@@ -7471,12 +7460,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","parent":"12345","start_on":"2012-03-26","workspace":null}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /tasks/{task_gid}</code>
@@ -7637,10 +7626,11 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /tasks/{task_gid}</code>
@@ -7675,12 +7665,12 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/duplicate <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"New Task Name","include":["notes","assignee"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/duplicate <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/duplicate</code>
@@ -7740,10 +7730,11 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/projects/1331/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>project_gid<span class="o">}</span>/tasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /projects/{project_gid}/tasks</code>
@@ -7829,10 +7820,11 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/sections/321654/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/sections/<span class="o">{</span>section_gid<span class="o">}</span>/tasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /sections/{section_gid}/tasks</code>
@@ -7918,10 +7910,11 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tags/11235/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<span class="o">}</span>/tasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tags/{tag_gid}/tasks</code>
@@ -8007,10 +8000,11 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/subtasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/subtasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/subtasks</code>
@@ -8096,12 +8090,12 @@ period of 30 days; afterward they are completely removed from the system.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/subtasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Buy catnip","assignee":"12345","assignee_status":"upcoming","completed":false,"due_at":"2012-02-22T02:06:58.147Z","due_on":"2012-03-26","external":{"gid":"my_gid","data":"A blob of information"},"followers":["12345"],"html_notes":"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;","notes":"Mittens really likes the stuff from Humboldt.","projects":["12345"],"start_on":"2012-03-26","tags":["12345"],"workspace":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/subtasks <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/subtasks</code>
@@ -8262,12 +8256,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/setParent <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"parent":"987654","insert_after":"null","insert_before":"124816"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/setParent <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/setParent</code>
@@ -8387,10 +8381,11 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/dependencies <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/dependencies <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/dependencies</code>
@@ -8476,12 +8471,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/addDependencies <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"dependencies":["133713","184253"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/addDependencies <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/addDependencies</code>
@@ -8579,12 +8574,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/removeDependencies <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"dependencies":["133713","184253"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/removeDependencies <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/removeDependencies</code>
@@ -8682,10 +8677,11 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/dependents <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/dependents <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /tasks/{task_gid}/dependents</code>
@@ -8771,12 +8767,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/addDependents <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"dependents":["133713","184253"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/addDependents <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/addDependents</code>
@@ -8874,12 +8870,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/removeDependents <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"dependents":["133713","184253"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/removeDependents <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/removeDependents</code>
@@ -8977,12 +8973,12 @@ added or removed from the task.</em></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/addProject <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"project":"13579","insert_after":"124816","insert_before":"432134","section":"987654"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/addProject <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/addProject</code>
@@ -9037,12 +9033,12 @@ within the section to anchor the position of this task.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/removeProject <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"project":"13579"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/removeProject <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/removeProject</code>
@@ -9084,12 +9080,12 @@ the system, but it will not be in the project anymore.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/addTag <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"tag":"13579"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/addTag <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/addTag</code>
@@ -9128,12 +9124,12 @@ the system, but it will not be in the project anymore.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/removeTag <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"tag":"13579"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/removeTag <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/removeTag</code>
@@ -9172,12 +9168,12 @@ the system, but it will not be in the project anymore.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/addFollowers <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"followers":["13579","321654"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/addFollowers <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/addFollowers</code>
@@ -9221,12 +9217,12 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/tasks/321654/removeFollowers <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"followers":["13579","321654"]}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid<span class="o">}</span>/removeFollowers <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /tasks/{task_gid}/removeFollowers</code>
@@ -9268,10 +9264,11 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/tasks/search <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/tasks/search <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/tasks/search</code>
@@ -9388,10 +9385,11 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /teams/{team_gid}</code>
@@ -9428,10 +9426,11 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/organizations/12345/teams <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/organizations/<span class="o">{</span>workspace_gid<span class="o">}</span>/teams <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /organizations/{workspace_gid}/teams</code>
@@ -9470,10 +9469,11 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/users/string/teams?organization_gid=1331'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/teams?organization_gid<span class="o">=</span>1331 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users/{user_gid}/teams</code>
@@ -9512,12 +9512,12 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874/addUser <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span>/addUser <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /teams/{team_gid}/addUser</code>
@@ -9569,12 +9569,12 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874/removeUser <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span>/removeUser <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /teams/{team_gid}/removeUser</code>
@@ -9635,10 +9635,11 @@ Requests to add/remove followers, if successful, will return the complete update
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/workspaces/12345/typeahead?resource_type=user'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/typeahead?resource_type<span class="o">=</span>user <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/typeahead</code>
@@ -9703,10 +9704,11 @@ data is included in a response.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/users <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users</code>
@@ -9750,10 +9752,11 @@ Results are sorted by user ID.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/users/string <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users/{user_gid}</code>
@@ -9801,10 +9804,11 @@ Results are sorted by user ID.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/users/string/favorites?workspace=1234&amp;resource_type=project'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/favorites?resource_type<span class="o">=</span>project&amp;workspace<span class="o">=</span>1234 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users/{user_gid}/favorites</code>
@@ -9838,10 +9842,11 @@ Results are given in order (The same order as Asana&#39;s sidebar).</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/teams/159874/users <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/teams/<span class="o">{</span>team_gid<span class="o">}</span>/users <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /teams/{team_gid}/users</code>
@@ -9884,10 +9889,11 @@ Results are given in order (The same order as Asana&#39;s sidebar).</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/users <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/users <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/users</code>
@@ -9942,10 +9948,11 @@ Results are sorted alphabetically by user names.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/user_task_lists/12345/tasks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/user_task_lists/<span class="o">{</span>user_task_list_gid<span class="o">}</span>/tasks <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /user_task_lists/{user_task_list_gid}/tasks</code>
@@ -10036,10 +10043,11 @@ Results are sorted alphabetically by user names.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/user_task_list/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/user_task_list/<span class="o">{</span>user_task_list_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /user_task_list/{user_task_list_gid}</code>
@@ -10075,10 +10083,11 @@ Results are sorted alphabetically by user names.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/users/string/user_task_list <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/user_task_list <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users/{user_gid}/user_task_list</code>
@@ -10150,10 +10159,11 @@ verify that the endpoint is available.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://app.asana.com/api/1.0/webhooks?workspace=1331'</span> <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/webhooks?workspace<span class="o">=</span>1331 <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /webhooks</code>
@@ -10195,12 +10205,12 @@ verify that the endpoint is available.</li>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/webhooks <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"resource":"12345","target":"https://example.com/receive-webhook/7654"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/webhooks <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /webhooks</code>
@@ -10291,10 +10301,11 @@ HTTP/1.1 201
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/webhooks/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/webhooks/<span class="o">{</span>webhook_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /webhooks/{webhook_gid}</code>
@@ -10334,10 +10345,11 @@ HTTP/1.1 201
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request DELETE <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/webhooks/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/webhooks/<span class="o">{</span>webhook_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="delete-verb">DELETE</span> /webhooks/{webhook_gid}</code>
@@ -10380,10 +10392,11 @@ HTTP/1.1 201
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces</code>
@@ -10423,10 +10436,11 @@ HTTP/1.1 201
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}</code>
@@ -10464,12 +10478,12 @@ HTTP/1.1 201
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345 <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"name":"Bug Task","email_domains":["asana.com"],"is_organization":false}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X PUT https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="put-verb">PUT</span> /workspaces/{workspace_gid}</code>
@@ -10522,12 +10536,12 @@ Returns the complete, updated workspace record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/addUser <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/addUser <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/addUser</code>
@@ -10584,12 +10598,12 @@ The user can be referenced by their globally unique user ID or their email addre
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/removeUser <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  --data <span class="s1">'{"data":{"user":"12345"}}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X POST https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/removeUser <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="post-verb">POST</span> /workspaces/{workspace_gid}/removeUser</code>
@@ -10639,10 +10653,11 @@ Returns an empty data record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspace_memberships/ <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspace_memberships/<span class="o">{</span>workspace_membership_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspace_memberships/{workspace_membership_gid}</code>
@@ -10695,10 +10710,11 @@ Returns an empty data record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/users/string/workspace_memberships <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/workspace_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /users/{user_gid}/workspace_memberships</code>
@@ -10739,10 +10755,11 @@ Returns an empty data record.</p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url https://app.asana.com/api/1.0/workspaces/12345/workspace_memberships <span class="se">\</span>
-  --header <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  --header <span class="s1">'authorization: Bearer {access-token}'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>workspace_gid<span class="o">}</span>/workspace_memberships <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
 </code></pre>
 <p>
 <code> <span class="get-verb">GET</span> /workspaces/{workspace_gid}/workspace_memberships</code>
