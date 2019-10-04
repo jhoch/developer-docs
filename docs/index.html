@@ -1348,7 +1348,7 @@ least one error object, described below:</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Domain type</td><td>Maximum requests per minute</td></tr>
 </thead><tbody><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Free</td><td>150</td></tr></tr><tr class='c0'><td><div class='chevron'>&rarr;</div></td><td>Premium</td><td>1500</td></tr></tr></tbody></table></div>
-<p>In addition, calls to the <a href="#search-api">search API</a> are limited to 60 requests per minute.</p>
+<p>In addition, calls to the <a href="#search-api">search API</a> are limited to 60 requests per minute. The <a href="#duplicate-a-task">duplication endpoints</a> are limited to 5 concurrent jobs.</p>
 
 <p>Although the quota is defined per minute, it is evaluated more frequently than once per minute, so you may not need to wait for a full minute before retrying your request. For requests rejected by this limiter, the <code>Retry-After</code> header has the result of this calculation.</p>
 
