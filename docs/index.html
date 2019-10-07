@@ -1221,7 +1221,8 @@ it <a href="https://www.oauth.com/oauth2-servers/pkce/">here</a>.</p>
 should stay on the app server and only be sent to the <a href="#token-exchange-endpoint">Token Exchange Endpoint</a>.</p></li>
 <li><p>Your app server will hash the <code>code_verifier</code> with SHA256 to get a string called the <code>code_challenge</code>. Your server
 will give the browser <strong>only</strong> the <code>code_challenge</code> &amp; <code>code_challenge_method</code>. The <code>code_challenge_method</code> should be
-the string &quot;S256&quot; to tell Asana we hashed with SHA256.</p></li>
+the string &quot;S256&quot; to tell Asana we hashed with SHA256. More specifically, code_challenge = 
+BASE64URL-ENCODE(SHA256(ASCII(code_verifier))).</p></li>
 <li><p>The browser includes <code>code_challenge</code> &amp; <code>code_challenge_method</code> when redirecting to the 
 <a href="#user-authorization-endpoint">User Authorization Endpoint</a>.</p></li>
 <li><p>The app server should include the <code>code_verifier</code> in it&#39;s request to the 
