@@ -254,6 +254,9 @@
                     <a href="#basics" class="toc-h2 toc-link" data-title="Basics">Basics</a>
                   </li>
                   <li>
+                    <a href="#object-hierarchy" class="toc-h2 toc-link" data-title="Object Hierarchy">Object Hierarchy</a>
+                  </li>
+                  <li>
                     <a href="#authentication-basics" class="toc-h2 toc-link" data-title="Authentication Basics">Authentication Basics</a>
                   </li>
                   <li>
@@ -1009,6 +1012,87 @@ with queries for multiple objects. Requests with large result sets may timeout o
 pagination is strongly encouraged to ensure both you and your users have the best experience when using the Asana API.</p>
 
 <p>Happy coding!</p>
+<hr>
+<h2 id='object-hierarchy'  >Object Hierarchy</h2>
+<blockquote>
+<p><img src="https://luna1.co/b07faf.png" alt="Asana object hierarchy" /></p>
+</blockquote>
+
+<p>Asana is a work tracking and collaboration tool. This guide is designed to give developers building on Asana’s API a brief overview of how Asana is structured.  It’s not meant to be exhaustive and may be too basic for experienced Asana users, but read on if you&#39;re not a user of Asana who uses it regularly.  The intention is to describe the fundamental elements of Asana to help you scope apps and avoid common points of confusion.   </p>
+<h3 id='how-work-in-asana-is-organized'  >How work in Asana is organized</h3><h4 id='tasks'  >Tasks</h4>
+<p>Tasks are the basic unit of action in Asana.  Tasks have many fields including a single assignee, name, notes, followers, likes, and comments. Tasks inherit custom fields from their parent project(s). Custom fields values are set for each individual task.  </p>
+
+<p>In addition to standard Create / Read / Update / Delete operations, there are a few things to watch out for when working with tasks:</p>
+
+<ul>
+<li>Tasks can be orphaned and belong to no projects, they can belong to one project, or they can be multi-homed across two or more projects. The <code>memberships</code> field is a collection of the projects with which the task is associated.<br></li>
+<li>Tasks can be multi-homed as subtasks.  For example, task A can be in project B and the same task A can also be a subtask of task C. </li>
+<li><a href="/developers/api-reference/tasks">Tasks API documentation</a></li>
+<li><a href="/guide/help/tasks/actions">Tasks in the Asana Product Guide</a></li>
+</ul>
+<h4 id='projects'  >Projects</h4>
+<p>A project is a collection of tasks that can be viewed as a list, board, timeline, and calendar.  Projects can only exist in a single organization or workplace and only belong to a single team.  Projects can be public in the team or private to project members.  Among the many fields associated with projects, they can have global (shared across the organization) or local (project-specific) custom fields.  A project’s custom fields will be displayed on each task within the project.  </p>
+
+<ul>
+<li><a href="/developers/api-reference/projects">Projects API documentation</a></li>
+<li><a href="/guide/help/projects/basics">Projects in the Asana Product Guide</a></li>
+</ul>
+<h4 id='portfolios'  >Portfolios</h4>
+<p>Portfolios are collections of projects (or other portfolios). Custom fields can be added to portfolios in addition to standard fields that are displayed on every portfolio.  These fields provide a high-level overview of the status of each project within the portfolio. </p>
+
+<ul>
+<li><a href="/developers/api-reference/portfolios">Portfolios API documentation</a></li>
+<li><a href="/guide/help/premium/portfolios">Portfolios in the Asana Product Guide</a></li>
+</ul>
+<h4 id='subtasks'  >Subtasks</h4>
+<p>A subtask is exactly the same as tasks in a project except that one (and only one) of its parents is a task (although subtasks can also simultaneously be organized into projects). To check if a task has a subtask, include the <code>num_subtasks</code> field when fetching the parent task.   </p>
+
+<p>Things to note when working with subtasks:</p>
+
+<ul>
+<li>Subtasks do not inherit the projects of their parent tasks.<br></li>
+<li>There can be up to 5 levels of subtasks below a task. We do not recommend making sub-subtasks. </li>
+<li>There is no way to fetch all subtasks of all tasks in a project in a single request. </li>
+<li><a href="/developers/api-reference/tasks#subtasks">Subtasks API documentation</a></li>
+<li><a href="/guide/help/tasks/subtasks">Subtasks in the Asana Product Guide</a></li>
+</ul>
+<h3 id='how-users-of-asana-are-organized'  >How users of Asana are organized</h3><h4 id='workspaces'  >Workspaces</h4>
+<p>A workspace is the highest-level organizational unit in Asana. All projects, tasks, and teams have an associated workspace.</p>
+
+<ul>
+<li><a href="/developers/api-reference/workspaces">Workspace / Organization API documentation</a></li>
+<li><a href="/guide/help/workspaces/basics">Workpsaces in the Asana Product Guide</a></li>
+</ul>
+<h4 id='organizations'  >Organizations</h4>
+<p>An organization is a special kind of workspace that represents a company. Organizations connect all the employees at a company using Asana in a single space based on the company’s shared email domain. In an organization, you can group your projects into teams. </p>
+
+<ul>
+<li><a href="/developers/api-reference/workspaces">Workspace / Organization API documentation</a></li>
+<li><a href="/guide/help/organizations/basics">Organizations in the Asana Product Guide</a></li>
+</ul>
+<h4 id='teams'  >Teams</h4>
+<p>Teams are a subset of users in an organization who collaborate on projects together. Every project in an organization is associated with one team. <a href="/guide/help/conversations/team-conversations">Team conversations</a> are not currently available in the API.</p>
+
+<ul>
+<li><a href="/developers/api-reference/teams">Teams API documentation</a></li>
+<li><a href="/guide/help/organizations/team-basics">Teams in the Asana Product Guide</a></li>
+</ul>
+<h4 id='users'  >Users</h4>
+<p>A user object represents an account in Asana that can be given access to various workspaces, projects, and tasks.  Asana accounts are free and tied to individuals; Asana accounts grant access to one or more shared Workspaces and Organizations to collaborate with other Asana users.</p>
+
+<ul>
+<li><a href="/developers/api-reference/users">Users API documentation</a></li>
+<li><a href="/guide/help/organizations/basics#gl-people">Users &amp; Guests in the Asana Product Guide</a></li>
+</ul>
+<h4 id='guest-users'  >Guest Users</h4>
+<p>Users can invite clients, contractors, customers, or anyone else who does not have an email address at an approved Organization email domain. These users join as Organization Guests. Guests have limited access in an Organization -- they can only see what’s explicitly shared with them.</p>
+
+<p>Note: it can be advantageous to use guests to create bot accounts. Due to the access restrictions, bots created from a guest account Personal Access Token can be given fine-grained access to only the data that it needs to use.   </p>
+
+<ul>
+<li><a href="/developers/api-reference/users">Users API documentation</a></li>
+<li><a href="/guide/help/organizations/basics#gl-people">Users &amp; Guests in the Asana Product Guide</a></li>
+</ul>
 <hr>
 <h2 id='authentication-basics'  >Authentication Basics</h2>
 <p>Asana supports a few methods of authenticating with the API.</p>
