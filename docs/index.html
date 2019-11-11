@@ -1513,7 +1513,7 @@ least one error object, described below:</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Domain type</td><td>Maximum requests per minute</td></tr>
 </thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>Free</td><td>150</td></tr></tr><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>Premium</td><td>1500</td></tr></tr></tbody></table></div>
-<p>In addition, calls to the <a href="#search-api">search API</a> are limited to 60 requests per minute. The <a href="#duplicate-a-task">duplication endpoints</a> are limited to 5 concurrent jobs.</p>
+<p>In addition, calls to the <a href="#search-tasks-in-a-workspace">search API</a> are limited to 60 requests per minute. The <a href="#duplicate-a-task">duplication endpoints</a> are limited to 5 concurrent jobs.</p>
 
 <p>Although the quota is defined per minute, it is evaluated more frequently than once per minute, so you may not need to wait for a full minute before retrying your request. For requests rejected by this limiter, the <code>Retry-After</code> header has the result of this calculation.</p>
 
