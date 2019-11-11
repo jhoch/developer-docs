@@ -373,6 +373,9 @@
                     <a href="#get-an-attachment" class="toc-h2 toc-link" data-title="Get an attachment">Get an attachment</a>
                   </li>
                   <li>
+                    <a href="#delete-an-attachment" class="toc-h2 toc-link" data-title="Delete an attachment">Delete an attachment</a>
+                  </li>
+                  <li>
                     <a href="#get-attachments-for-a-task" class="toc-h2 toc-link" data-title="Get attachments for a task">Get attachments for a task</a>
                   </li>
                   <li>
@@ -2558,7 +2561,7 @@ License: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
 <h1 id="asana-attachments">Attachments</h1></p>
 
 <pre class="highlight http tab-http">
-<code><a href="#get-an-attachment"><span class="get-verb">GET</span> <span class=""nn>/attachments/{attachment_gid}</span></a><br><a href="#get-attachments-for-a-task"><span class="get-verb">GET</span> <span class=""nn>/tasks/{task_gid}/attachments</span></a><br><a href="#upload-an-attachment"><span class="post-verb">POST</span> <span class=""nn>/tasks/{task_gid}/attachments</span></a></code>
+<code><a href="#get-an-attachment"><span class="get-verb">GET</span> <span class=""nn>/attachments/{attachment_gid}</span></a><br><a href="#delete-an-attachment"><span class="delete-verb">DELETE</span> <span class=""nn>/attachments/{attachment_gid}</span></a><br><a href="#get-attachments-for-a-task"><span class="get-verb">GET</span> <span class=""nn>/tasks/{task_gid}/attachments</span></a><br><a href="#upload-an-attachment"><span class="post-verb">POST</span> <span class=""nn>/tasks/{task_gid}/attachments</span></a></code>
 </pre>
 
 <p>An <em>attachment</em> object represents any file attached to a task in Asana, whether it’s an uploaded file or one associated via a third-party service such as Dropbox or Google Drive.</p>
@@ -2609,6 +2612,45 @@ curl -X GET https://app.asana.com/api/1.0/attachments/<span class="o">{</span>at
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
 </thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully retrieved the record for a single attachment.</td><td><a href="#schemaattachment">Attachment</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>402</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td><td>The request was valid, but the queried object or object mutation specified in the request is above your current premium level.</td><td>None</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>424</td><td><a href="https://tools.ietf.org/html/rfc2518#section-10.5">Failed Dependency</a></td><td>You have exceeded one of the enforced rate limits in the API. See the <a href="https://developers.asana.com/docs/#rate-limits">documentation on rate limiting</a> for more information.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>500</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>501</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.2">Not Implemented</a></td><td>There is an issue between the load balancers and Asana&#39;s API.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>503</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td><td>Either the upstream service is unavailable to the API, or he API has been intentionally shut off.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>504</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.5">Gateway Time-out</a></td><td>This request took too long to complete.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table></div>
+<p></section></p>
+
+<p><hr class="half-line">
+<section></p>
+<h2 id='delete-an-attachment'  >Delete an attachment</h2>
+<p><a id="opIddeleteAttachment"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl -X DELETE https://app.asana.com/api/1.0/attachments/<span class="o">{</span>attachment_gid<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>
+<code> <span class="delete-verb">DELETE</span> /attachments/{attachment_gid}</code>
+</p>
+
+<p>Deletes a specific, existing attachment.</p>
+
+<p>Returns an empty data record.</p>
+
+<h3 id="delete-an-attachment-parameters">Parameters</h3>
+<div class='table-holder'><table class='asana-table'><thead><tr><td></td>
+<td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
+</thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>attachment_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the attachment.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+<h3 id="delete-an-attachment-responses">Responses</h3>
+<div class='table-holder'><table class='asana-table'><thead><tr><td></td>
+<td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
+</thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>200</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td><td>Successfully deleted the specified attachment.</td><td><a href="#schemaempty">Empty</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>400</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td><td>This usually occurs because of a missing or malformed parameter. Check the documentation and the syntax of your request and try again.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>401</td><td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td><td>A valid authentication token was not provided with the request, so the API could not associate a user with the request.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>403</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td><td>The authentication and request syntax was valid but the server is refusing to complete the request. This can happen if you try to read or write to objects or properties that the user does not have access to.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>404</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td><td>Either the request method and path supplied do not specify a known action in the API, or the object specified by the request does not exist.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>500</td><td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td><td>There was a problem on Asana’s end. In the event of a server error the response body should contain an error phrase. These phrases can be used by Asana support to quickly look up the incident that caused the server error. Some errors are due to server load, and will not supply an error phrase.</td><td><a href="#schemaerror">Error</a></td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Responses &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Responses &uarr;</td></tr></tbody></table></div>
 <p></section></p>
 
 <p><hr class="half-line">
@@ -7540,57 +7582,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks <span class="se">\</span>
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8224,57 +8216,7 @@ curl -X GET https://app.asana.com/api/1.0/projects/<span class="o">{</span>proje
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8317,57 +8259,7 @@ curl -X GET https://app.asana.com/api/1.0/sections/<span class="o">{</span>secti
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8410,57 +8302,7 @@ curl -X GET https://app.asana.com/api/1.0/tags/<span class="o">{</span>tag_gid<s
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8503,57 +8345,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8893,57 +8685,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8999,57 +8741,7 @@ curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9105,57 +8797,7 @@ curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9198,57 +8840,7 @@ curl -X GET https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gid
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9304,57 +8896,7 @@ curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9410,57 +8952,7 @@ curl -X POST https://app.asana.com/api/1.0/tasks/<span class="o">{</span>task_gi
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9812,57 +9304,7 @@ curl -X GET https://app.asana.com/api/1.0/workspaces/<span class="o">{</span>wor
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -10544,57 +9986,7 @@ curl -X GET https://app.asana.com/api/1.0/user_task_lists/<span class="o">{</spa
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"gid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy catnip"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"resource_subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_task"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"assignee_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upcoming"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"dependents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"due_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"due_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"external"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"html_notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;body&gt;Mittens &lt;em&gt;really&lt;/em&gt; likes the stuff from Humboldt.&lt;/body&gt;"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hearts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"is_rendered_as_separator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"liked"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-22T02:06:58.147Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mittens really likes the stuff from Humboldt."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_hearts"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"num_subtasks"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"projects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"start_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-03-26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bug Task"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -10672,7 +10064,7 @@ curl -X GET https://app.asana.com/api/1.0/user_task_list/<span class="o">{</span
 <p>Code samples</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/user_task_list <span class="se">\</span>
+curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid<span class="o">}</span>/user_task_list?workspace<span class="o">=</span>1234 <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -10699,7 +10091,7 @@ curl -X GET https://app.asana.com/api/1.0/users/<span class="o">{</span>user_gid
 <h3 id="get-a-user's-task-list-parameters">Parameters</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Name</td><td>In</td><td>Type</td><td>Required</td><td>Description</td></tr>
-</thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>user_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the user.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
+</thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>user_gid</td><td>path</td><td>string</td><td>true</td><td>Globally unique identifier for the user.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_pretty</td><td>query</td><td>boolean</td><td>false</td><td>Provides “pretty” output.</td></tr></tr><tr class='c0 hidden-row common-item'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>opt_fields</td><td>query</td><td>array[string]</td><td>false</td><td>Defines fields to return.</td></tr></tr><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>workspace</td><td>query</td><td>string</td><td>true</td><td>The workspace in which to get the user task list.</td></tr></tr><tr class='common-items-toggle'><td class='show-common-items' colspan=6>&darr; Show Common Parameters &darr;</td><td class='hide-common-items' colspan=6>&uarr; Hide Common Parameters &uarr;</td></tr></tbody></table></div>
 <h3 id="get-a-user's-task-list-responses">Responses</h3>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Status</td><td>Meaning</td><td>Description</td><td>Schema</td></tr>
