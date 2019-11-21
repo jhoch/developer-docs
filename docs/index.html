@@ -1408,7 +1408,7 @@ the ID token in addition to everything you would normally receive.</p>
 <p>To access additional information about the user in a standardized format, we also expose a
 <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfo">user info endpoint</a> that can provide the user&#39;s name,
 email address, and profile photo. This data is available by making a <code>GET</code> request to
-<code>https://app.asana.com/api/1.0/openid-connect/userinfo</code> with an OAuth access token that has the <code>openid</code> scope.
+<code>https://app.asana.com/api/1.0/openid_connect/userinfo</code> with an OAuth access token that has the <code>openid</code> scope.
 Depending on the scopes tied to that token, you will receive different pieces of data. Refer to our
 <a href="#scopes">list of OAuth scopes</a> to determine which additional scopes you need to get the data you want.</p>
 
@@ -6577,7 +6577,7 @@ curl -X POST https://app.asana.com/api/1.0/sections/<span class="o">{</span>sect
 <code> <span class="post-verb">POST</span> /sections/{section_gid}/addTask</code>
 </p>
 
-<p>Add a task to a specific, existing section. This is remove the task from other sections of the project.</p>
+<p>Add a task to a specific, existing section. This will remove the task from other sections of the project.</p>
 
 <p>The task will be inserted at the top of a section unless an insert_before or insert_after parameter is declared.</p>
 
