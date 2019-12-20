@@ -2205,7 +2205,9 @@ Asana-Disable: a_third_change
 <section class="full-section"></p>
 <h1 id='quick-start'  >Quick Start</h1><h2 id='triage-bot'  >Triage Bot</h2>
 <blockquote>
-<p>We will use a very basic file structure for the purposes of this guide. Start by making a project directory, moving into it, and running <code>npm init</code>.</p>
+<h3 id='let-s-start-coding'  >Let’s start coding!</h3>
+<p>Follow along below in the right pane to see the terminal commands 
+and code for this tutorial. We will use a very basic file structure for the purposes of this guide. Start by making a project directory, moving into it, and running <code>npm init</code>.</p>
 </blockquote>
 <pre class="highlight shellshell"><code><span class="gp">$ </span>mkdir triage-bot
 <span class="gp">$ </span><span class="nb">cd </span>triage-bot
@@ -2337,7 +2339,7 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 <h3 id='what-we-re-going-to-build'  >What we’re going to build</h3>
 <p>In this guide, we will build a simple triage bot that will assign tasks. This is a common Asana use case with support inboxes or request projects. </p>
 
-<p>If you want to skip ahead and see the code for the triage bot, it’s on Github in the Javascript folder of our devrel-examples repo: https://github.com/Asana/devrel-examples.</p>
+<p>If you want to skip ahead and see the code for the triage bot, it’s on Github in the Javascript folder of our <a href="https://github.com/Asana/devrel-examples">devrel-examples repo</a>.</p>
 
 <p>For this guide, let’s suppose a design team has a requests project where people from the marketing team fill out an <a href="https://asana.com/guide/help/premium/forms">Asana form</a> to request graphics from the design team. The form creates a task in the design requests project that needs to be assigned to a designer. </p>
 
@@ -2367,9 +2369,8 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 <p>For this guide, we will use the <a href="https://github.com/Asana/node-asana">Asana Node client library</a>, however, you can follow along in any language of your choice. </p>
 
 <p>Each library has an examples folder in addition to the readme, which can be helpful for getting started. The methods for each resource can be found in the “gen” folder of each client library (e.g. node-asana/lib/resources/gen/).</p>
-<h3 id='let-s-start-coding'  >Let’s start coding!</h3>
-<p>If you haven&#39;t already, follow the code and headers in this section. This will walk you through the terminal commands 
-and code with explainations along the way.</p>
+<h3 id='now-head-over-to-the-top-of-the-right-pane-to-start-coding-your-bot-gt'  >Now head over to the top of the right pane to start coding your bot -----&gt;</h3>
+<blockquote>
 <h3 id='congratulations-now-go-above-and-beyond'  >Congratulations! Now go above and beyond</h3>
 <p>You’ve created an Asana triage bot. Let’s explore a few ideas on how to make it even better.</p>
 <h3 id='deploy-your-app'  >Deploy your app</h3>
@@ -2384,6 +2385,7 @@ and code with explainations along the way.</p>
 <p>To see this approach in the wild, checkout <a href="https://github.com/Asana/ohmega">Ohmega</a>, an automation framework we created. Here’s the <a href="https://github.com/Asana/ohmega/blob/master/ohmega/services/configuration_service.py">configuration service</a> that reads a tree of tasks for its configuration. </p>
 <h3 id='use-webhooks-for-real-time-triaging'  >Use webhooks for real-time triaging</h3>
 <p>If you need your bot to react to changes in real time, then you’ll need to use <a href="#asana-webhooks">webhooks</a>. We built a <a href="https://github.com/Asana/devrel-examples/tree/master/python/webhooks">python webhook inspector</a> to help developers get started using Asana webhooks. </p>
+</blockquote>
 
 <hr>
 <h2 id='python-hello-world'  >Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
