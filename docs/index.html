@@ -2979,7 +2979,19 @@ curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
 <p>The characteristics of Custom Fields are:</p>
 
 <ul>
-<li>There is metadata that defines the Custom Field. This metadata can be shared across an entire workspace, or be specific to a Project or Portfolio. * Creating a Custom Field Setting on a Project or Portfolio means each direct child will have the custom field. This is conceptually akin to adding columns in a database or a spreadsheet: every Task (row) in the Project (table) can contain information for that field, including &quot;blank&quot; values, i.e. <code>null</code> data. For Portfolio custom fields, every Project (row) in the Portfolio (table) will contain information for the custom field. * Custom Field Settings only go one child deep. Meaning a custom field setting on a portfolio will give each project the custom field, but not each task within those projects. * Tasks have Custom Field <em>values</em> assigned to them.</li>
+<li>There is metadata that defines the Custom Field. This metadata can be
+shared across an entire workspace, or be specific to a Project or Portfolio.</li>
+<li>Creating a Custom Field Setting on a Project or Portfolio means each direct
+child will have the custom field. This is conceptually akin to adding
+columns in a database or a spreadsheet:
+every Task (row) in the Project (table) can contain information for that
+field, including &quot;blank&quot; values, i.e. <code>null</code> data. For Portfolio custom
+fields, every Project (row) in the Portfolio (table) will contain
+information for the custom field.</li>
+<li>Custom Field Settings only go one child deep. Meaning a custom field
+setting on a portfolio will give each project the custom field, but not
+each task within those projects.</li>
+<li>Tasks have Custom Field <em>values</em> assigned to them.</li>
 </ul>
 
 <p>A brief example: let&#39;s imagine that an organization has defined a Custom Field for &quot;Priority&quot;. This field is of <code>enum</code> type and can have user-defined values of <code>Low</code>, <code>Medium</code>, or <code>High</code>. This is the field metadata, and it is visible within, and shared across, the entire organization.</p>
@@ -2993,7 +3005,9 @@ curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
 <p>Custom Field aware integrations need to be aware of the basic types that Custom Fields can adopt. These types are:</p>
 
 <ul>
-<li><code>text</code> - an arbitrary, relatively short string of text * <code>number</code> - a number with a defined level of precision * <code>enum</code> - a selection from a defined list of options</li>
+<li><code>text</code> - an arbitrary, relatively short string of text</li>
+<li><code>number</code> - a number with a defined level of precision</li>
+<li><code>enum</code> - a selection from a defined list of options</li>
 </ul>
 
 <p>Text fields are currently limited to 1024 characters. On Tasks, their Custom Field value will have a <code>text_value</code> property to represent this field.</p>
@@ -3003,7 +3017,14 @@ curl -X POST https://app.asana.com/api/1.0/batch <span class="se">\</span>
 <p>Enum fields represent a selection from a list of options. On the metadata, they will contain all of the options in an array. Each option has 4 properties:</p>
 
 <ul>
-<li><code>gid</code> - the gid of this enum option. Note that this is the gid of the <em>option</em> - the Custom Field itself has a separate <code>gid</code>. * <code>name</code> - the name of the option, e.g. &quot;Choice #1&quot; * <code>enabled</code> - whether this field is enabled. Disabled fields are not available to choose from when disabled, and are visually hidden in the Asana application, but they remain in the metadata for Custom Field values which were set to the option before the option was disabled. * <code>color</code> - a color associated with this choice.</li>
+<li><code>gid</code> - the gid of this enum option. Note that this is the gid of the
+<em>option</em> - the Custom Field itself has a separate <code>gid</code>.</li>
+<li><code>name</code> - the name of the option, e.g. &quot;Choice #1&quot;</li>
+<li><code>enabled</code> - whether this field is enabled. Disabled fields are not
+available to choose from when disabled, and are visually hidden in the
+Asana application, but they remain in the metadata for Custom Field values
+which were set to the option before the option was disabled.</li>
+<li><code>color</code> - a color associated with this choice.</li>
 </ul>
 
 <p>On the Task&#39;s Custom Field value, the enum will have an <code>enum_value</code> property which will be the same as one of the choices from the list defined in the Custom Field metadata.</p>
