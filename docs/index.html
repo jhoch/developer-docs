@@ -1070,6 +1070,12 @@ pagination is strongly encouraged to ensure both you and your users have the bes
 
 <p>Happy coding!</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section class="full-section"></p>
@@ -1166,6 +1172,12 @@ pagination is strongly encouraged to ensure both you and your users have the bes
 <li><a href="#asana-users">Users API documentation</a></li>
 <li><a href="https://asana.com/guide/help/organizations/basics#gl-people">Users &amp; Guests in the Asana Product Guide</a></li>
 </ul>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <p></section></p>
 <p><hr>
@@ -1456,6 +1468,12 @@ Depending on the scopes tied to that token, you will receive different pieces of
 request to <code>https://app.asana.com/api/1.0/.well-known/openid-configuration</code> will provide all the details of our
 implementation necessary for you to use OpenID Connect with Asana&#39;s API.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section class="full-section"></p>
@@ -1521,6 +1539,12 @@ least one error object, described below:</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Example</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>message</td><td><code>project: Missing input</code> Message providing more detail about the error that occurred, if available.</td></tr></tr><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>phrase</td><td><code>6 sad squid snuggle softly</code> <strong>500 errors only</strong>. A unique error phrase which can be used when contacting developer support to help identify the exact occurrence of the problem in Asana&#39;s logs.</td></tr></tr></tbody></table></div>
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section class="full-section"></p>
@@ -1595,6 +1619,12 @@ least one error object, described below:</p>
 <p>When a request is received, if the remaining quota is not positive, the new request is rejected with a <code>429 Too Many Requests</code>. As with the standard rate limits, this quota is defined per-minute but is updated on a more frequent interval. The <code>Retry-After</code> header will specify how long you must wait for the quota to become positive again.</p>
 
 <p>The <strong>vast</strong> majority of developers will be unaffected by the cost limit, and the quota is set sufficiently high that it only affects users making requests that would compromise the stability of the API. Rather than unconditionally blocking their token from the API, this cost limiter will permit them to continue operation at a slower but safe and stable rate.</p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <p></section></p>
 <p><hr>
@@ -1702,6 +1732,12 @@ least one error object, described below:</p>
 
 <p>If you do not have access to the referenced object when you try to create a link, the API will not generate an <code>href</code> for you, but will instead look for an <code>href</code> you provide. This allows you to write back <code>&lt;a&gt;</code> tags unmodified even if you do not have access to the resource. If you do not have access to the referenced object and no <code>href</code> is provided, your request will be rejected with a <code>400 Bad Request</code> error. Similarly, if you provide neither a GID nor a valid <code>href</code>, the request will be rejected with the same error.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section class="full-section"></p>
@@ -1766,6 +1802,12 @@ you paginate all requests to the API.</p>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>Limit</td><td><code>20</code> The number of objects to return per page. The value must be between 1 and 100.</td></tr></tr><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>Offset</td><td><code>eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9</code> An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. <br><br><strong>Note:</strong> You can only pass in an offset that was returned to you via a previously paginated request.</td></tr></tr></tbody></table></div>
 <p><strong>This method returns paginated results for tasks from a project.</strong></p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <p></section></p>
 <p><hr>
@@ -1847,6 +1889,12 @@ mentioned in the <code>followers</code> field of the task or tasks returned. See
 
 <p><code>this.(followers|assignee).email</code> will match the <code>email</code> field of the <code>assignee</code> object or any of the <code>followers</code>.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section></p>
@@ -1872,6 +1920,12 @@ so this should not be used for private user data.</p>
 <div class='table-holder'><table class='asana-table'><thead><tr><td></td>
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>gid</td><td><code>&quot;contractor_name&quot;</code>     The external <code>gid</code>. Max size is 1024 characters. Can be a URI.</td></tr></tr><tr class='c0'><td><svg class='chevron' viewBox='0 0 40 40'><path d='M23.2,16c0,0.3-0.1,0.7-0.3,0.9l-9,11c-0.5,0.6-1.5,0.7-2.1,0.2s-0.7-1.5-0.2-2.1l8.2-10L11.6,6c-0.5-0.6-0.4-1.6,0.2-2.1s1.6-0.4,2.1,0.2l9,11C23.1,15.3,23.2,15.7,23.2,16z'></path></svg></td><td>data</td><td><code>&quot;{ \&quot;time_estimate\&quot;: 3600, \&quot;time_spent\&quot;: 1482 }&quot;</code> The external data blob. Max size is 32,786 characters.</td></tr></tr></tbody></table></div>
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr>
 <section></p>
@@ -1952,6 +2006,12 @@ Asana-Disable: a_third_change
 <h3 id='active-deprecations'  >Active deprecations</h3>
 <p>There are currently no active deprecations.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr class="full-line">
 <section class="full-section"></p>
@@ -2002,6 +2062,12 @@ Asana-Disable: a_third_change
 <a id='learn-more-or-submit-an-app-you-39-ve-built'></a><h3 id='learn-more-or-submit-an-app-youve-built'  >Learn more or submit an app you&#39;ve built</h3>
 <p>Read more on how to <a href="#quick-start" title="Quick start">get started</a> building on Asana or <a href="https://asana.com/apps/submit">submit an app</a> to add to our <a href="https://asana.com/apps">apps page</a>.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <a id='q-amp-a-response'></a><h2 id='qa-response'  >Q&amp;A Response</h2>
 <p>Asana&#39;s API enables customization and automation of your organization’s workflow through scripts built to specialize your use of Asana. Using Asana to track your work and leveraging Asana’s API to automate your processes is a powerful combination which can make your team much more efficient. Here&#39;s one example of how we do it at Asana.</p>
@@ -2049,6 +2115,12 @@ Asana-Disable: a_third_change
 
 <p>To get started, check out our <a href="#quick-start" title="Quick Start">quick start</a> page for an overview of Asana&#39;s API. For support or to generate ideas of how your team can work more effectively with Asana, head to the <a href="https://community.asana.com/c/developersAPI" title="Asana Developers Community">Asana Community</a> to chat with Asana team members and users!</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <h2 id='bot-examples'  >Bot examples</h2><h3 id='reminder-bot'  >Reminder bot</h3>
 <p>Even the most conscientious and best-intentioned teammate can get overloaded and occasionally forget a task. For project managers, team leads, or coordinators, it can be draining to check-in on everyone to make sure that everything is going according to schedule. How can you stay on track and minimize the work-about-work?</p>
@@ -2062,6 +2134,12 @@ Asana-Disable: a_third_change
 <p>Our engineering teams handle triaging bug reports by creating a task in a &quot;Bugs&quot; project. A bot then adds the project manager of the relevant team in Asana as a follower, moves the task into a &quot;needs triage&quot; section, and requests assistance. The project manager can then evaluate the bug and triage it.</p>
 
 <p>Since the evaluation of the severity of the bug is important for understanding how urgent the fix is, Bugs Bot will remain persistent, commenting every few days until the task has been moved out of the triage section and into a section of the relevant priority. This process ensures that we&#39;re aware of the impact of bugs and helps us avoid severe bugs slipping through the cracks.</p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <p></section></p>
 <p><hr class="full-line">
@@ -2118,6 +2196,12 @@ Asana-Disable: a_third_change
 
 <p>Now, let’s make the same call to <code>/users/me</code> more like software would. Before we do so, we’ll need to get access outside of your web browser to the API.</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <h2 id='authentication-quick-start'  >Authentication Quick Start</h2>
 <p>Similarly to entering your username/password into a website or logging into Asana with Google, when you access your Asana data via the API you need to authenticate.  In the above example, you were already logged into Asana in your browser so you were able to authenticate to the API with credentials stored by your browser.</p>
@@ -2151,6 +2235,12 @@ Asana-Disable: a_third_change
 </ol>
 
 <p><em><strong>Note</strong>: treat your PAT like you would a password. Do not share it or display it online</em>. </p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <hr>
 <h2 id='accessing-the-api-in-the-terminal'  >Accessing the API in the Terminal</h2>
@@ -2190,6 +2280,12 @@ Asana-Disable: a_third_change
 
 <p>Asana has <a href="#official-client-libraries">client libraries</a> in several popular coding languages. Using these libraries has several advantages (like managing authorization and retrying errors) that make them a good place to go from here. Let’s take a look at making the same <code>/users/me</code> request in Python, JavaScript, and Ruby (feel free to skip ahead to your favorite of the three languages).</p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <h2 id='accessing-the-api-with-postman'  >Accessing the API with Postman</h2>
 <blockquote>
@@ -2226,6 +2322,12 @@ Asana-Disable: a_third_change
 <p>No need to edit your environment for requests on different objects, simply navigate to the endpoint you want to use, and change the <code>{{object}}</code> to any gid you want.</p>
 
 <p>Importing this collection gives you a snapshot of the API at this time. To stay up to date with API changes, you&#39;ll have to re-import the collection by hitting the &#39;Run in Postman&#39; button, and choosing to override your existing collection. This means if you want to save custom requests, you should do so in a different collection.</p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <p></section></p>
 <p><hr class="full-line">
@@ -2414,6 +2516,12 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 <p>If you need your bot to react to changes in real time, then you’ll need to use <a href="#asana-webhooks">webhooks</a>. We built a <a href="https://github.com/Asana/devrel-examples/tree/master/python/webhooks">python webhook inspector</a> to help developers get started using Asana webhooks. </p>
 </blockquote>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <h2 id='python-hello-world'  >Python Hello World</h2><pre class="highlight pythonpython"><code><span class="kn">import</span> <span class="nn">asana</span>
 
@@ -2446,6 +2554,12 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/python" target="_blank">Github examples repository</a></p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <hr>
 <h2 id='node-hello-world'  >Node Hello World</h2><pre class="highlight javascriptjavascript"><code><span class="kd">var</span> <span class="nx">asana</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'asana'</span><span class="p">);</span>
 
@@ -2473,6 +2587,12 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 <p>All of the built-in functions can be found in the <a href="https://github.com/Asana/node-asana/tree/master/lib/resources/gen">/gen folder of the client library</a>.</p>
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/javascript" target="_blank">Github examples repository</a></p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <hr>
 <h2 id='ruby-hello-world'  >Ruby Hello World</h2><pre class="highlight rubyruby"><code><span class="nb">require</span> <span class="s1">'asana'</span>
@@ -2503,11 +2623,23 @@ In node, a normal loop would send all requests at once, which doesn’t work in 
 
 <p>You can see a variant of this script, and other useful Asana API scripts, in our open-source <a href="https://github.com/Asana/DevRel-Examples/tree/master/ruby" target="_blank">Github examples repository</a></p>
 
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
+
 <p></section></p>
 <p><hr class="full-line">
 <section class="full-section"></p>
 <h1 id='official-client-libraries'  >Official Client Libraries</h1>
 <p>Asana is committed to making the developer experience as smooth as possible. Part of this effort is providing high-quality libraries you can use to access the API. The available libraries are listed below, and more are in development. If you don&#39;t see what you need, check the open-source community for your platform, and let us know that you&#39;d like to find one here!</p>
+
+<div>
+  <div class="docs-developer-satisfaction-content">
+      <h4>Was this section helpful? <a class="positiveFeedback-DevSatisfaction" style="cursor:pointer;">Yes </a><a class="negativeFeedback-DevSatisfaction" style="cursor:pointer;">No</a></h4>
+  </div>
+</div>
 
 <hr>
 
