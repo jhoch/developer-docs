@@ -16891,8 +16891,24 @@ automatically filtered out.</li>
 to <code>added</code> and <code>removed</code>.</li>
 </ul>
 <h4  >Error Handling and Retry</h4>
-<p>If we attempt to send a webhook payload and we receive an error status code, or the request times out, we will retry delivery with exponential backoff. In general, if your servers are not available for an hour, you can expect it to take no longer than approximately an hour after they come back before the paused delivery resumes. However, if we are unable to deliver a message for 24 hours the webhook will be deactivated.
-</span></p>
+<p>If we attempt to send a webhook payload and we receive an error status code, or the request times out, we will retry delivery with exponential backoff. In general, if your servers are not available for an hour, you can expect it to take no longer than approximately an hour after they come back before the paused delivery resumes. However, if we are unable to deliver a message for 24 hours the webhook will be deactivated.</p>
+<h4  >Resources and Actions</h4>
+<p>This is not an exhaustive list, but should cover the most common use cases.</p>
+
+<ul>
+<li>Attachment - deleted, undeleted</li>
+<li>Portfolio - added, deleted, removed</li>
+<li>Project - added, changed, deleted, removed, undeleted</li>
+<li>Project Membership - added, removed</li>
+<li>Section - added, changed, deleted, undeleted</li>
+<li>Story - added, removed, undeleted</li>
+<li>Tag - added, changed, deleted, undeleted</li>
+<li>Task - added, changed, deleted, removed, undeleted</li>
+<li>Team - added, changed, deleted</li>
+<li>Team Membership - added, removed</li>
+<li>Workspace - added, removed, changed
+</span></li>
+</ul>
 
 <p></section>
 <hr class="half-line">
