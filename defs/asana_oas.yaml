@@ -1836,7 +1836,7 @@ components:
 
 
         * When at task is added to a project, `Event.action` will be
-        `added`, `Event.parent` will be on object with the `id` and
+        `added`, `Event.parent` will be an object with the `id` and
         `type` of the project, and there will be no `change` field.
 
 
